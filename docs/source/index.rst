@@ -6,7 +6,7 @@ Welcome to Cecelia
 Become an image analysis ninja!
 ++++++++++++++++++++++++++++++
 
-.. image:: im/cciaLogo.png
+.. image:: _images/cciaLogo.png
    :width: 600
    
 
