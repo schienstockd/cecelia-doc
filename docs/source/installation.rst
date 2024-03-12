@@ -14,6 +14,9 @@ For Windows system, or if you prefer a containerised version, we have a `Docker 
     brew install pstree
     brew install openssl
 
+Step by step guide 
+---------------
+
 1. You can install the development version of cecelia like so:
 
   .. code-block:: R
