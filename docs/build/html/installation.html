@@ -238,7 +238,7 @@ brew<span class="w"> </span>install<span class="w"> </span>openssl
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li><p><em>Cecelia</em> utilises a suite of flow cytometry packages, mainly from the <a class="reference external" href="https://github.com/RGLab">RGLab</a>, which needs to be installed from <em>Bioconductor or *github</em>.</p></li>
+<li><p><em>Cecelia</em> utilises a suite of flow cytometry packages, mainly from the <a class="reference external" href="https://github.com/RGLab">RGLab</a>, which needs to be installed from <em>Bioconductor</em> or <em>github</em>.</p></li>
 </ol>
 <blockquote>
 <div><div class="literal-block-wrapper docutils container" id="id8">
@@ -322,10 +322,18 @@ brew<span class="w"> </span>install<span class="w"> </span>openssl
 <section id="troubleshooting-for-apple-metal-systems">
 <h2>Troubleshooting for Apple Metal systems<a class="headerlink" href="#troubleshooting-for-apple-metal-systems" title="Permalink to this heading">#</a></h2>
 <ul>
+<li><p><cite>normalizePath</cite> fails to find conda executable. This is an <a class="reference external" href="https://github.com/rstudio/reticulate/issues/1460#issuecomment-1995795408">issue with reticulate</a>:</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Temporary fix if <cite>reticulate</cite> fails to initialise conda environment</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">assignInNamespace</span><span class="p">(</span><span class="s">&quot;is_conda_python&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">ns</span><span class="o">=</span><span class="s">&quot;reticulate&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
 <li><p>If PyQt5 did not install successfully install Qt5 on MacOS - follow <a class="reference external" href="https://stackoverflow.com/a/71669996">SO answer</a>.
 In Terminal do the following:</p>
-<div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-text">Install and link PyQt5.</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Install and link PyQt5.</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>qt5
 brew<span class="w"> </span>link<span class="w"> </span>qt5<span class="w"> </span>--force
 </pre></div>
@@ -333,8 +341,8 @@ brew<span class="w"> </span>link<span class="w"> </span>qt5<span class="w"> </sp
 </div>
 </li>
 <li><p>If PyQt5 hangs at preparing metadata. In Terminal do the following:</p>
-<div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-text">Install SIP and configure PyQt5</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Install SIP and configure PyQt5</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>sip
 <span class="c1"># The directory might be different depending on where r-miniconda is installed on your system</span>
 .<span class="w"> </span>~/Library/r-miniconda-arm64/etc/profile.d/conda.sh
@@ -351,8 +359,8 @@ see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO
 </ul>
 <p>environmental variables in <cite>R</cite> before trying install again (adjust program paths for your system setup).</p>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-text">Make sure <cite>R</cite> knows where to look for installed libraries</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">Make sure <cite>R</cite> knows where to look for installed libraries</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/opt/homebrew/lib&quot;</span><span class="p">)</span>
 <span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LDFLAGS</span><span class="o">=</span><span class="s">&quot;-L/opt/homebrew/lib&quot;</span><span class="p">)</span>
 <span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">CPPFLAGS</span><span class="o">=</span><span class="s">&quot;-I/opt/homebrew/include&quot;</span><span class="p">)</span>
@@ -361,9 +369,9 @@ see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO
 </div>
 </div></blockquote>
 <ul>
-<li><p>MPS (<cite>Metal Performance Shaders &lt;https://developer.apple.com/documentation/metalperformanceshaders&gt;</cite> to access GPU on new Apple Metal systems) for Cellpose works but some adjustment are not in the main branch yet. Run <cite>cciaApplyPatches</cite> to apply patches for MPS. You need at least Ventura 13.2 and XCode 13.2 for pyTorch to work with MPS GPU in this case (<a class="reference external" href="https://github.com/pytorch/pytorch/issues/97606#issuecomment-1483901814">Github issue</a>).</p>
-<div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-text">Update Cellpose to use GPU</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
+<li><p>MPS (<a class="reference external" href="https://developer.apple.com/documentation/metalperformanceshaders">Metal Performance Shaders</a> to access GPU on new Apple Metal systems) for Cellpose works but some adjustment are not in the main branch yet. Run <cite>cciaApplyPatches</cite> to apply patches for MPS. You need at least Ventura 13.2 and XCode 13.2 for pyTorch to work with MPS GPU in this case (<a class="reference external" href="https://github.com/pytorch/pytorch/issues/97606#issuecomment-1483901814">Github issue</a>). <em>Cellpose 3</em> currently <a class="reference external" href="https://github.com/MouseLand/cellpose/issues/886">does not support Metal systems</a> we therefore rely on <em>Cellpose 2</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">Update Cellpose to use GPU</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaApplyPatches</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -376,8 +384,8 @@ see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO
 <ul>
 <li><p><cite>GLIBCXX_3.4.30 not found</cite> - <a class="reference external" href="https://stackoverflow.com/a/74533050">SO answer</a></p></li>
 <li><p><cite>RuntimeError: GET was unable to find an engine to execute this computation</cite> - <a class="reference external" href="https://github.com/haotian-liu/LLaVA/issues/123#issuecomment-1539434115">Github issue</a></p>
-<div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-text">Install GLIBCXX libraries for python</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Install GLIBCXX libraries for python</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>libstdcxx-ng<span class="o">=</span><span class="m">12</span>
 </pre></div>
 </div>

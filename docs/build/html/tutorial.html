@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -187,7 +187,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -195,6 +195,26 @@
         <article role="main">
           <section id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">#</a></h1>
+<p>All data for the tutorial can be found <a class="reference external" href="https://unimelbcloud-my.sharepoint.com/:f:/g/personal/schienstock_d_unimelb_edu_au/EldU3lqBWk5JsvpZ0PfsUokBdEfBAssas9eL7S4P40wIWg?e=YV82bQ">here</a>.
+<cite>Cecelia</cite> was designed to process <cite>static</cite> and <cite>live</cite> cell images.
+Both approaches follow a similar workflow to process and analyse images:</p>
+<ol class="arabic simple">
+<li><p>Importing images as <a class="reference external" href="https://doi.org/10.1007/s00418-023-02209-1">OME-ZARR</a></p></li>
+<li><p>Cleaning up images</p></li>
+<li><p>Segmenting cells and structures</p></li>
+<li><p>Creating populations</p></li>
+<li><p>Extracting spatial properties</p></li>
+<li><p>Creating figures</p></li>
+</ol>
+<p>Users familiar with <a class="reference external" href="https://rmarkdown.rstudio.com/">R Markdown</a> can also process and analyse data using more customised methods. Throughout the tutorial there will be examples on how to do that.</p>
+<section id="static-image">
+<h2>Static image<a class="headerlink" href="#static-image" title="Permalink to this heading">#</a></h2>
+<p>We will analyse <cite>M3c-Arm1_5-XCR1_Venus-B220_PB-LCMV_AF594-P14_CTDR-CD3e_AF700-1_Unmixing-crop.tif</cite> which is a cropped version of a cross-section from XCR1-Venus (dendritic cells) reporter mice after virus (LCMV) infection.</p>
+<ol class="arabic simple">
+<li><p>Import the image</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/import_images.png"><img alt="_images/import_images.png" src="_images/import_images.png" style="width: 600px;" /></a>
+</section>
 </section>
 
         </article>
@@ -240,8 +260,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#static-image">Static image</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

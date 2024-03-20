@@ -15,7 +15,7 @@ For Windows system, or if you prefer a containerised version, we have a `Docker 
     brew install openssl
 
 Step by step guide 
----------------
+------------------
 
 1. You can install the development version of cecelia like so:
 
@@ -35,7 +35,7 @@ Step by step guide
     library(cecelia)
     cciaAppRequirements(repos = "https://cloud.r-project.org")
 
-3. *Cecelia* utilises a suite of flow cytometry packages, mainly from the `RGLab <https://github.com/RGLab>`_, which needs to be installed from *Bioconductor or *github*.
+3. *Cecelia* utilises a suite of flow cytometry packages, mainly from the `RGLab <https://github.com/RGLab>`_, which needs to be installed from *Bioconductor* or *github*.
   
   .. code-block:: R
     :caption: Install Bioconductor requirements
@@ -95,7 +95,14 @@ Step by step guide
 
 
 Troubleshooting for Apple Metal systems
----------------
+---------------------------------------
+
+* `normalizePath` fails to find conda executable. This is an `issue with reticulate <https://github.com/rstudio/reticulate/issues/1460#issuecomment-1995795408>`_:
+
+  .. code-block:: R
+    :caption: Temporary fix if `reticulate` fails to initialise conda environment
+    
+    assignInNamespace("is_conda_python", function(x){ return(FALSE) }, ns="reticulate")
 
 * If PyQt5 did not install successfully install Qt5 on MacOS - follow `SO answer <https://stackoverflow.com/a/71669996>`_. 
   In Terminal do the following:
@@ -133,7 +140,7 @@ environmental variables in `R` before trying install again (adjust program paths
     Sys.setenv(CPPFLAGS="-I/opt/homebrew/include")
 
 
-* MPS (`Metal Performance Shaders <https://developer.apple.com/documentation/metalperformanceshaders>` to access GPU on new Apple Metal systems) for Cellpose works but some adjustment are not in the main branch yet. Run `cciaApplyPatches` to apply patches for MPS. You need at least Ventura 13.2 and XCode 13.2 for pyTorch to work with MPS GPU in this case (`Github issue <https://github.com/pytorch/pytorch/issues/97606#issuecomment-1483901814>`_).
+* MPS (`Metal Performance Shaders <https://developer.apple.com/documentation/metalperformanceshaders>`_ to access GPU on new Apple Metal systems) for Cellpose works but some adjustment are not in the main branch yet. Run `cciaApplyPatches` to apply patches for MPS. You need at least Ventura 13.2 and XCode 13.2 for pyTorch to work with MPS GPU in this case (`Github issue <https://github.com/pytorch/pytorch/issues/97606#issuecomment-1483901814>`_). *Cellpose 3* currently `does not support Metal systems <https://github.com/MouseLand/cellpose/issues/886>`_ we therefore rely on *Cellpose 2*.
 
   .. code-block:: R
     :caption: Update Cellpose to use GPU
@@ -141,7 +148,7 @@ environmental variables in `R` before trying install again (adjust program paths
     cciaApplyPatches()
 
 Troubleshooting for Python 
----------------
+--------------------------
 
 * `GLIBCXX_3.4.30 not found` - `SO answer <https://stackoverflow.com/a/74533050>`_
 
