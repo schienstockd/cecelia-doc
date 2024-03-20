@@ -206,14 +206,84 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <li><p>Extracting spatial properties</p></li>
 <li><p>Creating figures</p></li>
 </ol>
-<p>Users familiar with <a class="reference external" href="https://rmarkdown.rstudio.com/">R Markdown</a> can also process and analyse data using more customised methods. Throughout the tutorial there will be examples on how to do that.</p>
 <section id="static-image">
 <h2>Static image<a class="headerlink" href="#static-image" title="Permalink to this heading">#</a></h2>
 <p>We will analyse <cite>M3c-Arm1_5-XCR1_Venus-B220_PB-LCMV_AF594-P14_CTDR-CD3e_AF700-1_Unmixing-crop.tif</cite> which is a cropped version of a cross-section from XCR1-Venus (dendritic cells) reporter mice after virus (LCMV) infection.</p>
-<ol class="arabic simple">
-<li><p>Import the image</p></li>
-</ol>
-<a class="reference internal image-reference" href="_images/import_images.png"><img alt="_images/import_images.png" src="_images/import_images.png" style="width: 600px;" /></a>
+<section id="create-a-project">
+<h3>1. Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/create_project.png"><img alt="_images/create_project.png" src="_images/create_project.png" style="width: 100%;" /></a>
+<p>To load a project, expand the ‘Project’ box and select ‘Load’.</p>
+<a class="reference internal image-reference" href="_images/load_project.png"><img alt="_images/load_project.png" src="_images/load_project.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="import-the-image">
+<h3>2. Import the image<a class="headerlink" href="#import-the-image" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/import_images.png"><img alt="_images/import_images.png" src="_images/import_images.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="define-channel-names">
+<h3>3. Define channel names<a class="headerlink" href="#define-channel-names" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>The channels can be assigned one-by-one or as a list.</p>
+<ul class="simple">
+<li><p>B220-PB</p></li>
+<li><p>XCR1-Venus</p></li>
+<li><p>LCMV-AF594</p></li>
+<li><p>P14-CTDR</p></li>
+<li><p>CD3e-AF700</p></li>
+<li><p>AF</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/add_channels.png"><img alt="_images/add_channels.png" src="_images/add_channels.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="correct-autofluorescence">
+<h3>4. Correct autofluorescence<a class="headerlink" href="#correct-autofluorescence" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/pre_cleanup.png"><img alt="_images/pre_cleanup.png" src="_images/pre_cleanup.png" style="width: 100%;" /></a>
+<p>There are many ways to clean these kind of images up. We mostly use deep learning noise filtering, such as <a class="reference external" href="https://github.com/juglab/n2v">Noise2Void</a>, or channel subtraction. In <cite>Cecelia</cite> channel subtraction is imolemented as taking the ratio between channels. Select the image in the <cite>Cleanup images</cite> section and select ‘Autofluorescence Correction’ as method. For each channel define the denominator, which in this case is the autofluorescence channel (<cite>AF</cite>) that was generated after spectral unmixing.</p>
+<a class="reference internal image-reference" href="_images/post_cleanup.png"><img alt="_images/post_cleanup.png" src="_images/post_cleanup.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="segment-cells">
+<h3>5. Segment cells<a class="headerlink" href="#segment-cells" title="Permalink to this heading">#</a></h3>
+<p>In <cite>Cecelia</cite> we can combine the segmentations of these different levels into one result to extract populations. To this end, the user has to ensure that all cells and structures are segmented as expected. We therefore recommend to first segment inidividual channels before combining these. <a class="reference external" href="http://www.cellpose.org/">Cellpose</a> is the main segmentation method utilised in <cite>Cecelia</cite>. Each segmentation must be given a Name. The name <cite>default</cite> must be given for the final segmentation while intermediate segmentation tests can have anu name.</p>
+<blockquote>
+<div><p>T and B cells have a similar size, roundish shape and are closely packed. These can be segmented using the <cite>cyto2</cite> model and a relatively small diameter of 5 μm.</p>
+<a class="reference internal image-reference" href="_images/seg_t-bcells.png"><img alt="_images/seg_t-bcells.png" src="_images/seg_t-bcells.png" style="width: 100%;" /></a>
+<p>XCR1<sup>+</sup> dendritic cells have very different shapes and contain a cytoplasmic reporter rather than a membrane binding antibody. We have trained a <cite>Cellpose</cite> model, <cite>ccia Fluorescent</cite>, which was trained on overlapping T cells with a fluorescent reporter from 2-photon imaging. This model can also segment irregularly shaped dendritic cells.</p>
+<a class="reference internal image-reference" href="_images/seg_XCR1.png"><img alt="_images/seg_XCR1.png" src="_images/seg_XCR1.png" style="width: 100%;" /></a>
+<p>The virus particles are also difficult to segment as they appear as separated yet closely cohesive patches of fluorescent signal. As these particles are so fragmented, we check <cite>Merge labels</cite> to merge touching segmentation labels.</p>
+<a class="reference internal image-reference" href="_images/seg_LCMV.png"><img alt="_images/seg_LCMV.png" src="_images/seg_LCMV.png" style="width: 100%;" /></a>
+<p>LCMV specific T cells were labelled with a cytoplasmic dye. Although these are technically T cells, it is better to segment them separately to capture all cells. As this signal is very bright, we can use the standard <cite>cyto2</cite> model.</p>
+<a class="reference internal image-reference" href="_images/seg_P14.png"><img alt="_images/seg_P14.png" src="_images/seg_P14.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="define-populations">
+<h3>6. Define populations<a class="headerlink" href="#define-populations" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Cell populations can be defined in various ways. One way is use <cite>sequential gating</cite>. Create a <cite>GatingSet</cite>.</p>
+<a class="reference internal image-reference" href="_images/create_gating_set.png"><img alt="_images/create_gating_set.png" src="_images/create_gating_set.png" style="width: 100%;" /></a>
+<p>Segmentation is not perfect, we can gate out objects that are small or have odd shapes by plotting <cite>volume</cite> vs <cite>surface-to-volume</cite>. After that, it depends on the specific context. There will be spillover between cells due to their proximity. It is therefore important to gate any populations that are sparse and closely associated with other cells first. The last population can be cells that are more abundant.</p>
+<a class="reference internal image-reference" href="_images/gating_pops.png"><img alt="_images/gating_pops.png" src="_images/gating_pops.png" style="width: 100%;" /></a>
+<p>The complete gating hierarchy can be visualised in the <cite>Flow Gating</cite> section of <cite>Plot canvas</cite>.</p>
+<a class="reference internal image-reference" href="_images/gating_plot.png"><img alt="_images/gating_plot.png" src="_images/gating_plot.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="extract-spatial-interactions">
+<h3>7. Extract spatial interactions<a class="headerlink" href="#extract-spatial-interactions" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>In this example, we were interested in T cell clustering. In the <cite>Spatial analysis</cite> section are different methods to extract spatial interactions. We can utilise <cite>Cell clusters</cite> to extract LCMV specific cell clusters.</p>
+<a class="reference internal image-reference" href="_images/cluster_detection.png"><img alt="_images/cluster_detection.png" src="_images/cluster_detection.png" style="width: 100%;" /></a>
+<p>The abundance of these clusters can then be visualised in the <cite>Population plots</cite> section.</p>
+<a class="reference internal image-reference" href="_images/cluster_plot.png"><img alt="_images/cluster_plot.png" src="_images/cluster_plot.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="live-image">
+<h2>Live image<a class="headerlink" href="#live-image" title="Permalink to this heading">#</a></h2>
+<p>We will analyse <cite>x</cite> which is y.</p>
 </section>
 </section>
 
@@ -273,7 +343,17 @@ Both approaches follow a similar workflow to process and analyse images:</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Tutorial</a><ul>
-<li><a class="reference internal" href="#static-image">Static image</a></li>
+<li><a class="reference internal" href="#static-image">Static image</a><ul>
+<li><a class="reference internal" href="#create-a-project">1. Create a project</a></li>
+<li><a class="reference internal" href="#import-the-image">2. Import the image</a></li>
+<li><a class="reference internal" href="#define-channel-names">3. Define channel names</a></li>
+<li><a class="reference internal" href="#correct-autofluorescence">4. Correct autofluorescence</a></li>
+<li><a class="reference internal" href="#segment-cells">5. Segment cells</a></li>
+<li><a class="reference internal" href="#define-populations">6. Define populations</a></li>
+<li><a class="reference internal" href="#extract-spatial-interactions">7. Extract spatial interactions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#live-image">Live image</a></li>
 </ul>
 </li>
 </ul>
