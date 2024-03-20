@@ -24,7 +24,7 @@ Static image
 
 We will analyse `M3c-Arm1_5-XCR1_Venus-B220_PB-LCMV_AF594-P14_CTDR-CD3e_AF700-1_Unmixing-crop.tif` which is a cropped version of a cross-section from XCR1-Venus (dendritic cells) reporter mice after virus (LCMV) infection.
 
-#. Import the image 
+#. Import the image
 
 .. image:: _images/tutorial/static/import_images.png
    :width: 600
