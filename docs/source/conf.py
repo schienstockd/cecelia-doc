@@ -15,7 +15,9 @@ release = '0.1'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-  'sphinxcontrib.video'
+  'sphinxcontrib.video',
+  'sphinx.ext.intersphinx',
+  'sphinxcontrib.youtube'
   ]
 
 templates_path = ['_templates']
