@@ -155,6 +155,9 @@ We will analyse `M1-1-B6-naive-gBT-uGFP-OTI-CTV-P14-ubTomato-z300_0004-1.tif` wh
   .. vimeo:: 925711847
     :height: 400px
   
+  .. vimeo:: 925711847
+    :height: 400px
+  
   .. image:: _images/tutorial/static/post_cleanup.png
      :width: 100%
 
