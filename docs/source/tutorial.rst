@@ -153,6 +153,9 @@ We will analyse `M1-1-B6-naive-gBT-uGFP-OTI-CTV-P14-ubTomato-z300_0004-1.tif` wh
   Autofluor
   
   ..  youtube:: Ozb8zoJlr4o
+  
+  .. video:: _videos/two-photon-pre.mp4
+     :width: 100%
 
   .. image:: _images/tutorial/static/post_cleanup.png
      :width: 100%
