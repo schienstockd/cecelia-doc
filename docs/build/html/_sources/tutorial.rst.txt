@@ -150,16 +150,10 @@ We will analyse `M1-1-B6-naive-gBT-uGFP-OTI-CTV-P14-ubTomato-z300_0004-1.tif` wh
 4. Correct autofluorescence
 +++++++++++++++++
   
-  Autofluor
+  Autofluorescence correction in 
   
-  .. vimeo:: 925711847
-    :height: 400px
-  
-  .. vimeo:: 925711847
-    :height: 400px
-  
-  .. image:: _images/tutorial/static/post_cleanup.png
-     :width: 100%
+  .. vimeo:: 926074249?autoplay=1&loop=1&autopause=0
+    :width: 100%
 
 5. Segment cells
 +++++++++++++++++
