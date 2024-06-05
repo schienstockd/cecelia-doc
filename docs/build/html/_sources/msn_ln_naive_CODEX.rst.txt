@@ -3,6 +3,11 @@
 Human lymph node naive CODEX
 ============================
 
+0. Download
++++++++++++++++++
+
+`HuBMAP dataset <https://portal.hubmapconsortium.org/search?raw_dataset_type_keyword-assay_display_name_keyword[CODEX][0]=CODEX%20%5BCytokit%20%2B%20SPRM%5D&origin_samples.mapped_organ[0]=Lymph%20Node&entity_type[0]=Dataset>`_
+
 1. Import images
 +++++++++++++++++
   .. image:: _images/msn_LN_CODEX_import_images.png

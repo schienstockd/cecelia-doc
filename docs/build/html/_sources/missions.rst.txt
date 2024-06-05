@@ -14,3 +14,5 @@ Static images
 :ref:`msn_spleen_naive_IBEX`
 
 :ref:`msn_ln_naive_CODEX`
+
+:ref:`msn_bc_XENIUM`
