@@ -2,11 +2,11 @@
 <html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Missions" href="missions.html" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Changelog - Cecelia 0.1 documentation</title>
+        <title>Human spleen IBEX naive - Cecelia 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -155,11 +155,11 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
 </div>
@@ -188,14 +188,87 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="changelog">
-<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h1>
+          <section id="human-spleen-ibex-naive">
+<span id="msn-spleen-naive-ibex"></span><h1>Human spleen IBEX naive<a class="headerlink" href="#human-spleen-ibex-naive" title="Permalink to this heading">#</a></h1>
+<section id="download">
+<h2>0. Download<a class="headerlink" href="#download" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://zenodo.org/records/4632320">Zenodo dataset</a></p>
+</section>
+<section id="import-images">
+<h2>1. Import images<a class="headerlink" href="#import-images" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_import_images.png"><img alt="_images/msn_SP_IBEX_import_images.png" src="_images/msn_SP_IBEX_import_images.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="add-metadata">
+<h2>2. Add metadata<a class="headerlink" href="#add-metadata" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_add_channels.png"><img alt="_images/msn_SP_IBEX_add_channels.png" src="_images/msn_SP_IBEX_add_channels.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="segmentation">
+<h2>3. Segmentation<a class="headerlink" href="#segmentation" title="Permalink to this heading">#</a></h2>
+<ol class="loweralpha simple">
+<li><p>Cells</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_seg_cells.png"><img alt="_images/msn_SP_IBEX_seg_cells.png" src="_images/msn_SP_IBEX_seg_cells.png" style="width: 100%;" /></a>
+</div></blockquote>
+<ol class="loweralpha simple" start="2">
+<li><p>Stroma</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_seg_stroma.png"><img alt="_images/msn_SP_IBEX_seg_stroma.png" src="_images/msn_SP_IBEX_seg_stroma.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="extract-populations">
+<h2>4. Extract Populations<a class="headerlink" href="#extract-populations" title="Permalink to this heading">#</a></h2>
+<ol class="loweralpha simple">
+<li><p>Cluster cells</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_clust_pops.png"><img alt="_images/msn_SP_IBEX_clust_pops.png" src="_images/msn_SP_IBEX_clust_pops.png" style="width: 100%;" /></a>
+</div></blockquote>
+<ol class="loweralpha simple" start="2">
+<li><p>Stroma branching</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_branch_stroma.png"><img alt="_images/msn_SP_IBEX_branch_stroma.png" src="_images/msn_SP_IBEX_branch_stroma.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="extract-neighbours">
+<h2>5. Extract neighbours<a class="headerlink" href="#extract-neighbours" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_neighbours.png"><img alt="_images/msn_SP_IBEX_neighbours.png" src="_images/msn_SP_IBEX_neighbours.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="extract-regions">
+<h2>6. Extract regions<a class="headerlink" href="#extract-regions" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_clust_regions.png"><img alt="_images/msn_SP_IBEX_clust_regions.png" src="_images/msn_SP_IBEX_clust_regions.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="generate-figure">
+<h2>7. Generate figure<a class="headerlink" href="#generate-figure" title="Permalink to this heading">#</a></h2>
+<ol class="loweralpha simple">
+<li><p>Get population tables</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_pop_tables.png"><img alt="_images/msn_SP_IBEX_pop_tables.png" src="_images/msn_SP_IBEX_pop_tables.png" style="width: 100%;" /></a>
+</div></blockquote>
+<ol class="loweralpha simple" start="2">
+<li><p>Get closest stroma contact to populations</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_SP_IBEX_stroma_contact.png"><img alt="_images/msn_SP_IBEX_stroma_contact.png" src="_images/msn_SP_IBEX_stroma_contact.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -204,17 +277,7 @@
         
         <div class="related-pages">
           
-          <a class="prev-page" href="missions.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Missions</div>
-                
-              </div>
-            </a>
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -233,8 +296,34 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Human spleen IBEX naive</a><ul>
+<li><a class="reference internal" href="#download">0. Download</a></li>
+<li><a class="reference internal" href="#import-images">1. Import images</a></li>
+<li><a class="reference internal" href="#add-metadata">2. Add metadata</a></li>
+<li><a class="reference internal" href="#segmentation">3. Segmentation</a></li>
+<li><a class="reference internal" href="#extract-populations">4. Extract Populations</a></li>
+<li><a class="reference internal" href="#extract-neighbours">5. Extract neighbours</a></li>
+<li><a class="reference internal" href="#extract-regions">6. Extract regions</a></li>
+<li><a class="reference internal" href="#generate-figure">7. Generate figure</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

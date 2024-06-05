@@ -140,10 +140,10 @@ environmental variables in `R` before trying install again (adjust program paths
     Sys.setenv(CPPFLAGS="-I/opt/homebrew/include")
 
 
-* MPS (`Metal Performance Shaders <https://developer.apple.com/documentation/metalperformanceshaders>`_ to access GPU on new Apple Metal systems) for Cellpose works but some adjustment are not in the main branch yet. Run `cciaApplyPatches` to apply patches for MPS. You need at least Ventura 13.2 and XCode 13.2 for pyTorch to work with MPS GPU in this case (`Github issue <https://github.com/pytorch/pytorch/issues/97606#issuecomment-1483901814>`_). *Cellpose 3* currently `does not support Metal systems <https://github.com/MouseLand/cellpose/issues/886>`_ we therefore rely on *Cellpose 2*.
+* There are some minor issues that currently need to be patched for *Noise2Void*. Run patches to apply these.
 
   .. code-block:: R
-    :caption: Update Cellpose to use GPU
+    :caption: Run patches
 
     cciaApplyPatches()
 
