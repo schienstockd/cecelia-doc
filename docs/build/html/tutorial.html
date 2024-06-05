@@ -314,21 +314,27 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <div><p>Autofluorescence correction in two-photon images requires subtraction of individual channels from each other. Drift correction is also commonly required to account for tissue movement during the imaging period. We implemented autofluorescence correction by diving channels from each other. Drift correction is at the moment a simple planar correction using scitkit-image’s <a class="reference external" href="https://scikit-image.org/docs/0.13.x/auto_examples/transform/plot_register_translation.html">cross-correlation</a>.</p>
 <a class="reference internal image-reference" href="_images/li_cleanup.png"><img alt="_images/li_cleanup.png" src="_images/li_cleanup.png" style="width: 100%;" /></a>
 <p>Comparison between original and corrected images.</p>
-</div></blockquote>
+<div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe allowfullscreen="true" src="https://player.vimeo.com/video/926074249?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></div></blockquote>
 </section>
 <section id="id5">
 <h3>5. Segment cells<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Segmentation works in a similar manner to static imaging. Again, we mostly rely on <a class="reference external" href="http://www.cellpose.org/">Cellpose</a>. For each cell population you must create a separate segmentation, ie/ P14, OTI and gBT cells will each have a separate segmentation. T cells can assume irregular shapes and various sizes and appear in tightly packed environments. While the <cite>cyto2</cite> model is very good for general segmentation, we found that or own <cite>Cellpose</cite> model, <cite>ccia Fluorescent</cite> sometimes works better to extract T cell shapes from these movies. However, this model can also pick a lot more background than <cite>cyto2</cite> depending on the image. We therefore recommend to try both and stick to the one that gives the best results for the current image.</p>
 <a class="reference internal image-reference" href="_images/li_seg_gBT.png"><img alt="_images/li_seg_gBT.png" src="_images/li_seg_gBT.png" style="width: 100%;" /></a>
-</div></blockquote>
+<div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe allowfullscreen="true" src="https://player.vimeo.com/video/926098606?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></div></blockquote>
 </section>
 <section id="id7">
 <h3>6. Define populations<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>We utilise <a class="reference external" href="https://github.com/quantumjot/btrack">btrack</a> to track the segmented cells. The most important parameter is the search radius to find connecting cells between frames. If the segmentation is not 100% clean (ie/ there is some autofluorescence segmented), then we can define a filter to exclude those autofluorescent objects.</p>
 <a class="reference internal image-reference" href="_images/li_track_gBT.png"><img alt="_images/li_track_gBT.png" src="_images/li_track_gBT.png" style="width: 100%;" /></a>
-<p>The properties of the tracked cells can be plotted for different experimental conditions to, for example, compare cell <cite>speed</cite> or <cite>angle</cite>.</p>
+<div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe allowfullscreen="true" src="https://player.vimeo.com/video/927004389?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div><p>The properties of the tracked cells can be plotted for different experimental conditions to, for example, compare cell <cite>speed</cite> or <cite>angle</cite>.</p>
 <a class="reference internal image-reference" href="_images/li_track_stats.png"><img alt="_images/li_track_stats.png" src="_images/li_track_stats.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
@@ -337,7 +343,9 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <blockquote>
 <div><p>In this example, we were interested in the movement patterns of the different T cell types. One way we can analyse these behaviour modes is by utilising a Hidden Markov Model (<a class="reference external" href="https://www.rdocumentation.org/packages/depmixS4/versions/1.5-0">HMM</a>). These models can assign a pre-defined number of <cite>hidden</cite> states that are dependent on observed variables.</p>
 <a class="reference internal image-reference" href="_images/li_track_hmm.png"><img alt="_images/li_track_hmm.png" src="_images/li_track_hmm.png" style="width: 100%;" /></a>
-</div></blockquote>
+<div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe allowfullscreen="true" src="https://player.vimeo.com/video/927342248?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></div></blockquote>
 </section>
 </section>
 </section>
