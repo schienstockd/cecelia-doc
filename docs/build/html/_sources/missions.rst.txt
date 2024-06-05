@@ -12,3 +12,5 @@ Static images
 :ref:`msn_spleen_lcmv_confocal`
 
 :ref:`msn_spleen_naive_IBEX`
+
+:ref:`msn_ln_naive_CODEX`

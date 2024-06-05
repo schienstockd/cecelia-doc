@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Changelog" href="changelog.html" /><link rel="prev" title="Tutorial" href="tutorial.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Missions - Cecelia 0.1 documentation</title>
+        <title>Human lymph node naive CODEX - Cecelia 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -155,10 +155,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
@@ -194,15 +194,49 @@
           </label>
         </div>
         <article role="main">
-          <section id="missions">
-<span id="id1"></span><h1>Missions<a class="headerlink" href="#missions" title="Permalink to this heading">#</a></h1>
-<p>This is a collection of analysis missions to showcase how different images can be quantitated
-with the use of <cite>Cecelia</cite>. Whenever possible the download for the source images are given.</p>
-<section id="static-images">
-<h2>Static images<a class="headerlink" href="#static-images" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="msn_spleen_lcmv_confocal.html#msn-spleen-lcmv-confocal"><span class="std std-ref">Mouse spleen confocal after LCMV infection</span></a></p>
-<p><a class="reference internal" href="msn_spleen_naive_IBEX.html#msn-spleen-naive-ibex"><span class="std std-ref">Human spleen IBEX naive</span></a></p>
-<p><a class="reference internal" href="msn_ln_naive_CODEX.html#msn-ln-naive-codex"><span class="std std-ref">Human lymph node naive CODEX</span></a></p>
+          <section id="human-lymph-node-naive-codex">
+<span id="msn-ln-naive-codex"></span><h1>Human lymph node naive CODEX<a class="headerlink" href="#human-lymph-node-naive-codex" title="Permalink to this heading">#</a></h1>
+<section id="import-images">
+<h2>1. Import images<a class="headerlink" href="#import-images" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_LN_CODEX_import_images.png"><img alt="_images/msn_LN_CODEX_import_images.png" src="_images/msn_LN_CODEX_import_images.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="add-metadata">
+<h2>2. Add metadata<a class="headerlink" href="#add-metadata" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_LN_CODEX_add_channels.png"><img alt="_images/msn_LN_CODEX_add_channels.png" src="_images/msn_LN_CODEX_add_channels.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="segment-cells">
+<h2>3. Segment cells<a class="headerlink" href="#segment-cells" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_LN_CODEX_seg.png"><img alt="_images/msn_LN_CODEX_seg.png" src="_images/msn_LN_CODEX_seg.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="cluster-cells">
+<h2>4. Cluster cells<a class="headerlink" href="#cluster-cells" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_LN_CODEX_clust_pops.png"><img alt="_images/msn_LN_CODEX_clust_pops.png" src="_images/msn_LN_CODEX_clust_pops.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="extract-neighbours">
+<h2>5. Extract neighbours<a class="headerlink" href="#extract-neighbours" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_LN_CODEX_neighbours.png"><img alt="_images/msn_LN_CODEX_neighbours.png" src="_images/msn_LN_CODEX_neighbours.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="extract-regions">
+<h2>5. Extract regions<a class="headerlink" href="#extract-regions" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_LN_CODEX_clust_regions.png"><img alt="_images/msn_LN_CODEX_clust_regions.png" src="_images/msn_LN_CODEX_clust_regions.png" style="width: 100%;" /></a>
+</div></blockquote>
+</section>
+<section id="generate-figure">
+<h2>7. Generate figure<a class="headerlink" href="#generate-figure" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/msn_LN_CODEX_figure.png"><img alt="_images/msn_LN_CODEX_figure.png" src="_images/msn_LN_CODEX_figure.png" style="width: 100%;" /></a>
+</div></blockquote>
 </section>
 </section>
 
@@ -211,26 +245,8 @@ with the use of <cite>Cecelia</cite>. Whenever possible the download for the sou
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="changelog.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Changelog</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="tutorial.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Tutorial</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -261,8 +277,14 @@ with the use of <cite>Cecelia</cite>. Whenever possible the download for the sou
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Missions</a><ul>
-<li><a class="reference internal" href="#static-images">Static images</a></li>
+<li><a class="reference internal" href="#">Human lymph node naive CODEX</a><ul>
+<li><a class="reference internal" href="#import-images">1. Import images</a></li>
+<li><a class="reference internal" href="#add-metadata">2. Add metadata</a></li>
+<li><a class="reference internal" href="#segment-cells">3. Segment cells</a></li>
+<li><a class="reference internal" href="#cluster-cells">4. Cluster cells</a></li>
+<li><a class="reference internal" href="#extract-neighbours">5. Extract neighbours</a></li>
+<li><a class="reference internal" href="#extract-regions">5. Extract regions</a></li>
+<li><a class="reference internal" href="#generate-figure">7. Generate figure</a></li>
 </ul>
 </li>
 </ul>
