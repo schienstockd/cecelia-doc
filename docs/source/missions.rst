@@ -16,3 +16,8 @@ Static images
 :ref:`msn_ln_naive_CODEX`
 
 :ref:`msn_bc_XENIUM`
+
+Live images
+------------
+
+:ref:`msn_ln_HSV`
