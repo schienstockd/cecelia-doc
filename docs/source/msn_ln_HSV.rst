@@ -13,17 +13,22 @@ Mouse lymph node HSV infection
   .. image:: _images/msn_live_LN_HSV_add_channels.png
      :width: 100%
      
-3. Segment cells
+3. Autofluorescence and drift correction
++++++++++++++++++
+  .. image:: _images/msn_live_LN_HSV_correction.png
+     :width: 100%
+     
+4. Segment cells
 +++++++++++++++++
   .. image:: _images/msn_live_LN_HSV_seg.png
      :width: 100%
      
-4. Track cells
+5. Track cells
 +++++++++++++++++
   .. image:: _images/msn_live_LN_HSV_tracking.png
      :width: 100%
      
-5. Extract behaviour
+6. Extract behaviour
 +++++++++++++++++
 
 b. Cell aggregates

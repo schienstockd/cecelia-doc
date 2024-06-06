@@ -21,3 +21,9 @@ Live images
 ------------
 
 :ref:`msn_ln_HSV`
+
+:ref:`msn_ln_HSV_types`
+
+:ref:`msn_skin_lymph`
+
+:ref:`msn_cancer_invitro_flow`
