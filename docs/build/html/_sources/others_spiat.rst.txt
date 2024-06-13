@@ -1,0 +1,55 @@
+.. _others_spiat:
+
+SPIAT - Spatial Image Analysis of Tissues
+=========================================
+
+`SPIAT <https://github.com/TrigosTeam/SPIAT>`_ is an R-package that simplifies
+commonly used spatial analysis methods for multiplex imaging.
+
+For this deomonstration we take the data generated from :ref:`msn_spleen_naive_IBEX`.
+This represents a single image but the `spe` function is also available for
+`experimental sets` and is handled as `popDT` for the standard population tables - 
+So you can process multiple images as a list.
+
+1. Convert data
++++++++++++++++++
+
+.. code-block:: r
+  :linenos:
+  
+  # alternative visualisation and analysis with SPIAT
+  spe.pops <- unlist(unname(cciaObj$popPaths("clust", includeFiltered = TRUE)))
+  
+  spe <- cciaObj$spe(
+    popType = "clust", includeFiltered = TRUE, completeDT = TRUE, pops = spe.pops)
+
+.. code-block:: r
+  :linenos:
+  
+  imPopMap <- cciaObj$imPopMap(popType = "clust", includeFiltered = TRUE)
+  popColours <- sapply(imPopMap, function(x) {x$colour})
+  names(popColours) <- sapply(imPopMap, function(x) {x$path})
+  
+  phenotypes <- unique(spe$Phenotype)
+  popColours <- popColours[names(popColours) %in% phenotypes]
+  
+  SPIAT::plot_cell_categories(
+    spe, phenotypes, unname(popColours), "Phenotype", cex = 0.1, layered = TRUE) +
+    coord_fixed()
+
+.. image:: _images/spiat_SP_IBEX_n22foC_map.png
+   :width: 100%
+
+.. code-block:: r
+  :linenos:
+  
+  imPopMap <- cciaObj$imPopMap(popType = "clust", includeFiltered = TRUE)
+  popColours <- sapply(imPopMap, function(x) {x$colour})
+  names(popColours) <- sapply(imPopMap, function(x) {x$path})
+  
+  phenotypes <- unique(spe$Phenotype)
+  popColours <- popColours[names(popColours) %in% phenotypes]
+  
+  SPIAT::plot_cell_categories(
+    spe, phenotypes, unname(popColours), "Phenotype", cex = 0.1, layered = TRUE) +
+    coord_fixed()

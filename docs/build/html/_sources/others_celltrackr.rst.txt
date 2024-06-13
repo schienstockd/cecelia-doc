@@ -1,0 +1,16 @@
+.. _others_celltrackr:
+
+celltrackR
+=========================================
+
+`celltrackR <https://github.com/ingewortel/celltrackR>`_ is an R-package that
+enables complex analysis of cell tracks.
+
+1. Convert data
++++++++++++++++++
+
+.. code-block:: r
+    :linenos:
+    # get population data and convert
+    x <- 1:10
+    print(x)

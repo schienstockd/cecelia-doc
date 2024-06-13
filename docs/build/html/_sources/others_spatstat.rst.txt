@@ -1,0 +1,17 @@
+.. _others_spatstat:
+
+spatstat
+=========================================
+
+`spatstat <https://github.com/spatstat/spatstat>`_ is a well-established R-package
+which provides comprehensive spatial analysis
+
+1. Convert data
++++++++++++++++++
+
+.. code-block:: r
+  :linenos:
+  
+  # get population data and convert
+  x <- 1:10
+  print(x)

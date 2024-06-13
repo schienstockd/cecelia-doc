@@ -22,6 +22,7 @@ If case you need help to set up or use the program, file an issue on `Github <ht
   installation
   tutorial
   missions
+  others
   changelog
 
 
