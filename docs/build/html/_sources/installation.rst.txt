@@ -48,7 +48,17 @@ Step by step guide
     :caption: Define base directory
     
     cciaSetup("/REPLACE/WITH/YOUR/PATH")
-
+  
+  In case you get stuck at any point and have to restart R, you need to redefine the path you are working on
+  
+  .. code-block:: R
+    :caption: Restart Cecelia
+    
+    # if you already installed flowCore during cciaBiocRequirements, otherwise comment out
+    library(flowCore)
+    Sys.setenv(KMP_DUPLICATE_LIB_OK = "TRUE")
+    library(cecelia)
+    cciaUse("/REPLACE/WITH/YOUR/PATH")
 
 5. *Cecelia* depends on a *conda environment* which must be created.
   There are multiple options available depending on how you would like to use the app:
