@@ -2,7 +2,7 @@
 <html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Tutorial" href="tutorial.html" /><link rel="prev" title="Welcome to Cecelia" href="index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
@@ -207,6 +207,8 @@ The following programs are currently required for the <cite>shiny app</cite>.</p
 <div class="code-block-caption"><span class="caption-text">Install required programs via Homebrew</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>pstree
 brew<span class="w"> </span>install<span class="w"> </span>openssl
+<span class="c1"># If you don&#39;t have Xcode</span>
+brew<span class="w"> </span>install<span class="w"> </span>cmake
 </pre></div>
 </div>
 </div>
@@ -341,19 +343,19 @@ brew<span class="w"> </span>install<span class="w"> </span>openssl
 </ul>
 <div class="literal-block-wrapper docutils container" id="id15">
 <div class="code-block-caption"><span class="caption-text">Adjust config.</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
-<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>default:
-  dirs:
-    bioformats2raw: &quot;/path/to/bioformats2raw&quot;
-    projects: &quot;/your/project/directory/&quot;
-  volumes:
-    SSD: &quot;/your/ssd/directory/&quot;
-    home: &quot;~/&quot;
-    computer: &quot;/&quot;
-  python:
-    conda:
-      env: &quot;r-cecelia-env&quot;
-      source:
-        env: &quot;r-cecelia-env&quot;
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/bioformats2raw&quot;</span>
+<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/project/directory/&quot;</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">SSD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/ssd/directory/&quot;</span>
+<span class="w">    </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~/&quot;</span>
+<span class="w">    </span><span class="nt">computer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
+<span class="w">  </span><span class="nt">python</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">conda</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;r-cecelia-env&quot;</span>
+<span class="w">      </span><span class="nt">source</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;r-cecelia-env&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -401,11 +403,8 @@ pip<span class="w"> </span>install<span class="w"> </span>pyqt5<span class="w"> 
 <li><p>If tensorflow fails to import with <cite>illegal instruction</cite> you might need to install a Mac specific version,
 see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO answer</a>.</p></li>
 <li><p>If GPU does not work, <cite>tensorflow-metal</cite> will enable GPU support, see <a class="reference external" href="https://medium.com/bluetuple-ai/how-to-enable-gpu-support-for-tensorflow-or-pytorch-on-macos-4aaaad057e74">Medium article</a>.</p></li>
-<li><p>If you get <cite>ld: library ‘crypto’ not found</cite> during <cite>cciaBiocRequirements()</cite>, set the following</p></li>
-</ul>
-<p>environmental variables in <cite>R</cite> before trying install again (adjust program paths for your system setup).</p>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id19">
+<li><p>If you get <cite>ld: library ‘crypto’ not found</cite> during <cite>cciaBiocRequirements()</cite>, set the following environmental variables in <cite>R</cite> before trying install again (adjust program paths for your system setup).</p>
+<div class="literal-block-wrapper docutils container" id="id19">
 <div class="code-block-caption"><span class="caption-text">Make sure <cite>R</cite> knows where to look for installed libraries</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/opt/homebrew/lib&quot;</span><span class="p">)</span>
 <span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LDFLAGS</span><span class="o">=</span><span class="s">&quot;-L/opt/homebrew/lib&quot;</span><span class="p">)</span>
@@ -413,8 +412,8 @@ see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO
 </pre></div>
 </div>
 </div>
-</div></blockquote>
-<ul>
+</li>
+<li><p>If you get <cite>ld: library ‘gfortran’ not found</cite> during install, you might need a GNU Fortran compiler: <a class="reference external" href="https://cran.r-project.org/bin/macosx/tools/">Mac OS tools</a></p></li>
 <li><p>There are some minor issues that currently need to be patched for <em>Noise2Void</em>. Run patches to apply these.</p>
 <div class="literal-block-wrapper docutils container" id="id20">
 <div class="code-block-caption"><span class="caption-text">Run patches</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>

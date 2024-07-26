@@ -13,6 +13,8 @@ For Windows system, or if you prefer a containerised version, we have a `Docker 
     
     brew install pstree
     brew install openssl
+    # If you don't have Xcode
+    brew install cmake
 
 Step by step guide 
 ------------------
@@ -107,7 +109,7 @@ Step by step guide
 
   * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip>`_
 
-  .. code-block:: yml
+  .. code-block:: YAML
     :caption: Adjust config.
   
     default:
@@ -162,8 +164,7 @@ Troubleshooting for Apple Metal systems
 
 * If GPU does not work, `tensorflow-metal` will enable GPU support, see `Medium article <https://medium.com/bluetuple-ai/how-to-enable-gpu-support-for-tensorflow-or-pytorch-on-macos-4aaaad057e74>`_.
 
-* If you get `ld: library 'crypto' not found` during `cciaBiocRequirements()`, set the following
-environmental variables in `R` before trying install again (adjust program paths for your system setup).
+* If you get `ld: library 'crypto' not found` during `cciaBiocRequirements()`, set the following environmental variables in `R` before trying install again (adjust program paths for your system setup).
 
   .. code-block:: R
     :caption: Make sure `R` knows where to look for installed libraries
@@ -172,6 +173,7 @@ environmental variables in `R` before trying install again (adjust program paths
     Sys.setenv(LDFLAGS="-L/opt/homebrew/lib")
     Sys.setenv(CPPFLAGS="-I/opt/homebrew/include")
 
+* If you get `ld: library 'gfortran' not found` during install, you might need a GNU Fortran compiler: `Mac OS tools <https://cran.r-project.org/bin/macosx/tools/>`_
 
 * There are some minor issues that currently need to be patched for *Noise2Void*. Run patches to apply these.
 
