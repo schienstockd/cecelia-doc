@@ -102,7 +102,30 @@ Step by step guide
   
     cciaCreateApp()
 
+8. Adjust config
+  You have to adjust the parameters in `~/path/to/cecelia/custom.yml` to your system and download/install:
 
+  * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip>`_
+
+  .. code-block:: yml
+    :caption: Adjust config.
+  
+    default:
+      dirs:
+        bioformats2raw: "/path/to/bioformats2raw"
+        projects: "/your/project/directory/"
+      volumes:
+        SSD: "/your/ssd/directory/"
+        home: "~/"
+        computer: "/"
+      python:
+        conda:
+          env: "r-cecelia-env"
+          source:
+            env: "r-cecelia-env"
+            
+9. Run the app
+  To run the app, double-click on `~/path/to/cecelia/app/cecelia-macOSX.command`.
 
 Troubleshooting for Apple Metal systems
 ---------------------------------------
