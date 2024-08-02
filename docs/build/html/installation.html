@@ -294,8 +294,22 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 </div>
 </div>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>For Apple Metal systems, you need to pre-create the conda environment otherwise it will use the wrong platform type.
+You might have to source conda first if the command cannot be found.
+<cite>reticulate::miniconda_path()</cite> will give you the conda path.</p>
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Pre-create conda environment</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># if the conda command is not found.</span>
+.<span class="w"> </span>/path/to/miniconda/etc/profile.d/conda.sh
+<span class="nv">CONDA_SUBDIR</span><span class="o">=</span>osx-arm64<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>r-cecelia-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCondaCreate</span><span class="p">(</span><span class="n">envType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;image&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -303,8 +317,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>If the previous command fails on <em>PyQt5</em> on Apple Metal systems, preinstall <em>napari</em>.</p>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">Preinstall napari</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Preinstall napari</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCondaCreate</span><span class="p">(</span><span class="n">preinstallNapari</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -315,8 +329,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 <li><p>Download models for deep-learning segmentation, tracking and others.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaModels</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -326,8 +340,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 <li><p>Create <em>shiny app</em> in <em>base directory</em>.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-text">Create <em>shiny app</em>.</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Create <em>shiny app</em>.</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCreateApp</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -341,8 +355,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip">bioformats2raw</a></p></li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-text">Adjust config.</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Adjust config.</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/bioformats2raw&quot;</span>
@@ -371,8 +385,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 <h2>Troubleshooting for Apple Metal systems<a class="headerlink" href="#troubleshooting-for-apple-metal-systems" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p><cite>normalizePath</cite> fails to find conda executable. This is an <a class="reference external" href="https://github.com/rstudio/reticulate/issues/1460#issuecomment-1995795408">issue with reticulate</a>:</p>
-<div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-text">Temporary fix if <cite>reticulate</cite> fails to initialise conda environment</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Temporary fix if <cite>reticulate</cite> fails to initialise conda environment</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">assignInNamespace</span><span class="p">(</span><span class="s">&quot;is_conda_python&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">ns</span><span class="o">=</span><span class="s">&quot;reticulate&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -380,8 +394,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 </li>
 <li><p>If PyQt5 did not install successfully install Qt5 on MacOS - follow <a class="reference external" href="https://stackoverflow.com/a/71669996">SO answer</a>.
 In Terminal do the following:</p>
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-text">Install and link PyQt5.</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">Install and link PyQt5.</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>qt5
 brew<span class="w"> </span>link<span class="w"> </span>qt5<span class="w"> </span>--force
 </pre></div>
@@ -389,8 +403,8 @@ brew<span class="w"> </span>link<span class="w"> </span>qt5<span class="w"> </sp
 </div>
 </li>
 <li><p>If PyQt5 hangs at preparing metadata. In Terminal do the following:</p>
-<div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-text">Install SIP and configure PyQt5</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">Install SIP and configure PyQt5</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>sip
 <span class="c1"># The directory might be different depending on where r-miniconda is installed on your system</span>
 .<span class="w"> </span>~/Library/r-miniconda-arm64/etc/profile.d/conda.sh
@@ -404,8 +418,8 @@ pip<span class="w"> </span>install<span class="w"> </span>pyqt5<span class="w"> 
 see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO answer</a>.</p></li>
 <li><p>If GPU does not work, <cite>tensorflow-metal</cite> will enable GPU support, see <a class="reference external" href="https://medium.com/bluetuple-ai/how-to-enable-gpu-support-for-tensorflow-or-pytorch-on-macos-4aaaad057e74">Medium article</a>.</p></li>
 <li><p>If you get <cite>ld: library ‘crypto’ not found</cite> during <cite>cciaBiocRequirements()</cite>, set the following environmental variables in <cite>R</cite> before trying install again (adjust program paths for your system setup).</p>
-<div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-text">Make sure <cite>R</cite> knows where to look for installed libraries</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Make sure <cite>R</cite> knows where to look for installed libraries</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/opt/homebrew/lib&quot;</span><span class="p">)</span>
 <span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LDFLAGS</span><span class="o">=</span><span class="s">&quot;-L/opt/homebrew/lib&quot;</span><span class="p">)</span>
 <span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">CPPFLAGS</span><span class="o">=</span><span class="s">&quot;-I/opt/homebrew/include&quot;</span><span class="p">)</span>
@@ -415,8 +429,8 @@ see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO
 </li>
 <li><p>If you get <cite>ld: library ‘gfortran’ not found</cite> during install, you might need a GNU Fortran compiler: <a class="reference external" href="https://cran.r-project.org/bin/macosx/tools/">Mac OS tools</a></p></li>
 <li><p>There are some minor issues that currently need to be patched for <em>Noise2Void</em>. Run patches to apply these.</p>
-<div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-text">Run patches</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">Run patches</span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaApplyPatches</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -429,8 +443,8 @@ see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO
 <ul>
 <li><p><cite>GLIBCXX_3.4.30 not found</cite> - <a class="reference external" href="https://stackoverflow.com/a/74533050">SO answer</a></p></li>
 <li><p><cite>RuntimeError: GET was unable to find an engine to execute this computation</cite> - <a class="reference external" href="https://github.com/haotian-liu/LLaVA/issues/123#issuecomment-1539434115">Github issue</a></p>
-<div class="literal-block-wrapper docutils container" id="id21">
-<div class="code-block-caption"><span class="caption-text">Install GLIBCXX libraries for python</span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">Install GLIBCXX libraries for python</span><a class="headerlink" href="#id22" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>libstdcxx-ng<span class="o">=</span><span class="m">12</span>
 </pre></div>
 </div>

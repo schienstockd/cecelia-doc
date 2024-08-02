@@ -77,6 +77,18 @@ Step by step guide
       
       reticulate::install_miniconda()
   
+  .. attention::
+    For Apple Metal systems, you need to pre-create the conda environment otherwise it will use the wrong platform type.
+    You might have to source conda first if the command cannot be found.
+    `reticulate::miniconda_path()` will give you the conda path.
+    
+    ..  code-block:: bash
+      :caption: Pre-create conda environment
+      
+      # if the conda command is not found.
+      . /path/to/miniconda/etc/profile.d/conda.sh
+      CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.9
+  
   .. code-block:: R
     :caption: Create conda environment
   
