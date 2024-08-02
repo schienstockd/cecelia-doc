@@ -85,7 +85,7 @@ Step by step guide
     ..  code-block:: bash
       :caption: Pre-create conda environment
       
-      # if the conda command is not found.
+      # if the conda command is not found
       . /path/to/miniconda/etc/profile.d/conda.sh
       CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.9
   
