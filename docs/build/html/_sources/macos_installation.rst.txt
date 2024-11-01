@@ -33,7 +33,7 @@ Step by step guide
     setwd("PATH/RENV/LOCK/FILE")
     renv::init()
     
-  .. image:: _images/macos_install_env.png
+  .. image:: _images/macos_install_renv.png
    :width: 100%
    
 5. Load the environment you have just created and install `Cecelia` package.
