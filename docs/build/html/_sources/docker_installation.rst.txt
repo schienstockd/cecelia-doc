@@ -1,6 +1,6 @@
 .. _docker_installation:
 
-Docker installation
+Windows/Docker installation
 ===================
 
 Step by step guide 

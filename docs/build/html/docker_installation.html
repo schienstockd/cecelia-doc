@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Docker installation - Cecelia 0.1 documentation</title>
+        <title>Windows/Docker installation - Cecelia 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -195,8 +195,8 @@
           </label>
         </div>
         <article role="main">
-          <section id="docker-installation">
-<span id="id1"></span><h1>Docker installation<a class="headerlink" href="#docker-installation" title="Permalink to this heading">#</a></h1>
+          <section id="windows-docker-installation">
+<span id="docker-installation"></span><h1>Windows/Docker installation<a class="headerlink" href="#windows-docker-installation" title="Permalink to this heading">#</a></h1>
 <section id="step-by-step-guide">
 <h2>Step by step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -213,8 +213,8 @@
 <li><p>Retrieve the <cite>CeceliaDocker</cite> project. Either <a class="reference external" href="https://github.com/schienstockd/ceceliaDocker/archive/refs/heads/master.zip">Download</a> or clone the <a class="reference external" href="https://github.com/schienstockd/ceceliaDocker">CeceliaDocker repository</a></p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Clone repository with git</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Clone repository with git</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/schienstockd/ceceliaDocker.git
 </pre></div>
 </div>
@@ -224,8 +224,8 @@
 <p>4. Create <cite>conda</cite> environment for <cite>napari</cite> to run.
 On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the conda toolkit.</p>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--file<span class="o">=</span>conda-gui-env.yml
 </pre></div>
 </div>
@@ -241,8 +241,8 @@ On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the
 </ol>
 <blockquote>
 <div><p>You must adjust the filepaths in <cite>docker-compose.yml</cite> and <cite>datashare/docker.yml</cite>. This will tell Docker where your projects are stored and the data location that you can use to import data. We also must tell <cite>Shiny</cite> to use the host directory to open images as they are opened outside of the container within the napari environment.</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">Windows example docker-compose.yml</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Windows example docker-compose.yml</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
@@ -252,8 +252,8 @@ On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">Windows example datashare/docker.yml</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Windows example datashare/docker.yml</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">docker</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">useDocker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRUE</span>
@@ -322,7 +322,7 @@ On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Docker installation</a><ul>
+<li><a class="reference internal" href="#">Windows/Docker installation</a><ul>
 <li><a class="reference internal" href="#step-by-step-guide">Step by step guide</a></li>
 </ul>
 </li>
