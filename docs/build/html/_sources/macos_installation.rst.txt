@@ -107,7 +107,7 @@ Step by step guide
     
     cciaModels()
     
-  .. image:: _images/linux_ccia_models.png
+  .. image:: _images/macos_ccia_models.png
     :width: 100%
 
 7. Create `shiny app` in `base directory`.
@@ -117,7 +117,7 @@ Step by step guide
   
     cciaCreateApp()
     
-  .. image:: _images/linux_create_app.png
+  .. image:: _images/macos_create_app.png
     :width: 100%
 
 8. Adjust config
@@ -142,7 +142,7 @@ Step by step guide
           source:
             env: "r-cecelia-env"
             
-  .. image:: _images/linux_custom_config.png
+  .. image:: _images/macos_custom_config.png
     :width: 100%
             
 9. Run the `app`.
@@ -152,6 +152,6 @@ Step by step guide
   
     ./PATH/TO/CECELIA/app/cecelia-macOSX.command
     
-  .. image:: _images/linux_run_app.png
+  .. image:: _images/macos_run_app.png
     :width: 100%
    
