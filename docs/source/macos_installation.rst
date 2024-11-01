@@ -92,8 +92,7 @@ Step by step guide
     :width: 100%
   
   .. attention::
-    For Apple Metal systems, you need to pre-create the conda environment otherwise it will use the wrong platform type.
-    You might have to source conda first if the command cannot be found.
+    For Apple Metal systems, you need to pre-create the conda environment in `Terminal` otherwise it will use the wrong platform type. You might have to source conda first if the command cannot be found.
     `reticulate::miniconda_path()` will give you the conda path.
     
     ..  code-block:: bash

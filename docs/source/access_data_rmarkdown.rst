@@ -13,8 +13,14 @@ We need to activate the `renv` environment to use all packages. `Sys.setenv(KMP_
 .. code-block:: r
   :linenos:
   
+  Sys.setenv(KMP_DUPLICATE_LIB_OK = "TRUE")
   library(cecelia)
-  cciaUse("~/PATH/TO")
+  cciaUse("~/cecelia/dev")
+  
+  # for plotting and general data processing
+  library(ggplot2) 
+  library(tidyverse)
+  
   
   # init ccia object
   cciaObj <- initCciaObject(
