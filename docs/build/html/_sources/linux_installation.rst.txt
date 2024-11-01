@@ -40,7 +40,7 @@ Step by step guide
       . defines the current directory
       .. defines the parent directory
       
-      ~/Documents is shortform for /Users/dom/Documents
+      ~/Documents is shortform for /home/dom/Documents
   
   .. code-block:: R
     :caption: Init R-environment
@@ -123,19 +123,18 @@ Step by step guide
     :width: 100%
 
 8. Adjust config
-  You have to adjust the parameters in `~/path/to/cecelia/custom.yml` to your system and download/install:
+  You have to adjust the parameters in `/YOUR/PATH/TO/cecelia/custom.yml` to your system and download/install:
 
-  * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip>`_
+  * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_
 
   .. code-block:: YAML
-    :caption: Adjust config
+    :caption: Adjust config in text editor of RStudio
   
     default:
       dirs:
-        bioformats2raw: "/path/to/bioformats2raw"
-        projects: "/your/project/directory/"
+        bioformats2raw: "/REPLACE/PATH/TO/bioformats2raw"
+        projects: "/REPLACE/PATH/TO/project/directory/"
       volumes:
-        SSD: "/your/ssd/directory/"
         home: "~/"
         computer: "/"
       python:
@@ -152,7 +151,7 @@ Step by step guide
   .. code-block:: bash
     :caption: Run `Cecelia` app
   
-    ./PATH/TO/CECELIA/app/cecelia-Linux.sh
+    /PATH/TO/CECELIA/app/cecelia-Linux.sh
     
   .. image:: _images/linux_run_app.png
     :width: 100%

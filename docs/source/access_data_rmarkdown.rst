@@ -15,28 +15,33 @@ We need to activate the `renv` environment to use all packages. `Sys.setenv(KMP_
   
   Sys.setenv(KMP_DUPLICATE_LIB_OK = "TRUE")
   library(cecelia)
-  cciaUse("~/cecelia/dev")
+  cciaUse("REPLACE/WITH/YOUR/PATH/TO/CECELIA")
   
   # for plotting and general data processing
   library(ggplot2) 
   library(tidyverse)
   
+We can initialise the object with `initCciaObject`.
+
+.. code-block:: r
+  :linenos:
   
-  # init ccia object
-  cciaObj <- initCciaObject(
-    pID = pID, uID = "6QzZsl", versionID = versionID, initReactivity = FALSE
-  )
-  
-  uIDs <- names(cciaObj$cciaObjects())
-  
-  # get pops
-  pops <- cciaObj$popPaths(popType = "flow", includeFiltered = FALSE, uIDs = uIDs[1])
-  
-  # exclude 'O' pops
-  pops <- pops[is.na(str_match(pops, "/O[0-9]*$"))]
-  pops <- pops[is.na(str_match(pops, "/nonDebris$"))]
-  
-  spe <- cciaObj$spe(popType = "flow", pops = pops, uIDs = uIDs)
+  # set project parameters
+pID <- "Co3HDh" # this ID is found in the app 'Settings > unique ID (uID)'
+versionID <- 1
+
+devtools::load_all("../")
+cciaUse("~/cecelia/dev", initConda = FALSE)
+
+# init ccia object
+cciaObj <- initCciaObject(
+  pID = pID, uID = "lWinrY", versionID = versionID, initReactivity = FALSE # Tcells
+)
+
+popsList <- cciaObj$popPaths(popType = "live", filteredOnly = TRUE, filterMeasures = c("track_id"))
+
+# popDT <- cciaObj$popDT("live", pops = c(popsTracked[[3]]), includeFiltered = TRUE)
+popDT <- cciaObj$popDT("live", pops = c(popsList), includeFiltered = TRUE)
   
 
     

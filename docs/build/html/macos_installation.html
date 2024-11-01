@@ -303,12 +303,11 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <a class="reference internal image-reference" href="_images/macos_miniconda_install.png"><img alt="_images/macos_miniconda_install.png" src="_images/macos_miniconda_install.png" style="width: 100%;" /></a>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>For Apple Metal systems, you need to pre-create the conda environment in <cite>Terminal</cite> otherwise it will use the wrong platform type. You might have to source conda first if the command cannot be found.
-<cite>reticulate::miniconda_path()</cite> will give you the conda path.</p>
+<p>For Apple Silicon systems (M1-3), you <cite>must</cite> pre-create the conda environment in <cite>Terminal</cite> otherwise it will use the wrong platform type. You must source <cite>conda</cite> first with the following commands.
+<cite>reticulate::miniconda_path()</cite> will give you the conda path that you need to put into the following command.</p>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">Pre-create conda environment</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># if the conda command is not found</span>
-.<span class="w"> </span>/PATH/TO/MINICONDA/etc/profile.d/conda.sh
+<div class="code-block-caption"><span class="caption-text">Pre-create conda environment in <cite>Terminal</cite></span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>/REPLACE/WITH/PATH/TO/MINICONDA/etc/profile.d/conda.sh
 <span class="nv">CONDA_SUBDIR</span><span class="o">=</span>osx-arm64<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>r-cecelia-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
 </pre></div>
 </div>
@@ -351,18 +350,17 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <li><p>Adjust config</p></li>
 </ol>
 <blockquote>
-<div><p>You have to adjust the parameters in <cite>~/path/to/cecelia/custom.yml</cite> to your system and download/install:</p>
+<div><p>You have to adjust the parameters in <cite>/YOUR/PATH/TO/cecelia/custom.yml</cite> to your system and download/install:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip">bioformats2raw</a></p></li>
+<li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip">bioformats2raw</a></p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-text">Adjust config</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Adjust config in text editor of RStudio</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/bioformats2raw&quot;</span>
-<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/project/directory/&quot;</span>
+<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/REPLACE/PATH/TO/bioformats2raw&quot;</span>
+<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/REPLACE/PATH/TO/project/directory/&quot;</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">SSD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/ssd/directory/&quot;</span>
 <span class="w">    </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~/&quot;</span>
 <span class="w">    </span><span class="nt">computer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
 <span class="w">  </span><span class="nt">python</span><span class="p">:</span>
@@ -379,9 +377,10 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <li><p>Run the <cite>app</cite>.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id15">
+<div><p>To start the application, double click <cite>cecelia-macOSX.command</cite> located in <cite>REPLACE/PATH/TO/CECELIA/app/</cite>.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
 <div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./PATH/TO/CECELIA/app/cecelia-macOSX.command
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/REPLACE/PATH/TO/CECELIA/app/cecelia-macOSX.command
 </pre></div>
 </div>
 </div>

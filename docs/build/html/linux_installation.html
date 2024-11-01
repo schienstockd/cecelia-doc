@@ -238,7 +238,7 @@
 .<span class="w"> </span>defines<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory
 ..<span class="w"> </span>defines<span class="w"> </span>the<span class="w"> </span>parent<span class="w"> </span>directory
 
-~/Documents<span class="w"> </span>is<span class="w"> </span>shortform<span class="w"> </span><span class="k">for</span><span class="w"> </span>/Users/dom/Documents
+~/Documents<span class="w"> </span>is<span class="w"> </span>shortform<span class="w"> </span><span class="k">for</span><span class="w"> </span>/home/dom/Documents
 </pre></div>
 </div>
 </div>
@@ -336,18 +336,17 @@
 <li><p>Adjust config</p></li>
 </ol>
 <blockquote>
-<div><p>You have to adjust the parameters in <cite>~/path/to/cecelia/custom.yml</cite> to your system and download/install:</p>
+<div><p>You have to adjust the parameters in <cite>/YOUR/PATH/TO/cecelia/custom.yml</cite> to your system and download/install:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip">bioformats2raw</a></p></li>
+<li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip">bioformats2raw</a></p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-text">Adjust config</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Adjust config in text editor of RStudio</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/bioformats2raw&quot;</span>
-<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/project/directory/&quot;</span>
+<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/REPLACE/PATH/TO/bioformats2raw&quot;</span>
+<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/REPLACE/PATH/TO/project/directory/&quot;</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">SSD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/ssd/directory/&quot;</span>
 <span class="w">    </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~/&quot;</span>
 <span class="w">    </span><span class="nt">computer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
 <span class="w">  </span><span class="nt">python</span><span class="p">:</span>
@@ -366,7 +365,7 @@
 <blockquote>
 <div><div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./PATH/TO/CECELIA/app/cecelia-Linux.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/PATH/TO/CECELIA/app/cecelia-Linux.sh
 </pre></div>
 </div>
 </div>

@@ -92,14 +92,13 @@ Step by step guide
     :width: 100%
   
   .. attention::
-    For Apple Metal systems, you need to pre-create the conda environment in `Terminal` otherwise it will use the wrong platform type. You might have to source conda first if the command cannot be found.
-    `reticulate::miniconda_path()` will give you the conda path.
+    For Apple Silicon systems (M1-3), you `must` pre-create the conda environment in `Terminal` otherwise it will use the wrong platform type. You must source `conda` first with the following commands.
+    `reticulate::miniconda_path()` will give you the conda path that you need to put into the following command.
     
     ..  code-block:: bash
-      :caption: Pre-create conda environment
+      :caption: Pre-create conda environment in `Terminal`
       
-      # if the conda command is not found
-      . /PATH/TO/MINICONDA/etc/profile.d/conda.sh
+      . /REPLACE/WITH/PATH/TO/MINICONDA/etc/profile.d/conda.sh
       CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.9
     
     .. image:: _images/macos_arm_conda_create.png
@@ -134,19 +133,18 @@ Step by step guide
     :width: 100%
 
 8. Adjust config
-  You have to adjust the parameters in `~/path/to/cecelia/custom.yml` to your system and download/install:
+  You have to adjust the parameters in `/YOUR/PATH/TO/cecelia/custom.yml` to your system and download/install:
 
-  * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip>`_
+  * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_
 
   .. code-block:: YAML
-    :caption: Adjust config
+    :caption: Adjust config in text editor of RStudio
   
     default:
       dirs:
-        bioformats2raw: "/path/to/bioformats2raw"
-        projects: "/your/project/directory/"
+        bioformats2raw: "/REPLACE/PATH/TO/bioformats2raw"
+        projects: "/REPLACE/PATH/TO/project/directory/"
       volumes:
-        SSD: "/your/ssd/directory/"
         home: "~/"
         computer: "/"
       python:
@@ -159,11 +157,13 @@ Step by step guide
     :width: 100%
             
 9. Run the `app`.
-
+  
+  To start the application, double click `cecelia-macOSX.command` located in `REPLACE/PATH/TO/CECELIA/app/`.
+  
   .. code-block:: bash
     :caption: Run `Cecelia` app
   
-    ./PATH/TO/CECELIA/app/cecelia-macOSX.command
+    /REPLACE/PATH/TO/CECELIA/app/cecelia-macOSX.command
     
   .. image:: _images/macos_run_app.png
     :width: 100%

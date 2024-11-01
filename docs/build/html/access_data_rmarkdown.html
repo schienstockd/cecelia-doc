@@ -202,32 +202,32 @@
 <section id="live-cell-imaging">
 <h2>Live cell imaging<a class="headerlink" href="#live-cell-imaging" title="Permalink to this heading">#</a></h2>
 <p>We need to activate the <cite>renv</cite> environment to use all packages. <cite>Sys.setenv(KMP_DUPLICATE_LIB_OK = “TRUE”)</cite> must be added before loading anything as R can otherwise crash. See <a class="reference external" href="https://github.com/dmlc/xgboost/issues/1715#issuecomment-438924721">Github issue</a> for details if required.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
-<span class="linenos"> 2</span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
-<span class="linenos"> 3</span><span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;~/cecelia/dev&quot;</span><span class="p">)</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="c1"># for plotting and general data processing</span>
-<span class="linenos"> 6</span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-<span class="linenos"> 7</span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span><span class="c1"># init ccia object</span>
-<span class="linenos">11</span><span class="n">cciaObj</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">initCciaObject</span><span class="p">(</span>
-<span class="linenos">12</span><span class="w">  </span><span class="n">pID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pID</span><span class="p">,</span><span class="w"> </span><span class="n">uID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;6QzZsl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">versionID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">versionID</span><span class="p">,</span><span class="w"> </span><span class="n">initReactivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span>
-<span class="linenos">13</span><span class="p">)</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="n">uIDs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">cciaObjects</span><span class="p">())</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span><span class="c1"># get pops</span>
-<span class="linenos">18</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">popPaths</span><span class="p">(</span><span class="n">popType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flow&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">includeFiltered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">uIDs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uIDs</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
-<span class="linenos">19</span>
-<span class="linenos">20</span><span class="c1"># exclude &#39;O&#39; pops</span>
-<span class="linenos">21</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pops</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="nf">str_match</span><span class="p">(</span><span class="n">pops</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/O[0-9]*$&quot;</span><span class="p">))]</span>
-<span class="linenos">22</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pops</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="nf">str_match</span><span class="p">(</span><span class="n">pops</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/nonDebris$&quot;</span><span class="p">))]</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span><span class="n">spe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">spe</span><span class="p">(</span><span class="n">popType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flow&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pops</span><span class="p">,</span><span class="w"> </span><span class="n">uIDs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uIDs</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
+<span class="linenos">3</span><span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;REPLACE/WITH/YOUR/PATH/TO/CECELIA&quot;</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="c1"># for plotting and general data processing</span>
+<span class="linenos">6</span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="linenos">7</span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>We can initialise the object with <cite>initCciaObject</cite>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># set project parameters</span>
+</pre></div>
+</div>
+<p>pID &lt;- “Co3HDh” # this ID is found in the app ‘Settings &gt; unique ID (uID)’
+versionID &lt;- 1</p>
+<p>devtools::load_all(“../”)
+cciaUse(“~/cecelia/dev”, initConda = FALSE)</p>
+<p># init ccia object
+cciaObj &lt;- initCciaObject(</p>
+<blockquote>
+<div><p>pID = pID, uID = “lWinrY”, versionID = versionID, initReactivity = FALSE # Tcells</p>
+</div></blockquote>
+<p>)</p>
+<p>popsList &lt;- cciaObj$popPaths(popType = “live”, filteredOnly = TRUE, filterMeasures = c(“track_id”))</p>
+<p># popDT &lt;- cciaObj$popDT(“live”, pops = c(popsTracked[[3]]), includeFiltered = TRUE)
+popDT &lt;- cciaObj$popDT(“live”, pops = c(popsList), includeFiltered = TRUE)</p>
 <a class="reference internal image-reference" href="_images/others_spiat_NjumBK_map.png"><img alt="_images/others_spiat_NjumBK_map.png" src="_images/others_spiat_NjumBK_map.png" style="width: 100%;" /></a>
 </section>
 </section>
