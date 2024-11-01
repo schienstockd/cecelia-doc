@@ -20,6 +20,7 @@ If case you need help to set up or use the program, file an issue on `Github <ht
   :caption: Contents:
   
   installation
+    docker_installation
   tutorial
   missions
   others

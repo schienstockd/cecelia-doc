@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -189,7 +189,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -197,261 +197,10 @@
         <article role="main">
           <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
-<p>This package currently only works on Unix systems because <em>shiny</em> requires this architecture.
-For Windows system, or if you prefer a containerised version, we have a <a class="reference external" href="https://github.com/schienstockd/ceceliaDocker">Docker image</a>.</p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>For MacOS, we recommend installing <a class="reference external" href="https://brew.sh/">Homebrew</a>.
-The following programs are currently required for the <cite>shiny app</cite>.</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">Install required programs via Homebrew</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>pstree
-brew<span class="w"> </span>install<span class="w"> </span>openssl
-<span class="c1"># If you don&#39;t have Xcode</span>
-brew<span class="w"> </span>install<span class="w"> </span>cmake
-</pre></div>
-</div>
-</div>
-</div>
-<section id="step-by-step-guide">
-<h2>Step by step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>You can install the development version of cecelia like so:</p></li>
-</ol>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">Install github version</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="s">&quot;remotes&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
-<span class="w">  </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;remotes&quot;</span><span class="p">)</span>
-<span class="n">remotes</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;schienstockd/cecelia&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Ncpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://cloud.r-project.org&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>After the install is finished, you must install the requirements for the <em>shiny app</em>.</p></li>
-</ol>
-<blockquote>
-<div><p>Some packages must be installed from <em>github</em> repos, hence this manual step after the main package installation.</p>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">Install shiny app requirements</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
-<span class="nf">cciaAppRequirements</span><span class="p">(</span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://cloud.r-project.org&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p><em>Cecelia</em> utilises a suite of flow cytometry packages, mainly from the <a class="reference external" href="https://github.com/RGLab">RGLab</a>, which needs to be installed from <em>Bioconductor</em> or <em>github</em>.</p></li>
-</ol>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">Install Bioconductor requirements</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaBiocRequirements</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li><p>You must define a <em>base directory</em> where configuration files, models and the <em>shiny app</em> will be stored.</p></li>
-</ol>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">Define base directory</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaSetup</span><span class="p">(</span><span class="s">&quot;/REPLACE/WITH/YOUR/PATH&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>In case you get stuck at any point and have to restart R, you need to redefine the path you are working on</p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">Restart Cecelia</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># if you already installed flowCore during cciaBiocRequirements, otherwise comment out</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">flowCore</span><span class="p">)</span>
-<span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
-<span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;/REPLACE/WITH/YOUR/PATH&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="5">
-<li><p><em>Cecelia</em> depends on a <em>conda environment</em> which must be created.</p></li>
-</ol>
-<blockquote>
-<div><p>There are multiple options available depending on how you would like to use the app:</p>
-<ul class="simple">
-<li><p><cite>image</cite> For image analysis on Desktop (<strong>default</strong>)</p></li>
-<li><p><cite>image-nogui</cite> For image processing without GUI</p></li>
-<li><p><cite>flow</cite> For flow cytometry analysis</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Install miniconda for Apple Metal systems, see <a class="reference external" href="https://github.com/rstudio/reticulate/issues/1298#issuecomment-1310660021">github issue</a>.</p>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">Install miniconda</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">reticulate</span><span class="o">::</span><span class="nf">install_miniconda</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>For Apple Metal systems, you need to pre-create the conda environment otherwise it will use the wrong platform type.
-You might have to source conda first if the command cannot be found.
-<cite>reticulate::miniconda_path()</cite> will give you the conda path.</p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">Pre-create conda environment</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># if the conda command is not found</span>
-.<span class="w"> </span>/path/to/miniconda/etc/profile.d/conda.sh
-<span class="nv">CONDA_SUBDIR</span><span class="o">=</span>osx-arm64<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>r-cecelia-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
-</pre></div>
-</div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCondaCreate</span><span class="p">(</span><span class="n">envType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;image&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>If the previous command fails on <em>PyQt5</em> on Apple Metal systems, preinstall <em>napari</em>.</p>
-<div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-text">Preinstall napari</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCondaCreate</span><span class="p">(</span><span class="n">preinstallNapari</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="6">
-<li><p>Download models for deep-learning segmentation, tracking and others.</p></li>
-</ol>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaModels</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="7">
-<li><p>Create <em>shiny app</em> in <em>base directory</em>.</p></li>
-</ol>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-text">Create <em>shiny app</em>.</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCreateApp</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="8">
-<li><p>Adjust config</p></li>
-</ol>
-<blockquote>
-<div><p>You have to adjust the parameters in <cite>~/path/to/cecelia/custom.yml</cite> to your system and download/install:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip">bioformats2raw</a></p></li>
-</ul>
-<div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-text">Adjust config.</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
-<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/bioformats2raw&quot;</span>
-<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/project/directory/&quot;</span>
-<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">SSD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/your/ssd/directory/&quot;</span>
-<span class="w">    </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~/&quot;</span>
-<span class="w">    </span><span class="nt">computer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
-<span class="w">  </span><span class="nt">python</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">conda</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;r-cecelia-env&quot;</span>
-<span class="w">      </span><span class="nt">source</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;r-cecelia-env&quot;</span>
-</pre></div>
-</div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="9">
-<li><p>Run the app</p></li>
-</ol>
-<blockquote>
-<div><p>To run the app, double-click on <cite>~/path/to/cecelia/app/cecelia-macOSX.command</cite>.</p>
-</div></blockquote>
-</section>
-<section id="troubleshooting-for-apple-metal-systems">
-<h2>Troubleshooting for Apple Metal systems<a class="headerlink" href="#troubleshooting-for-apple-metal-systems" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p><cite>normalizePath</cite> fails to find conda executable. This is an <a class="reference external" href="https://github.com/rstudio/reticulate/issues/1460#issuecomment-1995795408">issue with reticulate</a>:</p>
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-text">Temporary fix if <cite>reticulate</cite> fails to initialise conda environment</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">assignInNamespace</span><span class="p">(</span><span class="s">&quot;is_conda_python&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">ns</span><span class="o">=</span><span class="s">&quot;reticulate&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</li>
-<li><p>If PyQt5 did not install successfully install Qt5 on MacOS - follow <a class="reference external" href="https://stackoverflow.com/a/71669996">SO answer</a>.
-In Terminal do the following:</p>
-<div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-text">Install and link PyQt5.</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>qt5
-brew<span class="w"> </span>link<span class="w"> </span>qt5<span class="w"> </span>--force
-</pre></div>
-</div>
-</div>
-</li>
-<li><p>If PyQt5 hangs at preparing metadata. In Terminal do the following:</p>
-<div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-text">Install SIP and configure PyQt5</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>sip
-<span class="c1"># The directory might be different depending on where r-miniconda is installed on your system</span>
-.<span class="w"> </span>~/Library/r-miniconda-arm64/etc/profile.d/conda.sh
-conda<span class="w"> </span>activate<span class="w"> </span>r-cecelia-env
-pip<span class="w"> </span>install<span class="w"> </span>pyqt5<span class="w"> </span>--config-settings<span class="w"> </span>--confirm-license<span class="o">=</span><span class="w"> </span>--verbose
-</pre></div>
-</div>
-</div>
-</li>
-<li><p>If tensorflow fails to import with <cite>illegal instruction</cite> you might need to install a Mac specific version,
-see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO answer</a>.</p></li>
-<li><p>If GPU does not work, <cite>tensorflow-metal</cite> will enable GPU support, see <a class="reference external" href="https://medium.com/bluetuple-ai/how-to-enable-gpu-support-for-tensorflow-or-pytorch-on-macos-4aaaad057e74">Medium article</a>.</p></li>
-<li><p>If you get <cite>ld: library ‘crypto’ not found</cite> during <cite>cciaBiocRequirements()</cite>, set the following environmental variables in <cite>R</cite> before trying install again (adjust program paths for your system setup).</p>
-<div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-text">Make sure <cite>R</cite> knows where to look for installed libraries</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/opt/homebrew/lib&quot;</span><span class="p">)</span>
-<span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">LDFLAGS</span><span class="o">=</span><span class="s">&quot;-L/opt/homebrew/lib&quot;</span><span class="p">)</span>
-<span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">CPPFLAGS</span><span class="o">=</span><span class="s">&quot;-I/opt/homebrew/include&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</li>
-<li><p>If you get <cite>ld: library ‘gfortran’ not found</cite> during install, you might need a GNU Fortran compiler: <a class="reference external" href="https://cran.r-project.org/bin/macosx/tools/">Mac OS tools</a></p></li>
-<li><p>There are some minor issues that currently need to be patched for <em>Noise2Void</em>. Run patches to apply these.</p>
-<div class="literal-block-wrapper docutils container" id="id21">
-<div class="code-block-caption"><span class="caption-text">Run patches</span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaApplyPatches</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</li>
-</ul>
-</section>
-<section id="troubleshooting-for-python">
-<h2>Troubleshooting for Python<a class="headerlink" href="#troubleshooting-for-python" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p><cite>GLIBCXX_3.4.30 not found</cite> - <a class="reference external" href="https://stackoverflow.com/a/74533050">SO answer</a></p></li>
-<li><p><cite>RuntimeError: GET was unable to find an engine to execute this computation</cite> - <a class="reference external" href="https://github.com/haotian-liu/LLaVA/issues/123#issuecomment-1539434115">Github issue</a></p>
-<div class="literal-block-wrapper docutils container" id="id22">
-<div class="code-block-caption"><span class="caption-text">Install GLIBCXX libraries for python</span><a class="headerlink" href="#id22" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>libstdcxx-ng<span class="o">=</span><span class="m">12</span>
-</pre></div>
-</div>
-</div>
-</li>
-</ul>
-</section>
+<p><a class="reference internal" href="docker_installation.html#docker-installation"><span class="std std-ref">Docker installation</span></a></p>
+<p><a class="reference internal" href="macos_installation.html#macos-installation"><span class="std std-ref">MacOS installation</span></a></p>
+<p><a class="reference internal" href="linux_installation.html#linux-installation"><span class="std std-ref">Linux installation</span></a></p>
+<p><a class="reference internal" href="manual_installation.html#manual-installation"><span class="std std-ref">Manual package installation</span></a></p>
 </section>
 
         </article>
@@ -497,29 +246,8 @@ see <a class="reference external" href="https://stackoverflow.com/a/77067787">SO
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Installation</a><ul>
-<li><a class="reference internal" href="#step-by-step-guide">Step by step guide</a></li>
-<li><a class="reference internal" href="#troubleshooting-for-apple-metal-systems">Troubleshooting for Apple Metal systems</a></li>
-<li><a class="reference internal" href="#troubleshooting-for-python">Troubleshooting for Python</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
