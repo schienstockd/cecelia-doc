@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access_data_rmarkdown.html">Access data in RMarkdown</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others.html">Connecting other packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -196,7 +197,7 @@
         </div>
         <article role="main">
           <section id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">#</a></h1>
 <p>All data for the tutorial can be found <a class="reference external" href="https://unimelbcloud-my.sharepoint.com/:f:/g/personal/schienstock_d_unimelb_edu_au/EldU3lqBWk5JsvpZ0PfsUokBdEfBAssas9eL7S4P40wIWg?e=YV82bQ">here</a>.
 <cite>Cecelia</cite> was designed to process <cite>static</cite> and <cite>live</cite> cell images.
 Both approaches follow a similar workflow to process and analyse images:</p>
@@ -209,7 +210,7 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <li><p>Creating figures</p></li>
 </ol>
 <section id="static-image">
-<h2>Static image<a class="headerlink" href="#static-image" title="Permalink to this heading">#</a></h2>
+<span id="tutorial-static"></span><h2>Static image<a class="headerlink" href="#static-image" title="Permalink to this heading">#</a></h2>
 <p>We will analyse <cite>M3c-Arm1_5-XCR1_Venus-B220_PB-LCMV_AF594-P14_CTDR-CD3e_AF700-1_Unmixing-crop.tif</cite> which is a cropped version of a cross-section from XCR1-Venus (dendritic cells) reporter mice after virus (LCMV) infection.</p>
 <section id="create-a-project">
 <h3>1. Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this heading">#</a></h3>
@@ -282,22 +283,22 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 </section>
 </section>
 <section id="live-image">
-<h2>Live image<a class="headerlink" href="#live-image" title="Permalink to this heading">#</a></h2>
+<span id="tutorial-live"></span><h2>Live image<a class="headerlink" href="#live-image" title="Permalink to this heading">#</a></h2>
 <p>We will analyse <cite>M1-1-B6-naive-gBT-uGFP-OTI-CTV-P14-ubTomato-z300_0004-1.tif</cite> which is a two-photon movie of naive T cells within a mouse lymph node.</p>
-<section id="id1">
-<h3>1. Create a project<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>1. Create a project<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/li_create_project.png"><img alt="_images/li_create_project.png" src="_images/li_create_project.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
-<section id="id2">
-<h3>2. Import the image<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>2. Import the image<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/li_import_images.png"><img alt="_images/li_import_images.png" src="_images/li_import_images.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
-<section id="id3">
-<h3>3. Define channel names<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3>3. Define channel names<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>The channels can be assigned one-by-one or as a list.</p>
 <ul class="simple">
@@ -309,8 +310,8 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <a class="reference internal image-reference" href="_images/li_add_channels.png"><img alt="_images/li_add_channels.png" src="_images/li_add_channels.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
-<section id="id4">
-<h3>4. Correct autofluorescence<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3>4. Correct autofluorescence<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Autofluorescence correction in two-photon images requires subtraction of individual channels from each other. Drift correction is also commonly required to account for tissue movement during the imaging period. We implemented autofluorescence correction by diving channels from each other. Drift correction is at the moment a simple planar correction using scitkit-image’s <a class="reference external" href="https://scikit-image.org/docs/0.13.x/auto_examples/transform/plot_register_translation.html">cross-correlation</a>.</p>
 <a class="reference internal image-reference" href="_images/li_cleanup.png"><img alt="_images/li_cleanup.png" src="_images/li_cleanup.png" style="width: 100%;" /></a>
@@ -319,8 +320,8 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <iframe allowfullscreen="true" src="https://player.vimeo.com/video/926074249?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div></div></blockquote>
 </section>
-<section id="id5">
-<h3>5. Segment cells<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h3>5. Segment cells<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Segmentation works in a similar manner to static imaging. Again, we mostly rely on <a class="reference external" href="http://www.cellpose.org/">Cellpose</a>. For each cell population you must create a separate segmentation, ie/ P14, OTI and gBT cells will each have a separate segmentation. T cells can assume irregular shapes and various sizes and appear in tightly packed environments. While the <cite>cyto2</cite> model is very good for general segmentation, we found that or own <cite>Cellpose</cite> model, <cite>ccia Fluorescent</cite> sometimes works better to extract T cell shapes from these movies. However, this model can also pick a lot more background than <cite>cyto2</cite> depending on the image. We therefore recommend to try both and stick to the one that gives the best results for the current image.</p>
 <a class="reference internal image-reference" href="_images/li_seg_gBT.png"><img alt="_images/li_seg_gBT.png" src="_images/li_seg_gBT.png" style="width: 100%;" /></a>
@@ -328,8 +329,8 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <iframe allowfullscreen="true" src="https://player.vimeo.com/video/926098606?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div></div></blockquote>
 </section>
-<section id="id7">
-<h3>6. Define populations<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3>6. Define populations<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>We utilise <a class="reference external" href="https://github.com/quantumjot/btrack">btrack</a> to track the segmented cells. The most important parameter is the search radius to find connecting cells between frames. If the segmentation is not 100% clean (ie/ there is some autofluorescence segmented), then we can define a filter to exclude those autofluorescent objects.</p>
 <a class="reference internal image-reference" href="_images/li_track_gBT.png"><img alt="_images/li_track_gBT.png" src="_images/li_track_gBT.png" style="width: 100%;" /></a>
@@ -339,8 +340,8 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <a class="reference internal image-reference" href="_images/li_track_stats.png"><img alt="_images/li_track_stats.png" src="_images/li_track_stats.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
-<section id="id8">
-<h3>7. Extract spatial interactions<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3>7. Extract spatial interactions<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>In this example, we were interested in the movement patterns of the different T cell types. One way we can analyse these behaviour modes is by utilising a Hidden Markov Model (<a class="reference external" href="https://www.rdocumentation.org/packages/depmixS4/versions/1.5-0">HMM</a>). These models can assign a pre-defined number of <cite>hidden</cite> states that are dependent on observed variables.</p>
 <a class="reference internal image-reference" href="_images/li_track_hmm.png"><img alt="_images/li_track_hmm.png" src="_images/li_track_hmm.png" style="width: 100%;" /></a>
@@ -418,13 +419,13 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#live-image">Live image</a><ul>
-<li><a class="reference internal" href="#id1">1. Create a project</a></li>
-<li><a class="reference internal" href="#id2">2. Import the image</a></li>
-<li><a class="reference internal" href="#id3">3. Define channel names</a></li>
-<li><a class="reference internal" href="#id4">4. Correct autofluorescence</a></li>
-<li><a class="reference internal" href="#id5">5. Segment cells</a></li>
-<li><a class="reference internal" href="#id7">6. Define populations</a></li>
-<li><a class="reference internal" href="#id8">7. Extract spatial interactions</a></li>
+<li><a class="reference internal" href="#id2">1. Create a project</a></li>
+<li><a class="reference internal" href="#id3">2. Import the image</a></li>
+<li><a class="reference internal" href="#id4">3. Define channel names</a></li>
+<li><a class="reference internal" href="#id5">4. Correct autofluorescence</a></li>
+<li><a class="reference internal" href="#id6">5. Segment cells</a></li>
+<li><a class="reference internal" href="#id8">6. Define populations</a></li>
+<li><a class="reference internal" href="#id9">7. Extract spatial interactions</a></li>
 </ul>
 </li>
 </ul>

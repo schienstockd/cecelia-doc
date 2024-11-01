@@ -2,9 +2,12 @@
 <html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="#" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Connecting other packages" href="others.html" /><link rel="prev" title="Missions" href="missions.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 --><title>Search - Cecelia 0.1 documentation</title><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+        <title>Access data in RMarkdown - Cecelia 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -131,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -145,18 +148,18 @@
   
   <span class="sidebar-brand-text">Cecelia 0.1 documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access_data_rmarkdown.html">Access data in RMarkdown</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Access data in RMarkdown</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others.html">Connecting other packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -178,7 +181,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -186,31 +190,67 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
+          <section id="access-data-in-rmarkdown">
+<span id="access-data-rmarkdown"></span><h1>Access data in RMarkdown<a class="headerlink" href="#access-data-in-rmarkdown" title="Permalink to this heading">#</a></h1>
+<p>The data generated in <cite>Cecelia</cite> can be further analysed in R-Markdown for custom quantification or visualisation. The main principle is that the generated <cite>populations</cite> can be loaded as <cite>data-table</cite> which can be used for various functions. Here we make use of the results generated in <a class="reference internal" href="tutorial.html#tutorial-live"><span class="std std-ref">Live image</span></a>.</p>
+<section id="live-cell-imaging">
+<h2>Live cell imaging<a class="headerlink" href="#live-cell-imaging" title="Permalink to this heading">#</a></h2>
+<p>We need to activate the <cite>renv</cite> environment to use all packages. <cite>Sys.setenv(KMP_DUPLICATE_LIB_OK = “TRUE”)</cite> must be added before loading anything as R can otherwise crash. See <a class="reference external" href="https://github.com/dmlc/xgboost/issues/1715#issuecomment-438924721">Github issue</a> for details if required.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;~/PATH/TO&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># init ccia object</span>
+<span class="linenos"> 5</span><span class="n">cciaObj</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">initCciaObject</span><span class="p">(</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="n">pID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pID</span><span class="p">,</span><span class="w"> </span><span class="n">uID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;6QzZsl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">versionID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">versionID</span><span class="p">,</span><span class="w"> </span><span class="n">initReactivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span>
+<span class="linenos"> 7</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">uIDs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">cciaObjects</span><span class="p">())</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1"># get pops</span>
+<span class="linenos">12</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">popPaths</span><span class="p">(</span><span class="n">popType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flow&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">includeFiltered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">uIDs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uIDs</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># exclude &#39;O&#39; pops</span>
+<span class="linenos">15</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pops</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="nf">str_match</span><span class="p">(</span><span class="n">pops</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/O[0-9]*$&quot;</span><span class="p">))]</span>
+<span class="linenos">16</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pops</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="nf">str_match</span><span class="p">(</span><span class="n">pops</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/nonDebris$&quot;</span><span class="p">))]</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="n">spe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">spe</span><span class="p">(</span><span class="n">popType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flow&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pops</span><span class="p">,</span><span class="w"> </span><span class="n">uIDs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uIDs</span><span class="p">)</span>
+</pre></div>
 </div>
-</noscript>
-
-<div id="search-results"></div>
+<a class="reference internal image-reference" href="_images/others_spiat_NjumBK_map.png"><img alt="_images/others_spiat_NjumBK_map.png" src="_images/others_spiat_NjumBK_map.png" style="width: 100%;" /></a>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="others.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Connecting other packages</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="missions.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Missions</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -229,8 +269,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Access data in RMarkdown</a><ul>
+<li><a class="reference internal" href="#live-cell-imaging">Live cell imaging</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -239,8 +298,5 @@
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>
-    
-<script src="_static/searchtools.js"></script>
-<script src="_static/language_data.js"></script>
-<script src="searchindex.js"></script></body>
+    </body>
 </html>

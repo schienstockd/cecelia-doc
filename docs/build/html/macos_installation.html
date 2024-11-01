@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access_data_rmarkdown.html">Access data in RMarkdown</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others.html">Connecting other packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -200,7 +201,7 @@
 <section id="step-by-step-guide">
 <h2>Step by step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Install library dependencies. We recommend using <a class="reference external" href="https://brew.sh/">Homebrew</a> to install the necessary dependencies.</p></li>
+<li><p>Install library dependencies. We recommend using <a class="reference external" href="https://brew.sh/">Homebrew</a> to install the necessary dependencies. Type the following into <cite>Terminal</cite>.</p></li>
 </ol>
 <blockquote>
 <div><div class="literal-block-wrapper docutils container" id="id2">
@@ -214,7 +215,7 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li><p>Install <a class="reference external" href="https://cran.r-project.org/bin/macosx/">R base for MacOS</a> and <a class="reference external" href="https://posit.co/download/rstudio-desktop/#download">RStudio</a>.</p></li>
+<li><p>Install <a class="reference external" href="https://cran.r-project.org/bin/macosx/">R base for MacOS</a> and <a class="reference external" href="https://posit.co/download/rstudio-desktop/#download">RStudio</a>. We tested this on R version <cite>4.4.1</cite>. If you use another version of R the package dependencies might not be resolved during <cite>renv::init()</cite>.</p></li>
 <li><p>Start <cite>RStudio</cite> and install <cite>renv</cite>.</p></li>
 </ol>
 <blockquote>
@@ -226,12 +227,28 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li><p>Install package dependencies. Download the <a class="reference external" href="https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock">renv.lock file</a> and create the R-environment. You must set the <cite>current working directory</cite> to the directory where the <cite>renv.lock</cite> file is located. Select “1” to restore the project from the lockfile.</p></li>
+<li><p>Install package dependencies. Download the <a class="reference external" href="https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock">renv.lock file</a> (save as <cite>renv.lock</cite> NOT <cite>renv.lock.txt</cite>) and create the R-environment. You must set the <cite>current working directory</cite> to the directory where the <cite>renv.lock</cite> file is located. Select “1” to restore the project from the lockfile.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">Init R-environment</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;PATH/RENV/LOCK/FILE&quot;</span><span class="p">)</span>
+<div><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><cite>Unix</cite> systems have three main signs to specify directories</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Common path directories</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~<span class="w"> </span>defines<span class="w"> </span>the<span class="w"> </span>home<span class="w"> </span>directory
+.<span class="w"> </span>defines<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory
+..<span class="w"> </span>defines<span class="w"> </span>the<span class="w"> </span>parent<span class="w"> </span>directory
+
+~/Documents<span class="w"> </span>is<span class="w"> </span>shortform<span class="w"> </span><span class="k">for</span><span class="w"> </span>/Users/dom/Documents
+</pre></div>
+</div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Init R-environment</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># An example would be</span>
+<span class="c1"># setwd(&quot;~/Cecelia&quot;)</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;PATH/RENV/LOCK/FILE&quot;</span><span class="p">)</span>
 <span class="n">renv</span><span class="o">::</span><span class="nf">init</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -242,8 +259,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <li><p>Load the environment you have just created and install <cite>Cecelia</cite> package.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">Install Cecelia package</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Install Cecelia package</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">renv</span><span class="o">::</span><span class="nf">load</span><span class="p">()</span>
 <span class="n">renv</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="s">&quot;schienstockd/cecelia&quot;</span><span class="p">)</span>
 </pre></div>
@@ -255,16 +272,16 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <li><p>You must define a <cite>base directory</cite> where configuration files, models and the <cite>shiny app</cite> will be stored.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">Define base directory</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Define base directory</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
 <span class="nf">cciaSetup</span><span class="p">(</span><span class="s">&quot;/REPLACE/WITH/YOUR/PATH&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>In case you get stuck at any point and have to restart R, you need to redefine the path you are working on</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">Restart Cecelia</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Restart Cecelia</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
 <span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;/REPLACE/WITH/YOUR/PATH&quot;</span><span class="p">)</span>
@@ -277,8 +294,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <li><p><cite>Cecelia</cite> depends on a <cite>conda environment</cite> which must be created.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">Install miniconda</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Install miniconda</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">reticulate</span><span class="o">::</span><span class="nf">install_miniconda</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -289,8 +306,8 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <p>For Apple Metal systems, you need to pre-create the conda environment otherwise it will use the wrong platform type.
 You might have to source conda first if the command cannot be found.
 <cite>reticulate::miniconda_path()</cite> will give you the conda path.</p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">Pre-create conda environment</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Pre-create conda environment</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># if the conda command is not found</span>
 .<span class="w"> </span>/PATH/TO/MINICONDA/etc/profile.d/conda.sh
 <span class="nv">CONDA_SUBDIR</span><span class="o">=</span>osx-arm64<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>r-cecelia-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
@@ -299,8 +316,8 @@ You might have to source conda first if the command cannot be found.
 </div>
 <a class="reference internal image-reference" href="_images/macos_arm_conda_create.png"><img alt="_images/macos_arm_conda_create.png" src="_images/macos_arm_conda_create.png" style="width: 100%;" /></a>
 </div>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCondaCreate</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -311,8 +328,8 @@ You might have to source conda first if the command cannot be found.
 <li><p>Download models for deep-learning segmentation, tracking and others.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaModels</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -323,8 +340,8 @@ You might have to source conda first if the command cannot be found.
 <li><p>Create <cite>shiny app</cite> in <cite>base directory</cite>.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">Create <cite>shiny app</cite></span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Create <cite>shiny app</cite></span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCreateApp</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -339,8 +356,8 @@ You might have to source conda first if the command cannot be found.
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.8.0/bioformats2raw-0.8.0.zip">bioformats2raw</a></p></li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-text">Adjust config</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Adjust config</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/bioformats2raw&quot;</span>
@@ -363,8 +380,8 @@ You might have to source conda first if the command cannot be found.
 <li><p>Run the <cite>app</cite>.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./PATH/TO/CECELIA/app/cecelia-macOSX.command
 </pre></div>
 </div>

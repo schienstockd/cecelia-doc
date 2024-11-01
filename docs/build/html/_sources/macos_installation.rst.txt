@@ -6,7 +6,7 @@ MacOS installation
 Step by step guide 
 ------------------
 
-1. Install library dependencies. We recommend using `Homebrew <https://brew.sh/>`_ to install the necessary dependencies.
+1. Install library dependencies. We recommend using `Homebrew <https://brew.sh/>`_ to install the necessary dependencies. Type the following into `Terminal`.
 
   .. code-block:: bash
     :caption: Install required programs via Homebrew
@@ -16,7 +16,7 @@ Step by step guide
     brew install gdal # Dependency for SPIAT package
     brew install cmake # If you don't have Xcode
 
-2. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_.
+2. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use another version of R the package dependencies might not be resolved during `renv::init()`.
 
 3. Start `RStudio` and install `renv`.
 
@@ -25,11 +25,25 @@ Step by step guide
     
     install.packages("renv")
    
-4. Install package dependencies. Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ and create the R-environment. You must set the `current working directory` to the directory where the `renv.lock` file is located. Select "1" to restore the project from the lockfile.
+4. Install package dependencies. Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ (save as `renv.lock` NOT `renv.lock.txt`) and create the R-environment. You must set the `current working directory` to the directory where the `renv.lock` file is located. Select "1" to restore the project from the lockfile.
+  
+  .. tip::
+    `Unix` systems have three main signs to specify directories
+  
+    .. code-block:: bash
+      :caption: Common path directories
+      
+      ~ defines the home directory
+      . defines the current directory
+      .. defines the parent directory
+      
+      ~/Documents is shortform for /Users/dom/Documents
   
   .. code-block:: R
     :caption: Init R-environment
     
+    # An example would be
+    # setwd("~/Cecelia")
     setwd("PATH/RENV/LOCK/FILE")
     renv::init()
     

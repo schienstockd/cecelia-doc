@@ -1,3 +1,5 @@
+.. _tutorial:
+
 Tutorial
 ========
 
@@ -16,6 +18,8 @@ Both approaches follow a similar workflow to process and analyse images:
 #. Extracting spatial properties
 
 #. Creating figures
+
+.. _tutorial_static:
 
 Static image
 ------------
@@ -115,7 +119,9 @@ We will analyse `M3c-Arm1_5-XCR1_Venus-B220_PB-LCMV_AF594-P14_CTDR-CD3e_AF700-1_
    
   .. image:: _images/st_cluster_plot.png
      :width: 100%
-     
+
+.. _tutorial_live:
+
 Live image
 ------------
 
