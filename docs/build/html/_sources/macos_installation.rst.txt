@@ -44,7 +44,7 @@ Step by step guide
     
     # An example would be
     # setwd("~/Cecelia")
-    setwd("PATH/RENV/LOCK/FILE")
+    setwd("PATH/TO/RENV/LOCK/FILE")
     renv::init()
     
   .. image:: _images/macos_install_renv.png
