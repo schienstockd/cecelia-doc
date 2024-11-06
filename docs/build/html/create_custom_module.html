@@ -2,7 +2,7 @@
 <html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Module function names" href="module_function_names.html" /><link rel="prev" title="Access data in RMarkdown" href="access_data_rmarkdown.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
@@ -202,7 +202,7 @@
         <article role="main">
           <section id="create-custom-module">
 <span id="id1"></span><h1>Create custom module<a class="headerlink" href="#create-custom-module" title="Permalink to this heading">#</a></h1>
-<p>We can create custom <cite>modules</cite> and respective <cite>input definitions</cite> by creatting an <cite>R6</cite> class and a <cite>JSON</cite> file respectively. As an example we take the analysis from <a class="reference internal" href="access_data_rmarkdown.html#access-data-rmarkdown"><span class="std std-ref">Access data in RMarkdown</span></a>.</p>
+<p>We can create custom <cite>modules</cite> and respective <cite>input definitions</cite> by creatting an <cite>R6</cite> class and a <cite>JSON</cite> file respectively. As an example we take the analysis from <span class="xref std std-ref">access_data_rmarkdown</span>.</p>
 <section id="live-cell-imaging">
 <h2>Live cell imaging<a class="headerlink" href="#live-cell-imaging" title="Permalink to this heading">#</a></h2>
 <section id="r-markdown">
@@ -210,7 +210,7 @@
 <p>To start off, we can design the functionality we want as <cite>R Markdown</cite>. In this example we are modifying the way in which the angle and speed of cell tracks is calculated. By default, the angle for each object is defined by the previous two timepoints. That is, you will have three points and the two lines between those define the angle. You could increase the distance between these two lines and measure the angle between the first and last segment of a given track. This would give you a coarser measurement of the angle and could be used to classify behaviour differently. We will illustrate this by applying a Hidden Markov Model on these modified measurements.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>Please complete the previous tutorial (<a class="reference internal" href="access_data_rmarkdown.html#access-data-rmarkdown"><span class="std std-ref">Access data in RMarkdown</span></a>) to follow the steps.</p>
+<p>Please complete the previous tutorial (<span class="xref std std-ref">access_data_rmarkdown</span>) to follow the steps.</p>
 </div>
 <p>To calculate angles, we must get tracks. Tracks can be obtained by using their <cite>population</cite> (eg/ cell_typeA/tracked) or <cite>value</cite> (eg/ cell_typeA) names. A <cite>value</cite> name is the name of the segmentation that the populations are derived from, ie/ the filename for the segmentation.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># get value names from populations</span>
@@ -293,7 +293,7 @@
 </section>
 <section id="creating-a-module">
 <h3>Creating a module<a class="headerlink" href="#creating-a-module" title="Permalink to this heading">#</a></h3>
-<p>To look at this measurement, apply it to other images and to use it for other purposes it is easiest to create custom module. Every module is an <a class="reference external" href="https://r6.r-lib.org/articles/Introduction.html">R6</a> class. You can add this module to the GUI by providing an <cite>input definition</cite> that will be read by the <cite>Input manager</cite> and displayed on the defined modules page. Custom modules can be added to the base directory that you used to install <cite>Cecelia</cite>. Create a folder <cite>modules</cite> and the sub-folders <cite>sources</cite> and <cite>inputDefinitions</cite>. Every category in <cite>Cecelia</cite> is a module with a <cite>function name</cite>. You can find the categories and their function names here: <a class="reference internal" href="module_function_names.html#module-function-names"><span class="std std-ref">Module function names</span></a>.</p>
+<p>To look at this measurement, apply it to other images and to use it for other purposes it is easiest to create custom module. Every module is an <a class="reference external" href="https://r6.r-lib.org/articles/Introduction.html">R6</a> class. You can add this module to the GUI by providing an <cite>input definition</cite> that will be read by the <cite>Input manager</cite> and displayed on the defined modules page. Custom modules can be added to the base directory that you used to install <cite>Cecelia</cite>. Create a folder <cite>modules</cite> and the sub-folders <cite>sources</cite> and <cite>inputDefinitions</cite>. Every category in <cite>Cecelia</cite> is a module with a <cite>function name</cite>. You can find the categories and their function names here: <span class="xref std std-ref">module_function_names</span>.</p>
 <p>In this case we will put the calculation of the modified angle into <cite>Cell Behaviour</cite>. Create a folder in <cite>sources</cite> and <cite>inputDefinitions</cite> named <cite>behaviourAnalysis</cite>. In the <cite>sources/behaviourAnalysis</cite> folder, crate a file named <cite>cumulativeChange.R</cite> and in the <cite>inputDefinitions/behaviourAnalysis</cite> a file named <cite>cumulativeChange.json</cite>.</p>
 <a class="reference internal image-reference" href="_images/create_module_folders.png"><img alt="_images/create_module_folders.png" src="_images/create_module_folders.png" style="width: 100%;" /></a>
 <p>The following is the <cite>backbone</cite> for every module function. The key parts are that the class name corresponds to the function name. The class inherits from the main module, in this case <cite>BehaviourAnalysis</cite>. The function can then be called with <cite>behaviourAnalysis.cumulativeChange</cite>. The main logic is in the <cite>run</cite> function. We will fill in this function step by step.</p>
@@ -332,7 +332,7 @@
 <span class="linenos">8</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">self</span><span class="o">$</span><span class="nf">funParams</span><span class="p">()</span><span class="o">$</span><span class="n">pops</span>
 </pre></div>
 </div>
-<p>To save the new measurement, we need the <cite>population data-table</cite>. We can retrieve this with <cite>cciaObj$popDT()</cite> and passing the population names and type. The population type (<a class="reference internal" href="population_types.html#population-types"><span class="std std-ref">Population types</span></a>) refers to the method how these were derived.</p>
+<p>To save the new measurement, we need the <cite>population data-table</cite>. We can retrieve this with <cite>cciaObj$popDT()</cite> and passing the population names and type. The population type (<span class="xref std std-ref">population_types</span>) refers to the method how these were derived.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">self</span><span class="o">$</span><span class="nf">writeLog</span><span class="p">(</span><span class="s">&quot;Get population DT&quot;</span><span class="p">)</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="c1"># get labels for populations from images</span>
@@ -483,7 +483,7 @@
 <span class="linenos">10</span><span class="w">  </span><span class="p">},</span>
 <span class="linenos">11</span><span class="w">  </span><span class="nt">&quot;sumLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos">12</span><span class="w">    </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos">13</span><span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number of States&quot;</span><span class="p">,</span>
+<span class="linenos">13</span><span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Summation length&quot;</span><span class="p">,</span>
 <span class="linenos">14</span><span class="w">      </span><span class="nt">&quot;widget:slider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos">15</span><span class="w">        </span><span class="nt">&quot;step&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="linenos">16</span><span class="w">      </span><span class="p">}</span>
@@ -493,6 +493,15 @@
 <span class="linenos">20</span><span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="comparing-the-output-of-the-function">
+<h3>Comparing the output of the function<a class="headerlink" href="#comparing-the-output-of-the-function" title="Permalink to this heading">#</a></h3>
+<p>We can now use this new function to compare its impact on the behaviour extraction from cells. In the GUI under <cite>Cell Behaviour</cite>, select our newly created <cite>Cumulative change</cite> function. Select all tracked populations and set the <cite>summation length</cite> to 8. Run the function.</p>
+<a class="reference internal image-reference" href="_images/create_module_fun_in_gui.png"><img alt="_images/create_module_fun_in_gui.png" src="_images/create_module_fun_in_gui.png" style="width: 48%;" /></a>
+<p>Then extract 3 <cite>HMM</cite> states with the default <cite>live.cell.speed</cite> and <cite>live.cell.angle</cite> and our new measurements of <cite>live.cell.sumDirChange</cite> and <cite>live.cell.sumSpeedChange</cite>.</p>
+<a class="reference internal image-reference" href="_images/create_module_hmm_default.png"><img alt="_images/create_module_hmm_default.png" src="_images/create_module_hmm_default.png" style="width: 48%;" /></a>
+<a class="reference internal image-reference" href="_images/create_module_hmm_new.png"><img alt="_images/create_module_hmm_new.png" src="_images/create_module_hmm_new.png" style="width: 48%;" /></a>
+<p>Now you can open up the image and compare the <cite>HMM state</cite> results from these two approaches. The behaviour extracted with our new measurements is a bit coarser than the default one and might be useful for certain settings where you want to simplify results.</p>
 </section>
 </section>
 </section>
@@ -558,6 +567,7 @@
 <li><a class="reference internal" href="#creating-a-module">Creating a module</a></li>
 <li><a class="reference internal" href="#testing-the-module">Testing the module</a></li>
 <li><a class="reference internal" href="#add-the-module-to-the-gui">Add the module to the GUI</a></li>
+<li><a class="reference internal" href="#comparing-the-output-of-the-function">Comparing the output of the function</a></li>
 </ul>
 </li>
 </ul>

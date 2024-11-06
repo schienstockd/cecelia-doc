@@ -33,7 +33,7 @@
 			},
 			"sumLength": {
 				"index": 1,
-				"label": "Number of States",
+				"label": "Summation length",
 				"widget:slider": {
 					"step": 1
 				}

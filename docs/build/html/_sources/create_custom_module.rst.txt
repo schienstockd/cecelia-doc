@@ -340,7 +340,7 @@ In `ui` we define the GUI elements for the parameters. For populations, there is
     },
     "sumLength": {
       "index": 1,
-        "label": "Number of States",
+        "label": "Summation length",
         "widget:slider": {
           "step": 1
         }
@@ -348,3 +348,22 @@ In `ui` we define the GUI elements for the parameters. For populations, there is
     },
     "outputs": {}
   }
+
+
+Comparing the output of the function
+++++++
+
+We can now use this new function to compare its impact on the behaviour extraction from cells. In the GUI under `Cell Behaviour`, select our newly created `Cumulative change` function. Select all tracked populations and set the `summation length` to 8. Run the function. 
+
+.. image:: _images/create_module_fun_in_gui.png
+   :width: 48%
+   
+Then extract 3 `HMM` states with the default `live.cell.speed` and `live.cell.angle` and our new measurements of `live.cell.sumDirChange` and `live.cell.sumSpeedChange`.
+ 
+.. image:: _images/create_module_hmm_default.png
+   :width: 48%
+
+.. image:: _images/create_module_hmm_new.png
+   :width: 48%
+
+Now you can open up the image and compare the `HMM state` results from these two approaches. The behaviour extracted with our new measurements is a bit coarser than the default one and might be useful for certain settings where you want to simplify results.

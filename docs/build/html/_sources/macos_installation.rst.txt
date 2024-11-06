@@ -47,7 +47,7 @@ Step by step guide
     
     # An example would be
     setwd("/Applications/cecelia")
-    renv::init()
+    renv::init(bioconductor = "3.19")
     
   .. image:: _images/macos_install_renv.png
    :width: 100%
