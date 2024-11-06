@@ -202,20 +202,20 @@
         <article role="main">
           <section id="input-widget-types">
 <span id="id1"></span><h1>Input widget types<a class="headerlink" href="#input-widget-types" title="Permalink to this heading">#</a></h1>
-<div class="table-wrapper colwidths-given docutils container" id="id2">
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Input widget types</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<div class="table-wrapper colwidths-given docutils container" id="id8">
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Input widget types</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 10.0%" />
+<col style="width: 20.0%" />
 <col style="width: 30.0%" />
-<col style="width: 50.0%" />
+<col style="width: 40.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Widget type</p></th>
 <th class="head"><p>Description</p></th>
 <th class="head"><p>Params</p></th>
-<th class="head"><p>Example</p></th>
+<th class="head"><p>Example file</p></th>
 </tr>
 </thead>
 <tbody>
@@ -226,17 +226,7 @@
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">“resolution”: {</div>
-<div class="line-block">
-<div class="line">“index”: 3,</div>
-<div class="line">“label”: “Resolution”,</div>
-<div class="line">“widget:slider”: {</div>
-<div class="line-block">
-<div class="line">“step”: 0.01
-|   }
-| }</div>
-</div>
-</div>
+<div class="line">Pyramid scale for <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/importImages/omezarr.json">Import OME-ZARR</a></div>
 </div>
 </td>
 </tr>
@@ -247,69 +237,198 @@
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">“crop”: {</div>
-<div class="line-block">
-<div class="line">“index”: 6,</div>
-<div class="line">“label”: “Crop”,</div>
-<div class="line">“widget:sliderGroup”: {</div>
-<div class="line-block">
-<div class="line">“X”: {“label”: “X”, “step”: 25},</div>
-<div class="line">“Y”: {“label”: “Y”, “step”: 25},</div>
-<div class="line">“Z”: {“label”: “Z”, “step”: 1},</div>
-<div class="line">“T”: {“label”: “T”, “step”: 1}</div>
-</div>
-<div class="line">}</div>
-</div>
-<div class="line">}</div>
+<div class="line">Crop images in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/trainModels/generateTrainingImages.json">Generate training images</a></div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td><p>group</p></td>
 <td><p>Groups of input UIs</p></td>
 <td><div class="line-block">
-<div class="line">visible: boolean whether checkbox is ticked
-| numItems: number of items in list
-| sortable: boolean to enable re-ordering items</div>
+<div class="line">visible: boolean whether checkbox is ticked</div>
+<div class="line">numItems: number of items in list</div>
+<div class="line">sortable: boolean to enable re-ordering items</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">“models”: {
-|   “index”: 1,
-|   “label”: “Model parameters”,
-|   “widget:group”: {</div>
-<div class="line-block">
-<div class="line-block">
-<div class="line-block">
-<div class="line">“visible”: false,
-        |         “numItems”: 5,
-        |         “dynItems”: true,
-        |         “sortable”: false,
-|               “model”: {</div>
-<div class="line-block">
-<div class="line">“index”: 0,</div>
-<div class="line">“label”: “Denoise Model”,</div>
-<div class="line">“widget:selection”: {</div>
-<div class="line-block">
-<div class="line">“size”: 1,</div>
-<div class="line">“multiple”: false,</div>
-<div class="line">“items”: {</div>
-<div class="line-block">
-<div class="line">“Denoise cyto3”: “denoise_cyto3”,</div>
-<div class="line">“Deblur cyto3”: “deblur_cyto3”,</div>
-<div class="line">“Upsample cyto3”: “upsample_cyto3”</div>
-<div class="line-block">
-<div class="line">}</div>
+<div class="line">Model parameters in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/segment/cellpose.json">Cellpose segmentation</a></div>
 </div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>box</p></td>
+<td><p>Box with input UIs</p></td>
+<td><div class="line-block">
+<div class="line">collapsible: boolean to create collapsible box</div>
+<div class="line">collapsed: boolean to create collapsed box</div>
+<div class="line">items: list of UI items in box</div>
 </div>
+</td>
+<td><div class="line-block">
+<div class="line">Advanced settings in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/cleanupImages/afCorrect.json">Autofluorescence correction</a></div>
 </div>
-<div class="line">}</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>imageSourceSelection</p></td>
+<td><p>Selection field with modified images</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>selection</cite></div>
 </div>
+</td>
+<td><div class="line-block">
+<div class="line">Source images in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/trainModels/generateTrainingImages.json">Generate training images</a></div>
 </div>
-<div class="line">}</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>valueNameSelection</p></td>
+<td><p>Selection field with value names for a specific variable</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>selection</cite></div>
+<div class="line">field: character to define variable type</div>
 </div>
-<div class="line">}</div>
+</td>
+<td><div class="line-block">
+<div class="line">Image in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/importImages/remove.json">Remove images</a></div>
 </div>
-<div class="line">}</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>imageSetSelection</p></td>
+<td><p>Selection field with value names for a specific variable</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>selection</cite></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Image set to save images in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/trainModels/generateTrainingImages.json">Generate training images</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>channelSelection</p></td>
+<td><p>Selection field with channel names</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>selection</cite></div>
+<div class="line">useNames: boolean to use channel names not numbers</div>
+<div class="line">addChoices: character vector to add choices to list that will always be shown independent of whether they are present in labels or not</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Channels to transform in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/gatePopulations/createGatingSet.json">Create Gating Set</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>channelSelectionTypeGroup</p></td>
+<td><p>Group of selection fields with channel names accoridng to type. If nuclei and membrane are segmented there will be two type: nuc (nuclei) and base (cytoplasm +/- nuclei)</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>channelSelection</cite></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Channels to use for clustering in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/clustPopulations/leidenClustering.json">Leiden clustering</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>labelPropsColsSelection</p></td>
+<td><p>Selection field of label properties</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>selection</cite></div>
+<div class="line">addChoices: character vector to add choices to list that will always be shown independent of whether they are present in labels or not</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Object measurements used in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/behaviourAnalysis/clusterTracks.json">Track clustering</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>popSelection</p></td>
+<td><p>Selection field of populations</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>selection</cite></div>
+<div class="line">includeRoot: boolean to include root populations</div>
+<div class="line">tracksOnly: boolean to only show tracks</div>
+<div class="line">showAll: boolean to show all populations from all population types</div>
+<div class="line">popType: character to specify population type, otherwise it will be taken from context</div>
+<div class="line">useNames: boolean to use population names instead of IDs</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Populations used in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/spatialAnalysis/cellClusters.json">Cell cluster detection</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>popTypeSelection</p></td>
+<td><p>Selection field of population type</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>popSelection</cite></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Population type in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/behaviourAnalysis/clusterTracks.json">Track clustering</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>moduleFunSelection</p></td>
+<td><p>Selection field of module functions from the current module</p></td>
+<td><div class="line-block">
+<div class="line">see <cite>select</cite></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Function module in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/spatialAnalysis/retrieve.json">Retrieve analysis from server</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>selection</p></td>
+<td><p>Selection field</p></td>
+<td><div class="line-block">
+<div class="line">size: numeric for number of items displayed when collapsed</div>
+<div class="line">multiple: boolean to allow selection of multiple values</div>
+<div class="line">items: list of values</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Function selection for object filters in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/tracking/bayesianTracking.json">Bayesian tracking</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>radioButtons</p></td>
+<td><p>Radio buttons</p></td>
+<td><div class="line-block">
+<div class="line">items: list of values</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Axis used for normalisation in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/clustPopulations/leidenClustering.json">Leiden clustering</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>textInput</p></td>
+<td><p>Text</p></td>
+<td><div class="line-block">
+<div class="line">NONE</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Model name in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/segment/cellpose.json">Cellpose segmentation</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>checkbox</p></td>
+<td><p>Checkbox</p></td>
+<td><div class="line-block">
+<div class="line">NONE</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Use overlapping track segments in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/behaviourAnalysis/hmmStates.json">HMM states</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>channelGroup</p></td>
+<td><p>Group of UIs for channels</p></td>
+<td><div class="line-block">
+<div class="line">visible: boolean to expand all UIs by default</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Settings for individual channels in <a class="reference external" href="https://github.com/schienstockd/cecelia/blob/master/inst/app/modules/inputDefinitions/cleanupImages/afCorrect.json">Autofluorescence correction</a></div>
 </div>
 </td>
 </tr>
