@@ -14,7 +14,7 @@ Step by step guide
     brew install pstree
     brew install openssl
     brew install gdal # Dependency for SPIAT package
-    brew install cmake # If you don't have Xcode
+    brew install cmake
 
 2. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use another version of R the package dependencies might not be resolved during `renv::init()`.
 
@@ -52,9 +52,6 @@ Step by step guide
   .. image:: _images/macos_install_renv.png
    :width: 100%
   
-  .. attention::
-    If this step fails because of error such as `'cstdlib' file not found` or `'cstring' file not found`, then it is likely that the package is not available on Bioconductor and the package will be installed from source which can fail. In that case, please go to `Bioconductor packages <https://www.bioconductor.org/packages/release/BiocViews.html#___Software>`_, look for the package that failed and check the `macOS Binary (arm64)` version. You SHOULD NOT have to install Bioconductor packages from source. Open the `renv.lock` file in a text editor, look for the package and change the version to the version stated on the website.
-   
 5. Load the environment you have just created and install `Cecelia` package.
   
   .. code-block:: R
