@@ -366,4 +366,14 @@ Then extract 3 `HMM` states with the default `live.cell.speed` and `live.cell.an
 .. image:: _images/create_module_hmm_new.png
    :width: 48%
 
-Now you can open up the image and compare the `HMM state` results from these two approaches. The behaviour extracted with our new measurements is a bit coarser than the default one and might be useful for certain settings where you want to simplify results.
+Now you can open up the image and compare the `HMM state` results from these two approaches. The behaviour extracted with our new measurements is a bit coarser than the default one and might be useful for certain settings where you want to simplify results. We can use a `viridis` scale to look at the outcome of the `HMM states` (yellow = 3, green = 2, blue = 1, purple = No state). At the same time we can check the properties of these individual states in the shiny app.
+
+`HMM states` using the default `speed` and `angle` measurements.
+
+.. image:: _images/create_module_default_HMM.png
+   :width: 100%
+
+`HMM states` using the rom our modified version.
+
+.. image:: _images/create_module_new_HMM.png
+   :width: 100%
