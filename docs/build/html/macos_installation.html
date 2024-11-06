@@ -261,6 +261,10 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 </div>
 </div>
 <a class="reference internal image-reference" href="_images/macos_install_renv.png"><img alt="_images/macos_install_renv.png" src="_images/macos_install_renv.png" style="width: 100%;" /></a>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If this step fails because of error such as <cite>‘cstdlib’ file not found</cite> or <cite>‘cstring’ file not found</cite>, then it is likely that the package is not available on Bioconductor and the package will be installed from source which can fail. In that case, please go to <a class="reference external" href="https://www.bioconductor.org/packages/release/BiocViews.html#___Software">Bioconductor packages</a>, look for the package that failed and check the <cite>macOS Binary (arm64)</cite> version. You SHOULD NOT have to install Bioconductor packages from source. Open the <cite>renv.lock</cite> file in a text editor, look for the package and change the version to the version stated on the website.</p>
+</div>
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li><p>Load the environment you have just created and install <cite>Cecelia</cite> package.</p></li>
