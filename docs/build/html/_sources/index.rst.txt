@@ -23,6 +23,10 @@ If case you need help to set up or use the program, file an issue on `Github <ht
   tutorial
   missions
   access_data_rmarkdown
+  create_custom_module
+  module_function_names
+  population_types
+  input_widget_types
   others
   changelog
 

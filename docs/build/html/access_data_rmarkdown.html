@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Connecting other packages" href="others.html" /><link rel="prev" title="Missions" href="missions.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Create custom module" href="create_custom_module.html" /><link rel="prev" title="Missions" href="missions.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Access data in RMarkdown - Cecelia 0.1 documentation</title>
@@ -160,6 +160,10 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Access data in RMarkdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_custom_module.html">Create custom module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_function_names.html">Module function names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="population_types.html">Population types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_widget_types.html">Input widget types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others.html">Connecting other packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -202,33 +206,82 @@
 <section id="live-cell-imaging">
 <h2>Live cell imaging<a class="headerlink" href="#live-cell-imaging" title="Permalink to this heading">#</a></h2>
 <p>We need to activate the <cite>renv</cite> environment to use all packages. <cite>Sys.setenv(KMP_DUPLICATE_LIB_OK = “TRUE”)</cite> must be added before loading anything as R can otherwise crash. See <a class="reference external" href="https://github.com/dmlc/xgboost/issues/1715#issuecomment-438924721">Github issue</a> for details if required.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
-<span class="linenos">2</span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
-<span class="linenos">3</span><span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;REPLACE/WITH/YOUR/PATH/TO/CECELIA&quot;</span><span class="p">)</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span><span class="c1"># for plotting and general data processing</span>
-<span class="linenos">6</span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-<span class="linenos">7</span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># set path to cecelia</span>
+<span class="linenos"> 2</span><span class="n">PATH_TO_CCIA</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;REPLACE/WITH/YOUR/PATH/TO/CECELIA&quot;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># load package environment</span>
+<span class="linenos"> 5</span><span class="nf">setwd</span><span class="p">(</span><span class="n">PATH_TO_CCIA</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">renv</span><span class="o">::</span><span class="nf">load</span><span class="p">()</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># load cecelia</span>
+<span class="linenos"> 9</span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
+<span class="linenos">11</span><span class="nf">cciaUse</span><span class="p">(</span><span class="n">PATH_TO_CCIA</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># for plotting and general data processing</span>
+<span class="linenos">14</span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="linenos">15</span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We can initialise the object with <cite>initCciaObject</cite>.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># set project parameters</span>
+<p>We can initialise the object with <cite>initCciaObject</cite>. Then we can get a list of the tracked populations with the <cite>popPaths</cite> function of the <cite>cciaObj</cite>. Tracked populations are a <cite>filtered population</cite>, which is why we have to set <cite>includeFiltered = TRUE</cite> when retrieving the <cite>population data-table</cite>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># set project parameters</span>
+<span class="linenos"> 2</span><span class="n">pID</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;REPLACE_WITH_PROJECT_ID&quot;</span><span class="w"> </span><span class="c1"># this ID is found in the app &#39;Settings &gt; unique ID (uID)&#39;</span>
+<span class="linenos"> 3</span><span class="n">versionID</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># init ccia object</span>
+<span class="linenos"> 6</span><span class="n">cciaObj</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">initCciaObject</span><span class="p">(</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="n">pID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pID</span><span class="p">,</span><span class="w"> </span><span class="n">uID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;REPLACE_WITH_IMAGE_ID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">versionID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">versionID</span><span class="p">,</span><span class="w"> </span><span class="n">initReactivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="c1"># Tcells</span>
+<span class="linenos"> 8</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">pops</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unname</span><span class="p">(</span><span class="nf">unlist</span><span class="p">(</span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">popPaths</span><span class="p">(</span>
+<span class="linenos">11</span><span class="w">  </span><span class="n">popType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;live&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filteredOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">filterMeasures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;track_id&quot;</span><span class="p">))))</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">popDT</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">popDT</span><span class="p">(</span><span class="s">&quot;live&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">pops</span><span class="p">),</span><span class="w"> </span><span class="n">includeFiltered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="linenos">14</span><span class="n">popDT</span>
 </pre></div>
 </div>
-<p>pID &lt;- “Co3HDh” # this ID is found in the app ‘Settings &gt; unique ID (uID)’
-versionID &lt;- 1</p>
-<p>devtools::load_all(“../”)
-cciaUse(“~/cecelia/dev”, initConda = FALSE)</p>
-<p># init ccia object
-cciaObj &lt;- initCciaObject(</p>
-<blockquote>
-<div><p>pID = pID, uID = “lWinrY”, versionID = versionID, initReactivity = FALSE # Tcells</p>
-</div></blockquote>
-<p>)</p>
-<p>popsList &lt;- cciaObj$popPaths(popType = “live”, filteredOnly = TRUE, filterMeasures = c(“track_id”))</p>
-<p># popDT &lt;- cciaObj$popDT(“live”, pops = c(popsTracked[[3]]), includeFiltered = TRUE)
-popDT &lt;- cciaObj$popDT(“live”, pops = c(popsList), includeFiltered = TRUE)</p>
-<a class="reference internal image-reference" href="_images/others_spiat_NjumBK_map.png"><img alt="_images/others_spiat_NjumBK_map.png" src="_images/others_spiat_NjumBK_map.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/rmarkdown_pop_dt.png"><img alt="_images/rmarkdown_pop_dt.png" src="_images/rmarkdown_pop_dt.png" style="width: 100%;" /></a>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># plot out tracks</span>
+<span class="linenos">2</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">popDT</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">centroid_x</span><span class="p">,</span><span class="w"> </span><span class="n">centroid_y</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">track_id</span><span class="p">,</span>
+<span class="linenos">3</span><span class="w">                  </span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pracma</span><span class="o">::</span><span class="nf">rad2deg</span><span class="p">(</span><span class="n">live.cell.angle</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">4</span><span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">5</span><span class="w">  </span><span class="nf">geom_path</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">6</span><span class="w">  </span><span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">pop</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">7</span><span class="w">  </span><span class="n">viridis</span><span class="o">::</span><span class="nf">scale_colour_viridis</span><span class="p">(</span><span class="n">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;inferno&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Angle (°)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/rmarkdown_pop_tracks.png"><img alt="_images/rmarkdown_pop_tracks.png" src="_images/rmarkdown_pop_tracks.png" style="width: 100%;" /></a>
+<p>Next we can plot out different track measurements for the individual populations.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># get tracks measurements for each population</span>
+<span class="linenos">2</span><span class="n">tracksInfo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cciaObj</span><span class="o">$</span><span class="nf">tracksMeasures</span><span class="p">(</span><span class="n">pops</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">tracksInfo</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/rmarkdown_tracks_info.png"><img alt="_images/rmarkdown_tracks_info.png" src="_images/rmarkdown_tracks_info.png" style="width: 100%;" /></a>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># get columns for plotting</span>
+<span class="linenos"> 2</span><span class="n">colsToPivot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">colnames</span><span class="p">(</span><span class="n">tracksInfo</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">colsToPivot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colsToPivot</span><span class="p">[</span><span class="o">!</span><span class="n">colsToPivot</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;cell_type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;track_id&quot;</span><span class="p">)]</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># pivot longer</span>
+<span class="linenos"> 6</span><span class="n">datToPlot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tracksInfo</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colsToPivot</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="w">               </span><span class="n">names_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;measure&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">values_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># plot out</span>
+<span class="linenos">11</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">datToPlot</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">cell_type</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cell_type</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">13</span><span class="w">  </span><span class="nf">geom_boxplot</span><span class="p">(</span><span class="n">outlier.alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">14</span><span class="w">  </span><span class="nf">geom_jitter</span><span class="p">(</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">position_jitterdodge</span><span class="p">(</span><span class="n">jitter.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.10</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">measure</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;free&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">16</span><span class="w">  </span><span class="nf">theme</span><span class="p">(</span>
+<span class="linenos">17</span><span class="w">    </span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">,</span>
+<span class="linenos">18</span><span class="w">    </span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="linenos">19</span><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">20</span><span class="w">  </span><span class="nf">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Set1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">21</span><span class="w">  </span><span class="nf">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/rmarkdown_tracks_measures.png"><img alt="_images/rmarkdown_tracks_measures.png" src="_images/rmarkdown_tracks_measures.png" style="width: 100%;" /></a>
 </section>
 </section>
 
@@ -237,12 +290,12 @@ popDT &lt;- cciaObj$popDT(“live”, pops = c(popsList), includeFiltered = TRUE
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="others.html">
+          <a class="next-page" href="create_custom_module.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Connecting other packages</div>
+                <div class="title">Create custom module</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

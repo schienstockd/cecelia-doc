@@ -160,6 +160,10 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="access_data_rmarkdown.html">Access data in RMarkdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_custom_module.html">Create custom module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_function_names.html">Module function names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="population_types.html">Population types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_widget_types.html">Input widget types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others.html">Connecting other packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -227,10 +231,14 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li><p>Install package dependencies. Download the <a class="reference external" href="https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock">renv.lock file</a> (save as <cite>renv.lock</cite> NOT <cite>renv.lock.txt</cite>) and create the R-environment. You must set the <cite>current working directory</cite> to the directory where the <cite>renv.lock</cite> file is located. Select “1” to restore the project from the lockfile.</p></li>
+<li><p>Install package dependencies. Create a folder under <cite>Applications</cite> named <cite>cecelia</cite>. Within the <cite>cecelia</cite> folder create a directory <cite>projects</cite> where all projects data will be stored. Download the <a class="reference external" href="https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock">renv.lock file</a> (save as <cite>renv.lock</cite> NOT <cite>renv.lock.txt</cite>) into <cite>/Applications/cecelia</cite>. Then, create the R-environment. You must set the <cite>current working directory</cite> to the directory where the <cite>renv.lock</cite> file is located. Select “1” to restore the project from the lockfile.</p></li>
 </ol>
 <blockquote>
 <div><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We are going to use the path <cite>/Applications/cecelia</cite> throughout this manual. You can place it anywhere else if you want.</p>
+</div>
+<div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><cite>Unix</cite> systems have three main signs to specify directories</p>
 <div class="literal-block-wrapper docutils container" id="id4">
@@ -247,8 +255,7 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">Init R-environment</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># An example would be</span>
-<span class="c1"># setwd(&quot;~/Cecelia&quot;)</span>
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;PATH/TO/RENV/LOCK/FILE&quot;</span><span class="p">)</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
 <span class="n">renv</span><span class="o">::</span><span class="nf">init</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -275,7 +282,7 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <div><div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-text">Define base directory</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
-<span class="nf">cciaSetup</span><span class="p">(</span><span class="s">&quot;/REPLACE/WITH/YOUR/PATH&quot;</span><span class="p">)</span>
+<span class="nf">cciaSetup</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -284,7 +291,7 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <div class="code-block-caption"><span class="caption-text">Restart Cecelia</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
-<span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;/REPLACE/WITH/YOUR/PATH&quot;</span><span class="p">)</span>
+<span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -352,14 +359,14 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <blockquote>
 <div><p>You have to adjust the parameters in <cite>/YOUR/PATH/TO/cecelia/custom.yml</cite> to your system and download/install:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip">bioformats2raw</a></p></li>
+<li><p>Download <a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip">bioformats2raw</a> and place it into the <cite>/Applications</cite> folder</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-text">Adjust config in text editor of RStudio</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/REPLACE/PATH/TO/bioformats2raw&quot;</span>
-<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/REPLACE/PATH/TO/project/directory/&quot;</span>
+<span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/Applications/bioformats2raw&quot;</span>
+<span class="w">    </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/Applications/cecelia/projects&quot;</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~/&quot;</span>
 <span class="w">    </span><span class="nt">computer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
@@ -377,10 +384,10 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w">
 <li><p>Run the <cite>app</cite>.</p></li>
 </ol>
 <blockquote>
-<div><p>To start the application, double click <cite>cecelia-macOSX.command</cite> located in <cite>REPLACE/PATH/TO/CECELIA/app/</cite>.</p>
+<div><p>To start the application, double click <cite>cecelia-macOSX.command</cite> located in <cite>/Applications/cecelia/app/</cite>.</p>
 <div class="literal-block-wrapper docutils container" id="id15">
 <div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/REPLACE/PATH/TO/CECELIA/app/cecelia-macOSX.command
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/Applications/cecelia/app/cecelia-macOSX.command
 </pre></div>
 </div>
 </div>

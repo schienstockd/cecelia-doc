@@ -25,7 +25,10 @@ Step by step guide
     
     install.packages("renv")
    
-4. Install package dependencies. Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ (save as `renv.lock` NOT `renv.lock.txt`) and create the R-environment. You must set the `current working directory` to the directory where the `renv.lock` file is located. Select "1" to restore the project from the lockfile.
+4. Install package dependencies. Create a folder under `Applications` named `cecelia`. Within the `cecelia` folder create a directory `projects` where all projects data will be stored. Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ (save as `renv.lock` NOT `renv.lock.txt`) into `/Applications/cecelia`. Then, create the R-environment. You must set the `current working directory` to the directory where the `renv.lock` file is located. Select "1" to restore the project from the lockfile.
+  
+  .. tip::
+    We are going to use the path `/Applications/cecelia` throughout this manual. You can place it anywhere else if you want.
   
   .. tip::
     `Unix` systems have three main signs to specify directories
@@ -43,8 +46,7 @@ Step by step guide
     :caption: Init R-environment
     
     # An example would be
-    # setwd("~/Cecelia")
-    setwd("PATH/TO/RENV/LOCK/FILE")
+    setwd("/Applications/cecelia")
     renv::init()
     
   .. image:: _images/macos_install_renv.png
@@ -67,7 +69,7 @@ Step by step guide
     :caption: Define base directory
     
     library(cecelia)
-    cciaSetup("/REPLACE/WITH/YOUR/PATH")
+    cciaSetup("/Applications/cecelia")
   
   In case you get stuck at any point and have to restart R, you need to redefine the path you are working on
   
@@ -76,7 +78,7 @@ Step by step guide
     
     Sys.setenv(KMP_DUPLICATE_LIB_OK = "TRUE")
     library(cecelia)
-    cciaUse("/REPLACE/WITH/YOUR/PATH")
+    cciaUse("/Applications/cecelia")
     
   .. image:: _images/macos_ccia_setup.png
    :width: 100%
@@ -135,15 +137,15 @@ Step by step guide
 8. Adjust config
   You have to adjust the parameters in `/YOUR/PATH/TO/cecelia/custom.yml` to your system and download/install:
 
-  * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_
+  * Download `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_ and place it into the `/Applications` folder
 
   .. code-block:: YAML
     :caption: Adjust config in text editor of RStudio
   
     default:
       dirs:
-        bioformats2raw: "/REPLACE/PATH/TO/bioformats2raw"
-        projects: "/REPLACE/PATH/TO/project/directory/"
+        bioformats2raw: "/Applications/bioformats2raw"
+        projects: "/Applications/cecelia/projects"
       volumes:
         home: "~/"
         computer: "/"
@@ -158,12 +160,12 @@ Step by step guide
             
 9. Run the `app`.
   
-  To start the application, double click `cecelia-macOSX.command` located in `REPLACE/PATH/TO/CECELIA/app/`.
+  To start the application, double click `cecelia-macOSX.command` located in `/Applications/cecelia/app/`.
   
   .. code-block:: bash
     :caption: Run `Cecelia` app
   
-    /REPLACE/PATH/TO/CECELIA/app/cecelia-macOSX.command
+    /Applications/cecelia/app/cecelia-macOSX.command
     
   .. image:: _images/macos_run_app.png
     :width: 100%

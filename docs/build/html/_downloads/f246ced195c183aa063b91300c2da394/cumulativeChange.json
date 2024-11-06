@@ -1,0 +1,44 @@
+{
+  "fun": {
+    "cumulativeChange": {
+      "category": "Module functions",
+      "label": "Cumulative change",
+      "env": ["local"]
+    }
+  },
+  "spec": {
+    "inputs": {
+			"pops": {
+				"type:list": {}
+			},
+			"sumLength": {
+        "type:integer": {
+          "min": 0,
+          "max": 20,
+          "default": 4
+        }
+			}
+    },
+    "outputs": {}
+  },
+  "ui": {
+    "inputs": {
+			"pops": {
+				"index": 0,
+				"label": "Populations",
+				"widget:popSelection": {
+					"size": 1,
+					"multiple": true
+				}
+			},
+			"sumLength": {
+				"index": 1,
+				"label": "Number of States",
+				"widget:slider": {
+					"step": 1
+				}
+			}
+    },
+    "outputs": {}
+  }
+}
