@@ -24,7 +24,7 @@ Step by step guide
    :width: 100%
 
 4. Create `conda` environment for `napari` to run.
-On Windows, you might want to use `Anaconda Prompt` to initialise the conda toolkit.
+On Windows, you might want to use `Anaconda Prompt` to initialise the conda toolkit. `Anaconda Prompt` has to be used only to initialise the `conda` environment. It is not needed after this step is done.
 
   .. code-block:: bash
     :caption: Create conda environment
@@ -47,9 +47,9 @@ On Windows, you might want to use `Anaconda Prompt` to initialise the conda tool
     services:
       app:
         volumes:
-          - C:\Users\schienstockd\ceceliaDocker\datashare:/home/shiny/local
-          - E:\Cecelia\Dominik\projects:/cecelia/projects
-          - E:\Cecelia\Dominik\data:/cecelia/data
+          - D:\Public\Cecelia\GIT\ceceliaDocker\datashare:/home/shiny/local
+          - D:\Public\Cecelia\PROJECTS:/cecelia/projects
+          - D:\Public\Cecelia\DATA:/cecelia/data
           
   .. code-block:: yaml
     :caption: Windows example datashare/docker.yml

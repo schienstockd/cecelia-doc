@@ -227,7 +227,7 @@
 <a class="reference internal image-reference" href="_images/docker_git_clone.png"><img alt="_images/docker_git_clone.png" src="_images/docker_git_clone.png" style="width: 100%;" /></a>
 </div></blockquote>
 <p>4. Create <cite>conda</cite> environment for <cite>napari</cite> to run.
-On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the conda toolkit.</p>
+On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the conda toolkit. <cite>Anaconda Prompt</cite> has to be used only to initialise the <cite>conda</cite> environment. It is not needed after this step is done.</p>
 <blockquote>
 <div><div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
@@ -251,9 +251,9 @@ On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">C:\Users\schienstockd\ceceliaDocker\datashare:/home/shiny/local</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E:\Cecelia\Dominik\projects:/cecelia/projects</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E:\Cecelia\Dominik\data:/cecelia/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">D:\Public\Cecelia\GIT\ceceliaDocker\datashare:/home/shiny/local</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">D:\Public\Cecelia\PROJECTS:/cecelia/projects</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">D:\Public\Cecelia\DATA:/cecelia/data</span>
 </pre></div>
 </div>
 </div>
