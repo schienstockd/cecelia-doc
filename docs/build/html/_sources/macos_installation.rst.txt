@@ -15,6 +15,8 @@ Step by step guide
     brew install openssl
     brew install gdal # Dependency for SPIAT package
     brew install cmake
+    
+You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to compile packages in `R` and `Python`. Follow the installation instructions on `Mac App Store <https://apps.apple.com/us/app/xcode/id497799835>`_.
 
 2. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use another version of R the package dependencies might not be resolved during `renv::init()`.
 
