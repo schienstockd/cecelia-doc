@@ -49,7 +49,7 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
     
     # An example would be
     setwd("/Applications/cecelia")
-    renv::init(bioconductor = "3.19")
+    renv::init()
     
   .. image:: _images/macos_install_renv.png
    :width: 100%
