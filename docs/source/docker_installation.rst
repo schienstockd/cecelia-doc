@@ -8,8 +8,48 @@ Step by step guide
 
 1. Install the latest `Docker <https://www.docker.com/>`_ version.
   
+  .. tip::
+    For Windows, Docker uses `WSL 2` (`Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/about>`_). By default all containers will be stored on `C:` drive. To change the location, you must execute the following commands in `Command prompt` as outlined in this `Stack Overflow <https://stackoverflow.com/a/63752264>`_ post:
+  
+    Make sure that `Docker Desktop` is shut down. 
+    
+    .. code-block:: bash
+      :caption: Check WSL state
+      
+      wsl --list -v
+    
+    .. code-block:: bash
+      :caption: Make sure the services are STOPPED
+      
+        NAME                   STATE           VERSION
+      * docker-desktop         Stopped         2
+        docker-desktop-data    Stopped         2
+    
+    Export `docker-desktop-data` to a file.
+    
+    .. code-block:: bash
+      :caption: Export Docker Desktop data
+      
+      wsl --export docker-desktop-data "D:\Docker\wsl\data\docker-desktop-data.tar"
+      
+    Unregister `docker-desktop-data`.
+    
+    .. code-block:: bash
+      :caption: Unregister Docker Desktop data
+      
+      wsl --unregister docker-desktop-data
+    
+    Import the data into `a new location` where your Docker containers will be stored. You must create the new location first before submitting this command.
+    
+    .. code-block:: bash
+      :caption: Import Docker Desktop data into new location
+      
+      wsl --import docker-desktop-data "D:\Docker\wsl\data" "D:\Docker\wsl\data\docker-desktop-data.tar" --version 2
+    
+    After this you can start `Docker Desktop` and all containers should now be saved in the new location. You can now delete the `.tar` file.
+    
   .. attention::
-    For Windows, Docker uses `WSL 2` by default which is also required for GPU access on Windows. To change the default location of the WSL 2 data storage follow this `Stack Overflow <https://stackoverflow.com/a/63752264>`_ post. You also need either at least Windows 11 or at least the `19044.1200 (21H2) Windows 10 Insider Preview Build <https://blogs.windows.com/windows-insider/2021/08/18/announcing-windows-10-insider-preview-build-19044-1198-21h2/>`_ for GPU support via WSL 2. You can sign up `here <https://insider.windows.com/en-us/register>`_ for the Windows insider program.
+    For Windows, you need either at least Windows 11 or at least the `19044.1200 (21H2) Windows 10 Insider Preview Build <https://blogs.windows.com/windows-insider/2021/08/18/announcing-windows-10-insider-preview-build-19044-1198-21h2/>`_ for GPU support. You can sign up `here <https://insider.windows.com/en-us/register>`_ for the Windows insider program.
 
 2. Install the latest `Miniconda <https://docs.anaconda.com/miniconda/miniconda-install/>`_ version.
 
