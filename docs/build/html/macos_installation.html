@@ -261,6 +261,10 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 </pre></div>
 </div>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you run into issues that <cite>R</cite> cannot compile a package, such as <cite>make: /opt/gfortran/bin/gfortran: No such file or directory</cite>. It might be that <cite>RStudio</cite> is modifying the <cite>PATH</cite> variable when using <cite>renv</cite>, see <a class="reference external" href="https://github.com/rstudio/renv/issues/1845">Github issue</a>. If that happens, do the installation in <cite>Terminal</cite> NOT <cite>RStudio</cite>. Open <cite>Terminal</cite> and type in <cite>R</cite> and follow the same instructions.</p>
+</div>
 <a class="reference internal image-reference" href="_images/macos_install_renv.png"><img alt="_images/macos_install_renv.png" src="_images/macos_install_renv.png" style="width: 100%;" /></a>
 </div></blockquote>
 <ol class="arabic simple" start="5">

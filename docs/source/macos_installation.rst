@@ -51,6 +51,9 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
     setwd("/Applications/cecelia")
     renv::init()
     
+  .. attention::
+    If you run into issues that `R` cannot compile a package, such as `make: /opt/gfortran/bin/gfortran: No such file or directory`. It might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_. If that happens, do the installation in `Terminal` NOT `RStudio`. Open `Terminal` and type in `R` and follow the same instructions.
+    
   .. image:: _images/macos_install_renv.png
    :width: 100%
   
