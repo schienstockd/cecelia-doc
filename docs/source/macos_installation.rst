@@ -52,7 +52,34 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
     renv::init()
     
   .. attention::
-    If you run into issues that `R` cannot compile a package, such as `make: /opt/gfortran/bin/gfortran: No such file or directory`. It might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_. If that happens, do the installation in `Terminal` NOT `RStudio`. Open `Terminal` and type in `R` and follow the same instructions.
+    If you run into issues that `R` cannot compile a package with `gfortran`, such as `make: /opt/gfortran/bin/gfortran: No such file or directory`, it might be that the path cannot be found because `gfortran` is now packaged into `gcc` and `R` might be looking in the wrong spot. To change this location follow the instructions as outlined in this `Stackoverflow post <https://stackoverflow.com/a/72997915>`_. In `Terminal` install `gcc`:
+    
+    .. code-block:: bash
+      :caption: Install gcc
+      
+      brew install gcc
+    
+    Check your `gcc` version with:
+    
+    .. code-block:: bash
+      :caption: Check gcc version
+      
+      ls /opt/homebrew/Cellar/gcc/
+    
+    Create a file `~/.R/Makevars` and enter the following. You need to change the `gcc` version for your version number.
+    
+    .. code-block:: bash
+      :caption: Change Fortran paths
+      
+      FC = /opt/homebrew/Cellar/gcc/11.3.0_2/bin/gfortran
+      F77 = /opt/homebrew/Cellar/gcc/11.3.0_2/bin/gfortran
+      FLIBS = -L/opt/homebrew/Cellar/gcc/11.3.0_2/lib/gcc/11
+    
+  .. attention::
+    If there are further errors that packages cannot be compiled because header files are not found, such as `fatal error: 'cstlib' file not found`, it might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_. If that happens, do the installation in `Terminal` NOT `RStudio`. Open `Terminal` and type in `R` and follow the same instructions.
+    
+  .. attention::
+    If you still run into compiler issues, please remove and re-install `Xcode <https://developer.apple.com/xcode/>`_.
     
   .. image:: _images/macos_install_renv.png
    :width: 100%
