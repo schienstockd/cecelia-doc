@@ -6,7 +6,14 @@ MacOS installation
 Step by step guide 
 ------------------
 
-1. Install library dependencies. We recommend using `Homebrew <https://brew.sh/>`_ to install the necessary dependencies. Type the following into `Terminal`.
+1. Install library dependencies. We recommend using `Homebrew <https://brew.sh/>`_ to install the necessary dependencies. If you do not have Homebrew, install it by typing or pasting the following into `Terminal`:
+  
+  .. code-block:: bash
+    :caption: Install Homebrew
+  
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Then install the required programs using Homebrew via `Terminal`:
 
   .. code-block:: bash
     :caption: Install required programs via Homebrew
@@ -16,18 +23,23 @@ Step by step guide
     brew install gdal # Dependency for SPIAT package
     brew install cmake
     
-You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to compile packages in `R` and `Python`. Follow the installation instructions on `Mac App Store <https://apps.apple.com/us/app/xcode/id497799835>`_.
+2. You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to compile packages in `R` and `Python`. Follow the installation instructions on `Mac App Store <https://apps.apple.com/us/app/xcode/id497799835>`_.
 
-2. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use another version of R the package dependencies might not be resolved during `renv::init()`.
+3. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use another version of R the package dependencies might not be resolved during `renv::init()`.
 
-3. Start `RStudio` and install `renv`.
+4. Start `RStudio` and install `renv` in the `R` console.
 
   .. code-block:: R
     :caption: Install renv
     
     install.packages("renv")
    
-4. Install package dependencies. Create a folder under `Applications` named `cecelia`. Within the `cecelia` folder create a directory `projects` where all projects data will be stored. Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ (save as `renv.lock` NOT `renv.lock.txt`) into `/Applications/cecelia`. Then, create the R-environment. You must set the `current working directory` to the directory where the `renv.lock` file is located. Select "1" to restore the project from the lockfile.
+5. Install package dependencies.
+  * Create a folder under `Applications` named `cecelia`.
+  * Within the `cecelia` folder create a directory `projects` where all projects data will be stored.
+  * Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ into `/Applications/cecelia`. `Important`: save this as renv.lock NOT renv.lock.txt. Remove `.txt` if this is appended during the download.
+  * Then in `RStudio`, create the R-environment using the example below. To do this, you must set the current working directory to the directory where the renv.lock file is located. 
+  * When prompted during the process, Select “1” to restore the project from the lockfile.
   
   .. tip::
     We are going to use the path `/Applications/cecelia` throughout this manual. You can place it anywhere else if you want.
@@ -84,7 +96,7 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_install_renv.png
    :width: 100%
   
-5. Load the environment you have just created and install `Cecelia` package.
+6. Load the environment you have just created and install `Cecelia` package.
   
   .. code-block:: R
     :caption: Install Cecelia package
@@ -95,7 +107,7 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_ccia_install.png
    :width: 100%
    
-6. You must define a `base directory` where configuration files, models and the `shiny app` will be stored.
+7. You must define a `base directory` where configuration files, models and the `shiny app` will be stored.
 
   .. code-block:: R
     :caption: Define base directory
@@ -115,7 +127,7 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_ccia_setup.png
    :width: 100%
 
-5. `Cecelia` depends on a `conda environment` which must be created.
+8. `Cecelia` depends on a `conda environment` which must be created.
     
   .. code-block:: R
     :caption: Install miniconda
@@ -125,19 +137,21 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_miniconda_install.png
     :width: 100%
   
-  .. attention::
-    For Apple Silicon systems (M1-3), you `must` pre-create the conda environment in `Terminal` otherwise it will use the wrong platform type. You must source `conda` first with the following commands.
-    `reticulate::miniconda_path()` will give you the conda path that you need to put into the following command.
+9. For Apple Silicon systems (Mx), you `must` pre-create the conda environment in `Terminal` otherwise it will use the wrong platform type.
     
-    ..  code-block:: bash
-      :caption: Pre-create conda environment in `Terminal`
-      
-      . /REPLACE/WITH/PATH/TO/MINICONDA/etc/profile.d/conda.sh
-      CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.9
+  You must source `conda` first with the following commands. `reticulate::miniconda_path()` will give you the conda path that you must put into the following command.
     
-    .. image:: _images/macos_arm_conda_create.png
-      :width: 100%
+  ..  code-block:: bash
+    :caption: Pre-create conda environment in `Terminal`
     
+    . /REPLACE/WITH/PATH/TO/MINICONDA/etc/profile.d/conda.sh
+    CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.9
+  
+  .. image:: _images/macos_arm_conda_create.png
+    :width: 100%
+  
+10. Then, back in Rstudio, Create conda environment¶
+  
   .. code-block:: R
     :caption: Create conda environment
   
@@ -146,7 +160,7 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_conda_create.png
     :width: 100%
   
-6. Download models for deep-learning segmentation, tracking and others.
+11. Download models for deep-learning segmentation, tracking and others.
 
   .. code-block:: R
     :caption: Download models
@@ -156,7 +170,7 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_ccia_models.png
     :width: 100%
 
-7. Create `shiny app` in `base directory`.
+12. Create `shiny app` in `base directory`.
 
   .. code-block:: R
     :caption: Create `shiny app`
@@ -166,10 +180,10 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_create_app.png
     :width: 100%
 
-8. Adjust config
+13. Adjust the config file.
   You have to adjust the parameters in `/Applications/cecelia/custom.yml` to your system and download/install:
 
-  * Download `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_ and place it into the `/Applications` folder
+  * First download `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_ and place it into the `/Applications` folder
 
   .. code-block:: YAML
     :caption: Adjust config in text editor of RStudio
@@ -190,7 +204,7 @@ You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to 
   .. image:: _images/macos_custom_config.png
     :width: 100%
             
-9. Run the `app`.
+14. Run the `app`.
   
   To start the application, double click `cecelia-macOSX.command` located in `/Applications/cecelia/app/`.
   

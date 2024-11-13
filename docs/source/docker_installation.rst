@@ -9,7 +9,7 @@ Step by step guide
 1. Install the latest `Docker <https://www.docker.com/>`_ version.
   
   .. tip::
-    For Windows, Docker uses `WSL 2` (`Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/about>`_). By default all containers will be stored on `C:` drive. To change the location, you must execute the following commands in `Command prompt` as outlined in this `Stack Overflow <https://stackoverflow.com/a/63752264>`_ post:
+    For Windows, Docker uses `WSL 2` (`Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/about>`_). By default all containers will be stored on `C:` drive. If you do not want to use this location, you must execute the following commands in `Command prompt` as outlined in this `Stack Overflow <https://stackoverflow.com/a/63752264>`_ post to change the location:
   
     Make sure that `Docker Desktop` is shut down. 
     
@@ -53,7 +53,7 @@ Step by step guide
 
 2. Install the latest `Miniconda <https://docs.anaconda.com/miniconda/miniconda-install/>`_ version.
 
-3. Retrieve the `CeceliaDocker` project. Either `Download <https://github.com/schienstockd/ceceliaDocker/archive/refs/heads/master.zip>`_ or clone the `CeceliaDocker repository <https://github.com/schienstockd/ceceliaDocker>`_
+3. Retrieve the `CeceliaDocker` project. Either `Download <https://github.com/schienstockd/ceceliaDocker/archive/refs/heads/master.zip>`_ and unpack or clone the `CeceliaDocker repository <https://github.com/schienstockd/ceceliaDocker>`_ into a directory of your choice. In this tutorial we are using `D:\Public\Cecelia\GIT\`.
 
   .. code-block:: bash
     :caption: Clone repository with git
@@ -79,7 +79,7 @@ On Windows, you might want to use `Anaconda Prompt` to initialise the conda tool
 
 5. Adjust config files
 
-  You must adjust the filepaths in `docker-compose.yml` and `datashare/docker.yml`. This will tell Docker where your projects are stored and the data location that you can use to import data. We also must tell `Shiny` to use the host directory to open images as they are opened outside of the container within the napari environment.
+  You must adjust the filepaths in the config files `docker-compose.yml` and `datashare/docker.yml` located in `D:\Public\Cecelia\GIT\ceceliaDocker\`. This will tell Docker where your projects are stored and the data location that you can use to import data.
 
   .. code-block:: yaml
     :caption: Windows example docker-compose.yml
@@ -90,7 +90,9 @@ On Windows, you might want to use `Anaconda Prompt` to initialise the conda tool
           - D:\Public\Cecelia\GIT\ceceliaDocker\datashare:/home/shiny/local
           - D:\Public\Cecelia\PROJECTS:/cecelia/projects
           - D:\Public\Cecelia\DATA:/cecelia/data
-          
+  
+  We must also tell `Shiny` to use the host directory to open images as they are opened outside of the container within the napari environment.
+  
   .. code-block:: yaml
     :caption: Windows example datashare/docker.yml
 
@@ -109,10 +111,10 @@ On Windows, you might want to use `Anaconda Prompt` to initialise the conda tool
    :width: 100%
 
 6. Start `Docker Desktop` and retrieve `Cecelia` container.
-  Run (or build) the Docker container with `cecelia-MacOSX-docker.command` (Mac) or `cecelia-Windows-docker.bat` (Windows). This will start the local napari environment, retrieve the Docker container during the first run and start the app. There are two Dockerfiles. The default one pulls the current Docker image from Dockerhub. Dockerfile.build will build the container if you wish to do that.
+  Run (or build) the Docker container with `cecelia-MacOSX-docker.command` (Mac) or `cecelia-Windows-docker.bat` (Windows) located in `D:\Public\Cecelia\GIT\ceceliaDocker\`. This will start the local napari environment, retrieve the Docker container during the first run and start the app.
   
   .. attention::
-    If you installed `Miniconda` in a custom location, ie/ not your user account, you must specify that directory in the `.command` or `.bat` file.
+    If you installed `Miniconda` in a custom location, ie/ not your user account, you must specify that directory in the `.command` or `.bat` file by editing the file in a `Text editor`.
 
     .. image:: _images/docker_edit_bat.png
      :width: 100%
