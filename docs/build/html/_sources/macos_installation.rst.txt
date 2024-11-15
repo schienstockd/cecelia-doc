@@ -82,7 +82,7 @@ Then install the required programs using Homebrew via `Terminal`:
       ls /usr/local/Cellar/gcc/ # for macOS Intel
       
     .. attention::
-      If you find that you are running a `Apple Silicon` but Homebrew installs everything into `/usr/local/Cellar/gcc/`, then you might have to `re-install Homebrew <https://docs.brew.sh/Installation>` and install the correct architecture for your system.
+      If you find that you are running a `Apple Silicon` but Homebrew installs everything into `/usr/local/Cellar/gcc/`, then you might have to `remove Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_ and `install <https://docs.brew.sh/Installation>`_ the correct architecture for your system.
     
     Create a file `~/.R/Makevars` and enter the following. You need to change the `gcc` version for your version number.
     
