@@ -204,7 +204,8 @@
 <span id="id1"></span><h1>MacOS installation<a class="headerlink" href="#macos-installation" title="Permalink to this heading">#</a></h1>
 <section id="step-by-step-guide">
 <h2>Step by step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
+<ol class="arabic simple" start="0">
+<li><p>Installation should take less than 1 h. Most time will be spent compiling <cite>R</cite> and <cite>python</cite> packages where binaries are not available.</p></li>
 <li><p>Install library dependencies. We recommend using <a class="reference external" href="https://brew.sh/">Homebrew</a> to install the necessary dependencies. If you do not have Homebrew, install it by typing or pasting the following into <cite>Terminal</cite>:</p></li>
 </ol>
 <blockquote>
@@ -289,9 +290,14 @@ brew<span class="w"> </span>install<span class="w"> </span>cmake
 <p>Check your <cite>gcc</cite> version with:</p>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-text">Check gcc version</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>/opt/homebrew/Cellar/gcc/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>/opt/homebrew/Cellar/gcc/<span class="w"> </span><span class="c1"># for Apple Silicon</span>
+ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span class="c1"># for macOS Intel</span>
 </pre></div>
 </div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you find that you are running a <cite>Apple Silicon</cite> but Homebrew installs everything into <cite>/usr/local/Cellar/gcc/</cite>, then you might have to <cite>re-install Homebrew &lt;https://docs.brew.sh/Installation&gt;</cite> and install the correct architecture for your system.</p>
 </div>
 <p>Create a file <cite>~/.R/Makevars</cite> and enter the following. You need to change the <cite>gcc</cite> version for your version number.</p>
 <div class="literal-block-wrapper docutils container" id="id10">

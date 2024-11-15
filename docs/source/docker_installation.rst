@@ -6,6 +6,8 @@ Windows/Docker installation
 Step by step guide 
 ------------------
 
+0. Installation should take less than 1 h. Most time will be spent downloading the Docker container.
+
 1. Install the latest `Docker <https://www.docker.com/>`_ version.
   
   .. tip::

@@ -6,6 +6,8 @@ Linux installation
 Step by step guide 
 ------------------
 
+0. Installation should take less than 1 h. Most time will be spent compiling `R` and `python` packages. Most `R` packages will have to be compiled on Linux systems.
+
 1. Install library dependencies. We have tested this on `Ubuntu 24.04.1 LTS`. The package list might therefore vary depending on your distribution.
 
   .. code-block:: bash

@@ -19,6 +19,9 @@ Both approaches follow a similar workflow to process and analyse images:
 
 #. Creating figures
 
+.. tip::
+  Going through these individual tutorials should take less than 1 h.
+
 .. _tutorial_static:
 
 Static image

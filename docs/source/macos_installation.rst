@@ -6,6 +6,8 @@ MacOS installation
 Step by step guide 
 ------------------
 
+0. Installation should take less than 1 h. Most time will be spent compiling `R` and `python` packages where binaries are not available.
+
 1. Install library dependencies. We recommend using `Homebrew <https://brew.sh/>`_ to install the necessary dependencies. If you do not have Homebrew, install it by typing or pasting the following into `Terminal`:
   
   .. code-block:: bash
@@ -76,7 +78,11 @@ Then install the required programs using Homebrew via `Terminal`:
     .. code-block:: bash
       :caption: Check gcc version
       
-      ls /opt/homebrew/Cellar/gcc/
+      ls /opt/homebrew/Cellar/gcc/ # for Apple Silicon
+      ls /usr/local/Cellar/gcc/ # for macOS Intel
+      
+    .. attention::
+      If you find that you are running a `Apple Silicon` but Homebrew installs everything into `/usr/local/Cellar/gcc/`, then you might have to `re-install Homebrew <https://docs.brew.sh/Installation>` and install the correct architecture for your system.
     
     Create a file `~/.R/Makevars` and enter the following. You need to change the `gcc` version for your version number.
     
