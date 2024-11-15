@@ -80,8 +80,16 @@ Then install the required programs using Homebrew via `Terminal`:
       
       ls /opt/homebrew/Cellar/gcc/ # for Apple Silicon
       ls /usr/local/Cellar/gcc/ # for macOS Intel
+    
+    .. tip::
+      If you find that you are running a `Apple Silicon` but Homebrew installs everything into `/usr/local/Cellar/gcc/`, then you might have to check that `Terminal` is running the correct architecture mode. Do the following base on this `Stackoverflow post <https://stackoverflow.com/a/71666623>`_. Go To: `Finder` -> `Applications` -> `Utilities` -> `Terminal`. Right click on Terminal and select `Get Info`. Uncheck checkbox: 'Open using Rosetta'. Quit Terminal Application. Restart Terminal and check your machine arhictecture:
       
-    If you find that you are running a `Apple Silicon` but Homebrew installs everything into `/usr/local/Cellar/gcc/`, then you might have to `remove Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_ and `install <https://docs.brew.sh/Installation>`_ the correct architecture for your system.
+      .. code-block:: bash
+        :caption: Check machine architecture
+        
+        uname -m # should return arm64 NOT x86_64
+      
+      `remove Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_ and `install <https://docs.brew.sh/Installation>`_ the correct architecture for your system.
     
     Create a file `~/.R/Makevars` and enter the following. You need to change the `gcc` version for your version number.
     
