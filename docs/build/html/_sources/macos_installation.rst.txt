@@ -89,7 +89,7 @@ Then install the required programs using Homebrew via `Terminal`:
         
         uname -m # should return arm64 NOT x86_64
       
-      `remove Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_ and `install <https://docs.brew.sh/Installation>`_ the correct architecture for your system.
+      Then, `remove Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_ and `install <https://docs.brew.sh/Installation>`_ again.
     
     Create a file `~/.R/Makevars` and enter the following. You need to change the `gcc` version for your version number.
     
