@@ -16,7 +16,7 @@ Step by step guide
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   .. attention::
-    If you are running on `Apple Silicon` (Mx) make sure that Homebrew is recognising the correct machine architecture. In `Terminal` run `brew config`. The output should look something like the following. The important information is that `macOS` should be `arm64`, `Rosetta 2` should be `false` and `HOMEBREW_PREFIX` should be `/opt/homebrew`.
+    If you are running on `Apple Silicon` (Mx) make sure that Homebrew is recognising the correct machine architecture. In `Terminal` run `brew config`. The output should look something like the following. The important information is that `macOS` should be `arm64`, `Rosetta 2` should be `false` and `HOMEBREW_PREFIX` should be ``/opt/homebrew``.
     
     .. code-block:: bash
       :caption: Expected output of `brew config`
@@ -40,7 +40,7 @@ Step by step guide
       Xcode: 16.1
       Rosetta 2: false
           
-    If `HOMEBREW_PREFIX` is `/usr/local` and the other parameters also do not match, you might have to check that `Terminal` is running in the correct mode. Do the following is based on this `Stackoverflow post <https://stackoverflow.com/a/71666623>`_. Go to: `Finder` -> `Applications` -> `Utilities` -> `Terminal`. Right click on Terminal and select `Get Info`. Uncheck checkbox: 'Open using Rosetta'. Quit Terminal Application. Restart Terminal and check your machine arhictecture:
+    If `HOMEBREW_PREFIX` is ``/usr/local`` and the other parameters also do not match, you might have to check that `Terminal` is running in the correct mode. Do the following is based on this `Stackoverflow post <https://stackoverflow.com/a/71666623>`_. Go to: `Finder` -> `Applications` -> `Utilities` -> `Terminal`. Right click on Terminal and select `Get Info`. Uncheck checkbox: 'Open using Rosetta'. Quit Terminal Application. Restart Terminal and check your machine arhictecture:
     
     .. code-block:: bash
       :caption: Check machine architecture

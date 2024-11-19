@@ -217,7 +217,7 @@
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>If you are running on <cite>Apple Silicon</cite> (Mx) make sure that Homebrew is recognising the correct machine architecture. In <cite>Terminal</cite> run <cite>brew config</cite>. The output should look something like the following. The important information is that <cite>macOS</cite> should be <cite>arm64</cite>, <cite>Rosetta 2</cite> should be <cite>false</cite> and <cite>HOMEBREW_PREFIX</cite> should be <cite>/opt/homebrew</cite>.</p>
+<p>If you are running on <cite>Apple Silicon</cite> (Mx) make sure that Homebrew is recognising the correct machine architecture. In <cite>Terminal</cite> run <cite>brew config</cite>. The output should look something like the following. The important information is that <cite>macOS</cite> should be <cite>arm64</cite>, <cite>Rosetta 2</cite> should be <cite>false</cite> and <cite>HOMEBREW_PREFIX</cite> should be <code class="docutils literal notranslate"><span class="pre">/opt/homebrew</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">Expected output of <cite>brew config</cite></span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>HOMEBREW_VERSION:<span class="w"> </span><span class="m">4</span>.4.5
@@ -241,7 +241,7 @@ Rosetta<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>
 </pre></div>
 </div>
 </div>
-<p>If <cite>HOMEBREW_PREFIX</cite> is <cite>/usr/local</cite> and the other parameters also do not match, you might have to check that <cite>Terminal</cite> is running in the correct mode. Do the following is based on this <a class="reference external" href="https://stackoverflow.com/a/71666623">Stackoverflow post</a>. Go to: <cite>Finder</cite> -&gt; <cite>Applications</cite> -&gt; <cite>Utilities</cite> -&gt; <cite>Terminal</cite>. Right click on Terminal and select <cite>Get Info</cite>. Uncheck checkbox: ‘Open using Rosetta’. Quit Terminal Application. Restart Terminal and check your machine arhictecture:</p>
+<p>If <cite>HOMEBREW_PREFIX</cite> is <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> and the other parameters also do not match, you might have to check that <cite>Terminal</cite> is running in the correct mode. Do the following is based on this <a class="reference external" href="https://stackoverflow.com/a/71666623">Stackoverflow post</a>. Go to: <cite>Finder</cite> -&gt; <cite>Applications</cite> -&gt; <cite>Utilities</cite> -&gt; <cite>Terminal</cite>. Right click on Terminal and select <cite>Get Info</cite>. Uncheck checkbox: ‘Open using Rosetta’. Quit Terminal Application. Restart Terminal and check your machine arhictecture:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Check machine architecture</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uname<span class="w"> </span>-m<span class="w"> </span><span class="c1"># should return arm64 NOT x86_64</span>
