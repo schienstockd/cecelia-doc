@@ -125,7 +125,7 @@ Step by step guide
     :width: 100%
 
 8. Adjust config
-  You have to adjust the parameters in `/YOUR/PATH/TO/cecelia/custom.yml` to your system and download/install:
+  You have to adjust the parameters in ``/YOUR/PATH/TO/cecelia/custom.yml`` to your system and download/install:
 
   * `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_
 

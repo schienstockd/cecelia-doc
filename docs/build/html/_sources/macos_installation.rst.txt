@@ -70,12 +70,12 @@ Then install the required programs using Homebrew via `Terminal`:
 5. Install package dependencies.
   * Create a folder under `Applications` named `cecelia`.
   * Within the `cecelia` folder create a directory `projects` where all projects data will be stored.
-  * Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ into `/Applications/cecelia`. `Important`: save this as renv.lock NOT renv.lock.txt. Remove `.txt` if this is appended during the download.
+  * Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ into ``/Applications/cecelia``. `Important`: save this as renv.lock NOT renv.lock.txt. Remove `.txt` if this is appended during the download.
   * Then in `RStudio`, create the R-environment using the example below. To do this, you must set the current working directory to the directory where the renv.lock file is located. 
   * When prompted during the process, Select “1” to restore the project from the lockfile.
   
   .. tip::
-    We are going to use the path `/Applications/cecelia` throughout this manual. You can place it anywhere else if you want.
+    We are going to use the path ``/Applications/cecelia`` throughout this manual. You can place it anywhere else if you want.
   
   .. tip::
     `Unix` systems have three main signs to specify directories
@@ -215,9 +215,9 @@ Then install the required programs using Homebrew via `Terminal`:
     :width: 100%
 
 13. Adjust the config file.
-  If you want to adjust where your projects are located, you must adjust the parameters in `/Applications/cecelia/custom.yml` to your system and download `bioformats2raw`:
+  If you want to adjust where your projects are located, you must adjust the parameters in ``/Applications/cecelia/custom.yml`` to your system and download `bioformats2raw`:
 
-  * Download `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_ and place it into the `/Applications` folder
+  * Download `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_ and place it into the ``/Applications`` folder
 
   .. code-block:: YAML
     :caption: Adjust config in text editor of RStudio
@@ -240,7 +240,7 @@ Then install the required programs using Homebrew via `Terminal`:
             
 14. Run the `app`.
   
-  To start the application, double click `cecelia-macOSX.command` located in `/Applications/cecelia/app/`.
+  To start the application, double click `cecelia-macOSX.command` located in ``/Applications/cecelia/app/``.
   
   .. code-block:: bash
     :caption: Run `Cecelia` app

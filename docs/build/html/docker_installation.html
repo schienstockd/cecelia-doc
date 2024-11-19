@@ -2,7 +2,7 @@
 <html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
@@ -213,14 +213,14 @@
 <p class="admonition-title">Tip</p>
 <p>For Windows, Docker uses <cite>WSL 2</cite> (<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">Windows Subsystem for Linux</a>). By default all containers will be stored on <cite>C:</cite> drive. If you do not want to use this location, you must execute the following commands in <cite>Command prompt</cite> as outlined in this <a class="reference external" href="https://stackoverflow.com/a/63752264">Stack Overflow</a> post to change the location:</p>
 <p>Make sure that <cite>Docker Desktop</cite> is shut down.</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">Check WSL state</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Check WSL state</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wsl<span class="w"> </span>--list<span class="w"> </span>-v
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">Make sure the services are STOPPED</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Make sure the services are STOPPED</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">  </span>NAME<span class="w">                   </span>STATE<span class="w">           </span>VERSION
 *<span class="w"> </span>docker-desktop<span class="w">         </span>Stopped<span class="w">         </span><span class="m">2</span>
 <span class="w">  </span>docker-desktop-data<span class="w">    </span>Stopped<span class="w">         </span><span class="m">2</span>
@@ -228,22 +228,22 @@
 </div>
 </div>
 <p>Export <cite>docker-desktop-data</cite> to a file.</p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">Export Docker Desktop data</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Export Docker Desktop data</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wsl<span class="w"> </span>--export<span class="w"> </span>docker-desktop-data<span class="w"> </span><span class="s2">&quot;D:\Docker\wsl\data\docker-desktop-data.tar&quot;</span>
 </pre></div>
 </div>
 </div>
 <p>Unregister <cite>docker-desktop-data</cite>.</p>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">Unregister Docker Desktop data</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Unregister Docker Desktop data</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wsl<span class="w"> </span>--unregister<span class="w"> </span>docker-desktop-data
 </pre></div>
 </div>
 </div>
 <p>Import the data into <cite>a new location</cite> where your Docker containers will be stored. You must create the new location first before submitting this command.</p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">Import Docker Desktop data into new location</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Import Docker Desktop data into new location</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wsl<span class="w"> </span>--import<span class="w"> </span>docker-desktop-data<span class="w"> </span><span class="s2">&quot;D:\Docker\wsl\data&quot;</span><span class="w"> </span><span class="s2">&quot;D:\Docker\wsl\data\docker-desktop-data.tar&quot;</span><span class="w"> </span>--version<span class="w"> </span><span class="m">2</span>
 </pre></div>
 </div>
@@ -257,11 +257,11 @@
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>Install the latest <a class="reference external" href="https://docs.anaconda.com/miniconda/miniconda-install/">Miniconda</a> version.</p></li>
-<li><p>Retrieve the <cite>CeceliaDocker</cite> project. Either <a class="reference external" href="https://github.com/schienstockd/ceceliaDocker/archive/refs/heads/master.zip">Download</a> and unpack or clone the <a class="reference external" href="https://github.com/schienstockd/ceceliaDocker">CeceliaDocker repository</a> into a directory of your choice. In this tutorial we are using <a href="#id1"><span class="problematic" id="id2">`</span></a>D:PublicCeceliaGIT`.</p></li>
+<li><p>Retrieve the <cite>CeceliaDocker</cite> project. Either <a class="reference external" href="https://github.com/schienstockd/ceceliaDocker/archive/refs/heads/master.zip">Download</a> and unpack or clone the <a class="reference external" href="https://github.com/schienstockd/ceceliaDocker">CeceliaDocker repository</a> into a directory of your choice. In this tutorial we are using <code class="docutils literal notranslate"><span class="pre">D:\Public\Cecelia\GIT\</span></code>.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">Clone repository with git</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Clone repository with git</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/schienstockd/ceceliaDocker.git
 </pre></div>
 </div>
@@ -271,8 +271,8 @@
 <p>4. Create <cite>conda</cite> environment for <cite>napari</cite> to run.
 On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the conda toolkit. <cite>Anaconda Prompt</cite> has to be used only to initialise the <cite>conda</cite> environment. It is not needed after this step is done.</p>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--file<span class="o">=</span>conda-gui-env.yml
 </pre></div>
 </div>
@@ -287,9 +287,9 @@ On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the
 <li><p>Adjust config files</p></li>
 </ol>
 <blockquote>
-<div><p>You must adjust the filepaths in the config files <cite>docker-compose.yml</cite> and <cite>datashare/docker.yml</cite> located in <a href="#id3"><span class="problematic" id="id4">`</span></a>D:PublicCeceliaGITceceliaDocker`. This will tell Docker where your projects are stored and the data location that you can use to import data.</p>
-<div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-text">Windows example docker-compose.yml</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div><p>You must adjust the filepaths in the config files <cite>docker-compose.yml</cite> and <cite>datashare/docker.yml</cite> located in <code class="docutils literal notranslate"><span class="pre">D:\Public\Cecelia\GIT\ceceliaDocker\</span></code>. This will tell Docker where your projects are stored and the data location that you can use to import data.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Windows example docker-compose.yml</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
@@ -300,8 +300,8 @@ On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the
 </div>
 </div>
 <p>We must also tell <cite>Shiny</cite> to use the host directory to open images as they are opened outside of the container within the napari environment.</p>
-<div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-text">Windows example datashare/docker.yml</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Windows example datashare/docker.yml</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">docker</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">useDocker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRUE</span>
@@ -321,7 +321,7 @@ On Windows, you might want to use <cite>Anaconda Prompt</cite> to initialise the
 <li><p>Start <cite>Docker Desktop</cite> and retrieve <cite>Cecelia</cite> container.</p></li>
 </ol>
 <blockquote>
-<div><p>Run (or build) the Docker container with <cite>cecelia-MacOSX-docker.command</cite> (Mac) or <cite>cecelia-Windows-docker.bat</cite> (Windows) located in <a href="#id5"><span class="problematic" id="id6">`</span></a>D:PublicCeceliaGITceceliaDocker`. This will start the local napari environment, retrieve the Docker container during the first run and start the app.</p>
+<div><p>Run (or build) the Docker container with <cite>cecelia-MacOSX-docker.command</cite> (Mac) or <cite>cecelia-Windows-docker.bat</cite> (Windows) located in <code class="docutils literal notranslate"><span class="pre">D:\Public\Cecelia\GIT\ceceliaDocker\</span></code>. This will start the local napari environment, retrieve the Docker container during the first run and start the app.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>If you installed <cite>Miniconda</cite> in a custom location, ie/ not your user account, you must specify that directory in the <cite>.command</cite> or <cite>.bat</cite> file by editing the file in a <cite>Text editor</cite>.</p>
