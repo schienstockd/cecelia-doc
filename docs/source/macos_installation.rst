@@ -40,7 +40,7 @@ Step by step guide
       Xcode: 16.1
       Rosetta 2: false
           
-    If `HOMEBREW_PREFIX` is `/usr/local` and the other parameters also do not match, you might have to check that `Terminal` is running in the correct mode. Do the following base on this `Stackoverflow post <https://stackoverflow.com/a/71666623>`_. Go to: `Finder` -> `Applications` -> `Utilities` -> `Terminal`. Right click on Terminal and select `Get Info`. Uncheck checkbox: 'Open using Rosetta'. Quit Terminal Application. Restart Terminal and check your machine arhictecture:
+    If `HOMEBREW_PREFIX` is `/usr/local` and the other parameters also do not match, you might have to check that `Terminal` is running in the correct mode. Do the following is based on this `Stackoverflow post <https://stackoverflow.com/a/71666623>`_. Go to: `Finder` -> `Applications` -> `Utilities` -> `Terminal`. Right click on Terminal and select `Get Info`. Uncheck checkbox: 'Open using Rosetta'. Quit Terminal Application. Restart Terminal and check your machine arhictecture:
     
     .. code-block:: bash
       :caption: Check machine architecture
