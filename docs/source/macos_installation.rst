@@ -16,7 +16,7 @@ Step by step guide
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   .. attention::
-    If you are running on `Apple Silicon` (Mx) make sure that Homebrew is recognising the correct machine architecture. In `Terminal` run `brew config`. The output should look something like the following. The important information is that `macOS` should b `arm64`, `Rosetta 2` should b `false` and `HOMEBREW_PREFIX` should be `/opt/homebrew`.
+    If you are running on `Apple Silicon` (Mx) make sure that Homebrew is recognising the correct machine architecture. In `Terminal` run `brew config`. The output should look something like the following. The important information is that `macOS` should be `arm64`, `Rosetta 2` should be `false` and `HOMEBREW_PREFIX` should be `/opt/homebrew`.
     
     .. code-block:: bash
       :caption: Expected output of `brew config`
