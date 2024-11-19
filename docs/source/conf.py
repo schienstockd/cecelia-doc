@@ -17,7 +17,7 @@ release = '0.1'
 extensions = [
   # 'sphinxcontrib.video',
   'sphinx.ext.intersphinx',
-  'sphinxcontrib.youtube'
+  # 'sphinxcontrib.youtube'
   ]
 
 templates_path = ['_templates']

@@ -6,7 +6,7 @@ MacOS installation
 Step by step guide 
 ------------------
 
-0. Installation should take less than 1 h. Most time will be spent compiling `R` and `python` packages where binaries are not available.
+0. Installation should take less than 1 h. Most time will be spent compiling `R` and `python` packages where binaries are not available. `DISCLAIMER`: While we aimed to make this installation process as simple as possible, a basic knowledge of `running commands in Terminal <https://support.apple.com/en-au/guide/terminal/apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/2.14/mac/15.0>`_ and `installing packages R <https://www.datacamp.com/tutorial/r-packages-guide>`_ is helpful.
 
 1. Install library dependencies. We recommend using `Homebrew <https://brew.sh/>`_ to install the necessary dependencies. If you do not have Homebrew, install it by typing or pasting the following into `Terminal`:
   
@@ -15,15 +15,46 @@ Step by step guide
   
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+  .. attention::
+    If you are running on `Apple Silicon` (Mx) make sure that Homebrew is recognising the correct machine architecture. In `Terminal` run `brew config`. The output should look something like the following. The important information is that `macOS` should b `arm64`, `Rosetta 2` should b `false` and `HOMEBREW_PREFIX` should be `/opt/homebrew`.
+    
+    .. code-block:: bash
+      :caption: Expected output of `brew config`
+    
+      HOMEBREW_VERSION: 4.4.5
+      ORIGIN: https://github.com/Homebrew/brew
+      HEAD: 254bf3fe9d8fa2e1b2fb55dbcf535b2d870180c4
+      Last commit: 8 days ago
+      Core tap JSON: 18 Nov 05:40 UTC
+      Core cask tap JSON: 18 Nov 05:40 UTC
+      HOMEBREW_PREFIX: /opt/homebrew
+      HOMEBREW_CASK_OPTS: []
+      HOMEBREW_MAKE_JOBS: 24
+      Homebrew Ruby: 3.3.6 => /opt/homebrew/Library/Homebrew/vendor/portable-ruby/3.3.6/bin/ruby
+      CPU: 24-core 64-bit arm_blizzard_avalanche
+      Clang: 16.0.0 build 1600
+      Git: 2.39.5 => /Applications/Xcode.app/Contents/Developer/usr/bin/git
+      Curl: 8.7.1 => /usr/bin/curl
+      macOS: 15.1-arm64
+      CLT: 16.1.0.0.1.1729049160
+      Xcode: 16.1
+      Rosetta 2: false
+          
+    If `HOMEBREW_PREFIX` is `/usr/local` and the other parameters also do not match, you might have to check that `Terminal` is running in the correct mode. Do the following base on this `Stackoverflow post <https://stackoverflow.com/a/71666623>`_. Go to: `Finder` -> `Applications` -> `Utilities` -> `Terminal`. Right click on Terminal and select `Get Info`. Uncheck checkbox: 'Open using Rosetta'. Quit Terminal Application. Restart Terminal and check your machine arhictecture:
+    
+    .. code-block:: bash
+      :caption: Check machine architecture
+      
+      uname -m # should return arm64 NOT x86_64
+    
+    Then, `remove Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_ and `install <https://docs.brew.sh/Installation>`_ again.
+
 Then install the required programs using Homebrew via `Terminal`:
 
   .. code-block:: bash
     :caption: Install required programs via Homebrew
     
-    brew install pstree
-    brew install openssl
-    brew install gdal # Dependency for SPIAT package
-    brew install cmake
+    brew install pstree openssl gdal cmake
     
 2. You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to compile packages in `R` and `Python`. Follow the installation instructions on `Mac App Store <https://apps.apple.com/us/app/xcode/id497799835>`_.
 
@@ -80,16 +111,6 @@ Then install the required programs using Homebrew via `Terminal`:
       
       ls /opt/homebrew/Cellar/gcc/ # for Apple Silicon
       ls /usr/local/Cellar/gcc/ # for macOS Intel
-    
-    .. tip::
-      If you find that you are running a `Apple Silicon` but Homebrew installs everything into `/usr/local/Cellar/gcc/`, then you might have to check that `Terminal` is running the correct architecture mode. Do the following base on this `Stackoverflow post <https://stackoverflow.com/a/71666623>`_. Go To: `Finder` -> `Applications` -> `Utilities` -> `Terminal`. Right click on Terminal and select `Get Info`. Uncheck checkbox: 'Open using Rosetta'. Quit Terminal Application. Restart Terminal and check your machine arhictecture:
-      
-      .. code-block:: bash
-        :caption: Check machine architecture
-        
-        uname -m # should return arm64 NOT x86_64
-      
-      Then, `remove Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_ and `install <https://docs.brew.sh/Installation>`_ again.
     
     Create a file `~/.R/Makevars` and enter the following. You need to change the `gcc` version for your version number.
     
@@ -157,7 +178,7 @@ Then install the required programs using Homebrew via `Terminal`:
   ..  code-block:: bash
     :caption: Pre-create conda environment in `Terminal`
     
-    . /REPLACE/WITH/PATH/TO/MINICONDA/etc/profile.d/conda.sh
+    . /REPLACE_ME/etc/profile.d/conda.sh
     CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.9
   
   .. image:: _images/macos_arm_conda_create.png
@@ -194,16 +215,16 @@ Then install the required programs using Homebrew via `Terminal`:
     :width: 100%
 
 13. Adjust the config file.
-  You have to adjust the parameters in `/Applications/cecelia/custom.yml` to your system and download/install:
+  If you want to adjust where your projects are located, you must adjust the parameters in `/Applications/cecelia/custom.yml` to your system and download `bioformats2raw`:
 
-  * First download `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_ and place it into the `/Applications` folder
+  * Download `bioformats2raw <https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip>`_ and place it into the `/Applications` folder
 
   .. code-block:: YAML
     :caption: Adjust config in text editor of RStudio
   
     default:
       dirs:
-        bioformats2raw: "/Applications/bioformats2raw"
+        bioformats2raw: "/Applications/bioformats2raw-0.9.0/"
         projects: "/Applications/cecelia/projects"
       volumes:
         home: "~/"
