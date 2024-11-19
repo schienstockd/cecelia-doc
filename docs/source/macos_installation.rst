@@ -58,7 +58,7 @@ Then install the required programs using Homebrew via `Terminal`:
     
 2. You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to compile packages in `R` and `Python`. Follow the installation instructions on `Mac App Store <https://apps.apple.com/us/app/xcode/id497799835>`_.
 
-3. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use another version of R the package dependencies might not be resolved during `renv::init()`.
+3. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use an older version of `R` the package dependencies might not be resolved during `renv::init()`.
 
 4. Start `RStudio` and install `renv` in the `R` console.
 
