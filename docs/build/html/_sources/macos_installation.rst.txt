@@ -14,6 +14,14 @@ Step by step guide
     :caption: Install Homebrew
   
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+  You need to add Homebrew to your `PATH` variable to make it available (`see here why <https://github.com/Homebrew/brew/issues/16525#issuecomment-1907962291>`_).
+  
+  .. code-block:: bash
+    :caption: Add Homebrew to your PATH
+  
+    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
+    eval $(/opt/homebrew/bin/brew shellenv)
 
   .. attention::
     If you are running on `Apple Silicon` (Mx) make sure that Homebrew is recognising the correct machine architecture. In `Terminal` run `brew config`. The output should look something like the following. The important information is that `macOS` should be `arm64`, `Rosetta 2` should be `false` and `HOMEBREW_PREFIX` should be ``/opt/homebrew``.
