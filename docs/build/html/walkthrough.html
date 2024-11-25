@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -195,7 +195,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -204,6 +204,8 @@
           <section id="walkthrough">
 <span id="id1"></span><h1>Walkthrough<a class="headerlink" href="#walkthrough" title="Permalink to this heading">#</a></h1>
 <p>This is a walkthrough for the basic usage of <cite>Cecelia</cite>. This is intended to give a brief overview/reference. For more detailed and specific instructions please refer to <a class="reference internal" href="tutorial.html#tutorial"><span class="std std-ref">Tutorial</span></a>. We will first look at the <cite>Shiny</cite> interface and then at the <cite>napari</cite> interface. Most functions will be controlled over the <cite>Shiny</cite> app, such as processing images and which information will be shown in the image viewer. Within <cite>napari</cite>, you can mostly adjust the visual settings of the image and the data associated with the shown image.</p>
+<section id="shiny-app">
+<h2>Shiny app<a class="headerlink" href="#shiny-app" title="Permalink to this heading">#</a></h2>
 <a class="reference internal image-reference" href="_images/wf_shiny_overview.png"><img alt="_images/wf_shiny_overview.png" src="_images/wf_shiny_overview.png" style="width: 100%;" /></a>
 <ol class="upperalpha simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">workflow</span></code> The user is guided through individual processing steps. Every image needs to be <cite>imported</cite> as OME-ZARR. Once imported, the <cite>Metadata</cite>, that is, channel names, experimental information and other information for the individual images can be added. After that, most images will need some sort of <cite>cleanup</cite> function where the signal is corrected for autofluorescence, overspill or tissue drift. These corrected images can then be <cite>segmented</cite>. The user then must define populations based on the labelled objects. For <cite>static</cite> imaging, populations can be defined by <cite>manual gating</cite> or <cite>cell clustering</cite>. For <cite>live</cite> imaging, cells must be tracked and the user has the possibility to refine the populations by behaviour or spatial interactions. <code class="docutils literal notranslate"><span class="pre">Plot</span> <span class="pre">canvas</span></code> enables various plotting functions for the extracted populations, including frequency comparison, gating strategies, UMAPs and heatmaps. In <code class="docutils literal notranslate"><span class="pre">Settings</span></code>, the <cite>project ID</cite> is displayed and various options regarding <cite>High Performance Computing</cite> can be configured. Currently, this section is only for specialised users who require <cite>HPC</cite> access.</p></li>
@@ -304,12 +306,16 @@
 <ol class="upperalpha simple" start="12">
 <li><p><code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">parameters</span></code> are dependent on the selected function.</p></li>
 </ol>
+</section>
+<section id="napari-viewer">
+<h2>Napari viewer<a class="headerlink" href="#napari-viewer" title="Permalink to this heading">#</a></h2>
 <a class="reference internal image-reference" href="_images/wf_napari_overview.png"><img alt="_images/wf_napari_overview.png" src="_images/wf_napari_overview.png" style="width: 100%;" /></a>
 <ol class="upperalpha simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Layer</span> <span class="pre">controls</span></code> depends on the selected layer. Please refer to <a class="reference external" href="https://napari.org/stable/guides/layers.html">this brief introduction</a> to <cite>napari</cite> layers if you are new to this image viewer.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Layer</span> <span class="pre">list</span></code> will be added according to the options you selected in <cite>Shiny</cite> in <cite>B</cite>. These update automatically when you process images and have <cite>Update Image</cite> in <cite>J</cite> ticked.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">viewer</span></code> for detailed overview how to use the viewer refer to <a class="reference external" href="https://napari.org/stable/tutorials/fundamentals/viewer.html">this introduction</a> on <cite>napari</cite> viewer functionality.</p></li>
 </ol>
+</section>
 </section>
 
         </article>
@@ -355,8 +361,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Walkthrough</a><ul>
+<li><a class="reference internal" href="#shiny-app">Shiny app</a></li>
+<li><a class="reference internal" href="#napari-viewer">Napari viewer</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -5,6 +5,9 @@ Walkthrough
 
 This is a walkthrough for the basic usage of `Cecelia`. This is intended to give a brief overview/reference. For more detailed and specific instructions please refer to :ref:`tutorial`. We will first look at the `Shiny` interface and then at the `napari` interface. Most functions will be controlled over the `Shiny` app, such as processing images and which information will be shown in the image viewer. Within `napari`, you can mostly adjust the visual settings of the image and the data associated with the shown image.
 
+Shiny app
+------------------
+
 .. image:: _images/wf_shiny_overview.png
  :width: 100%
 
@@ -79,6 +82,9 @@ K. ``Define Populations`` is used to display the resulting populations. During `
   * `Propagate to Selected` will propagate the population definitions from the current image to the other selected images. This is useful to define common colours across images or propagate cell cluster and gating definitions.
 
 L. ``Function parameters`` are dependent on the selected function.
+
+Napari viewer
+------------------
 
 .. image:: _images/wf_napari_overview.png
  :width: 100%
