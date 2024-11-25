@@ -80,6 +80,11 @@ K. ``Define Populations`` is used to display the resulting populations. During `
 
 L. ``Function parameters`` are dependent on the selected function.
 
-[Numbered napari image HERE]
+.. image:: _images/wf_napari_overview.png
+ :width: 100%
 
-[DESC]
+A. ``Layer controls`` depends on the selected layer. Please refer to `this brief introduction <https://napari.org/stable/guides/layers.html>`_ to `napari` layers if you are new to this image viewer.
+
+B. ``Layer list`` will be added according to the options you selected in `Shiny` in `B`. These update automatically when you process images and have `Update Image` in `J` ticked.
+
+C. ``Image viewer`` for detailed overview how to use the viewer refer to `this introduction <https://napari.org/stable/tutorials/fundamentals/viewer.html>`_ on `napari` viewer functionality.
