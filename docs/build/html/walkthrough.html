@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Tutorial" href="tutorial.html" /><link rel="prev" title="Installation" href="installation.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Tutorial" href="tutorial.html" /><link rel="prev" title="Overview" href="overview.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Walkthrough - Cecelia 0.1 documentation</title>
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -157,6 +157,7 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Walkthrough</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
@@ -195,7 +196,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -203,119 +204,7 @@
         <article role="main">
           <section id="walkthrough">
 <span id="id1"></span><h1>Walkthrough<a class="headerlink" href="#walkthrough" title="Permalink to this heading">#</a></h1>
-<p>This is a walkthrough for the basic usage of <cite>Cecelia</cite>. This is intended to give a brief overview/reference. For more detailed and specific instructions please refer to <a class="reference internal" href="tutorial.html#tutorial"><span class="std std-ref">Tutorial</span></a>. We will first look at the <cite>Shiny</cite> interface and then at the <cite>napari</cite> interface. Most functions will be controlled over the <cite>Shiny</cite> app, such as processing images and which information will be shown in the image viewer. Within <cite>napari</cite>, you can mostly adjust the visual settings of the image and the data associated with the shown image.</p>
-<section id="shiny-app">
-<h2>Shiny app<a class="headerlink" href="#shiny-app" title="Permalink to this heading">#</a></h2>
-<a class="reference internal image-reference" href="_images/wf_shiny_overview.png"><img alt="_images/wf_shiny_overview.png" src="_images/wf_shiny_overview.png" style="width: 100%;" /></a>
-<ol class="upperalpha simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">workflow</span></code> The user is guided through individual processing steps. Every image needs to be <cite>imported</cite> as OME-ZARR. Once imported, the <cite>Metadata</cite>, that is, channel names, experimental information and other information for the individual images can be added. After that, most images will need some sort of <cite>cleanup</cite> function where the signal is corrected for autofluorescence, overspill or tissue drift. These corrected images can then be <cite>segmented</cite>. The user then must define populations based on the labelled objects. For <cite>static</cite> imaging, populations can be defined by <cite>manual gating</cite> or <cite>cell clustering</cite>. For <cite>live</cite> imaging, cells must be tracked and the user has the possibility to refine the populations by behaviour or spatial interactions. <code class="docutils literal notranslate"><span class="pre">Plot</span> <span class="pre">canvas</span></code> enables various plotting functions for the extracted populations, including frequency comparison, gating strategies, UMAPs and heatmaps. In <code class="docutils literal notranslate"><span class="pre">Settings</span></code>, the <cite>project ID</cite> is displayed and various options regarding <cite>High Performance Computing</cite> can be configured. Currently, this section is only for specialised users who require <cite>HPC</cite> access.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Viewer</span></code> contains various options how <cite>napari</cite> is openig images and which information is shown on the image.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>Save</cite>: saves the current settings in the image viewer regarding channel intensities and colours. It does NOT save the information of any other layer at the moment.</p></li>
-<li><p><cite>Recorder</cite>: adds a <a class="reference external" href="https://napari.org/napari-animation/index.html">recording plugin</a> to the right of the viewer. This is not only helpful for <cite>timecourse images</cite> but also for any other kind of image where animation of some sort is required. The user must define the individual <cite>checkpoints</cite> for each animation by clicking <cite>Capture</cite>. Then, the animation can be saved with <cite>Save animation</cite>.</p></li>
-<li><p><cite>Reload image</cite>: reloads the image even if the currently selected one is selected again. This is helpful when applying a <cite>cleanup</cite> method and reload the image to show the results. If this is not ticked, the image layers of the currently shown image will not be updated.</p></li>
-<li><p><cite>Original</cite>: shows the original/raw image.</p></li>
-<li><p><cite>Layers</cite>: makes all channels of the image visible. If an image has a large number of channels, then it might not be helpful to show all channels at the same time. In this case, we can untick this option and the user has to toggle the individual channels themselves.</p></li>
-<li><p><cite>3D</cite>: shows the image in 3D. Otherwise, the default will be a 2D image with a z-slider.</p></li>
-<li><p><cite>Labels</cite>: shows the segmented labels of the image.</p></li>
-<li><p><cite>Points</cite>: shows the centre points extracted from the segmentation labels.</p></li>
-<li><p><cite>Tracks</cite>: shows the cell tracks for <cite>live</cite> images.</p></li>
-<li><p><cite>Populations</cite>: shows the populations defined by gating, clustering, tracking or other spatial properties.</p></li>
-<li><p><cite>Neighbours</cite>: shows neighbours for <cite>static</cite> images defined by <cite>neighbourhood detection</cite>.</p></li>
-<li><p><cite>Branching</cite>: shows branching network based on <cite>create branching</cite>.</p></li>
-<li><p><cite>Shapes</cite>: shows shapes previously defined in <cite>napari</cite>.</p></li>
-<li><p><cite>Lazy</cite>: loads the image as <cite>Dask</cite> rather than <cite>Zarr</cite>. This enables reading on demand which is required for larger images or if your system does not have enough <cite>RAM</cite> for the whole image. If this mode is too slow for you while viewing the image, you can untick this option. The whole image will then be loaded into memory, which might take some time, but vieweing should be faster.</p></li>
-<li><p><cite>Squeeze</cite>: This is a specialised option that you can ignore.</p></li>
-<li><p><cite>Reset</cite>: <cite>napari</cite> is reset when loading an image. This option is useful when comparing the results of <cite>cleanup</cite> functions to the original image. In that case you can load the currently corrected image. Then, untick <cite>Reset</cite>. Tick <cite>Reload Image</cite>. Tick <cite>Original</cite> and click on the image again. This will load the original image into the current viewer to compare thr cleanup procedure to the original image.</p></li>
-<li><p><cite>Pyramids</cite>: number of pyramid scales to be loaded. At the moment, <cite>napari</cite> will load the lowest resolution for <cite>3D</cite> display. This means, if you have pryamid images, the resolution will be lower in <cite>3D</cite>. If you want to screenshot images in <cite>3D</cite>, then you might want to consider setting this scale to <cite>1</cite> which will effectively disable pyramid usage when loading the image.</p></li>
-<li><p><cite>Branching property</cite>: type of branching measurement shown after creating branching.</p></li>
-</ul>
-</div></blockquote>
-<ol class="upperalpha simple" start="3">
-<li><p><code class="docutils literal notranslate"><span class="pre">Project</span></code> contains functions to manage project loading and saving.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>Load</cite>: shows a table with all projects that can be loaded or deleted.</p></li>
-<li><p><cite>Save</cite>: saves the current project.</p></li>
-<li><p><cite>Import</cite>: imports a project from an archived file.</p></li>
-<li><p><cite>Export</cite>: exports the current project to an archived file.</p></li>
-</ul>
-</div></blockquote>
-<ol class="upperalpha simple" start="4">
-<li><p><code class="docutils literal notranslate"><span class="pre">Version</span></code> contains functions to manage project versions. Each project can have multiple versions. At the moment, these individual versions are simple copies of the previous version except for the image data. Depending on the project, this might lead to a significant duplication of data.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>Load</cite>: shows a table of the versions for the current project which can be loaded or deleted.</p></li>
-<li><p><cite>Create</cite>: creates a new version of the current project.</p></li>
-</ul>
-</div></blockquote>
-<ol class="upperalpha simple" start="5">
-<li><p><code class="docutils literal notranslate"><span class="pre">Shutdown</span></code> the app. After that you can close the <cite>console</cite> window.</p></li>
-</ol>
-<p>The basic page layout is the same for all module pages in the app. Every images is part of <cite>experimental sets</cite>, which could be images with the same staining combination or from the same experimental setup.</p>
-<ol class="upperalpha simple" start="6">
-<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Set</span></code> will select the current working set and update the images accordingly. Some functions, such as cell clustering or behaviour extraction will be run on selected images from the same set but <cite>NOT</cite> different sets.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Filters</span></code> will filter the shown images based on the image <cite>metadata</cite>. This is helpful when processing images together that come from the same treatment or experimental condition. These can be defined in the <cite>metadata</cite> step.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Images</span></code> displays the images from the current set.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>Tickboxes</cite> are used to select images to for processing. They turn <cite>pink</cite> when an image is selected. You can select multiple images which can be processed individually in batch or together depending on the module function used.</p></li>
-<li><p><cite>Image icons</cite> are used to open images. They turn <cite>yellow</cite> when an image is selected.</p></li>
-<li><p><cite>uID</cite> is the <cite>unique ID</cite> of the images. Every image has an ID which is unique within the project.</p></li>
-</ul>
-</div></blockquote>
-<ol class="upperroman simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Module</span> <span class="pre">output</span></code> will display data for the current image or the currently selected images depending on the module.</p></li>
-</ol>
-<ol class="upperalpha simple" start="10">
-<li><p><code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">Manager</span></code> is used to processed images with a certain function or workflow.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>Run</cite> will run the selected function on the selected images.</p></li>
-<li><p><cite>Cancel shown</cite> will cancel all tasks that are currently shown in the task list.</p></li>
-<li><p><cite>Clear Tasks</cite> will clear all tasks from the task list that are currently not running.</p></li>
-<li><p><cite>Tasks</cite> defines the number of tasks that are run in parallel.</p></li>
-<li><p><cite>Update Image</cite> updates the image that is currently shown when the task finishes successfully</p></li>
-<li><p><cite>Combine Images</cite> runs selected images together as one experimental set. This is required for some processes such as cell clustering or behaviour extraction.</p></li>
-<li><p><cite>Run together</cite> runs images one-by-one in the same process.</p></li>
-<li><p><cite>local</cite> or <cite>HPC</cite> runs the task on the local machine or the <cite>HPC</cite> environment if configured</p></li>
-<li><p><cite>Use GPU</cite> utilises the GPU for certain tasks. This is mainly required for <cite>Cellpose</cite> segmentation and denoising.</p></li>
-<li><p><cite>Last tasks</cite> will display only the latest task for each image in the task list.</p></li>
-<li><p><cite>Selected function</cite> will only display tasks from the selected function.</p></li>
-<li><p>The task list can be filtered for <cite>uID</cite> and task <cite>function</cite>.</p></li>
-<li><p>Running Tasks are yellow with <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>. You can check the <code class="docutils literal notranslate"><span class="pre">LOG</span></code> but there won’t be a progress bar. Queued tasks are yellow with <code class="docutils literal notranslate"><span class="pre">QUE</span></code>. Successful tasks are green with <code class="docutils literal notranslate"><span class="pre">OK</span></code>. Failed tasks are red with <code class="docutils literal notranslate"><span class="pre">FAIL</span></code>.</p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/wf_task_states.png"><img alt="_images/wf_task_states.png" src="_images/wf_task_states.png" style="width: 50%;" /></a>
-</div></blockquote>
-<ol class="upperalpha simple" start="11">
-<li><p><code class="docutils literal notranslate"><span class="pre">Define</span> <span class="pre">Populations</span></code> is used to display the resulting populations. During <cite>Histocytometry</cite> gating you can rename these populations. Some of these are <cite>filtered</cite> which means that they are defined by some measure calculated from a module function, for example, contact between cell types based on distance.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>Point size</cite> defines the size of the points on the <cite>napari</cite> viewer</p></li>
-<li><p><cite>Save</cite> will save the defined populations to disk and <cite>napari</cite> will show them. This is more of a helper button and should happen automatically. If you find your populations are not shown on the image, then try to save them here.</p></li>
-<li><p><cite>Propagate to Selected</cite> will propagate the population definitions from the current image to the other selected images. This is useful to define common colours across images or propagate cell cluster and gating definitions.</p></li>
-</ul>
-</div></blockquote>
-<ol class="upperalpha simple" start="12">
-<li><p><code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">parameters</span></code> are dependent on the selected function.</p></li>
-</ol>
-</section>
-<section id="napari-viewer">
-<h2>Napari viewer<a class="headerlink" href="#napari-viewer" title="Permalink to this heading">#</a></h2>
-<a class="reference internal image-reference" href="_images/wf_napari_overview.png"><img alt="_images/wf_napari_overview.png" src="_images/wf_napari_overview.png" style="width: 100%;" /></a>
-<ol class="upperalpha simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Layer</span> <span class="pre">controls</span></code> depends on the selected layer. Please refer to <a class="reference external" href="https://napari.org/stable/guides/layers.html">this brief introduction</a> to <cite>napari</cite> layers if you are new to this image viewer.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Layer</span> <span class="pre">list</span></code> will be added according to the options you selected in <cite>Shiny</cite> in <cite>B</cite>. These update automatically when you process images and have <cite>Update Image</cite> in <cite>J</cite> ticked.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">viewer</span></code> for detailed overview how to use the viewer refer to <a class="reference external" href="https://napari.org/stable/tutorials/fundamentals/viewer.html">this introduction</a> on <cite>napari</cite> viewer functionality.</p></li>
-</ol>
-</section>
+<p>These video tutorials will walk through the basic usability of <cite>Cecelia</cite>.</p>
 </section>
 
         </article>
@@ -332,14 +221,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="installation.html">
+          <a class="prev-page" href="overview.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Installation</div>
+                <div class="title">Overview</div>
                 
               </div>
             </a>
@@ -361,28 +250,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Walkthrough</a><ul>
-<li><a class="reference internal" href="#shiny-app">Shiny app</a></li>
-<li><a class="reference internal" href="#napari-viewer">Napari viewer</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

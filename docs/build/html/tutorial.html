@@ -157,6 +157,7 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="walkthrough.html">Walkthrough</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missions.html">Missions</a></li>
@@ -216,7 +217,7 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Going through these individual tutorials should take less than 1 h.</p>
+<p>Going through these individual tutorials should take less than 1 h. The main routes are shown in <cite>pink</cite> while alternative options are shown in <cite>green</cite>.</p>
 </div>
 <section id="static-image">
 <span id="tutorial-static"></span><h2>Static image<a class="headerlink" href="#static-image" title="Permalink to this heading">#</a></h2>
@@ -224,13 +225,13 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <section id="create-a-project">
 <h3>1. Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this heading">#</a></h3>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/st_create_project.png"><img alt="_images/st_create_project.png" src="_images/st_create_project.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="_images/st_create_project_ann.png"><img alt="_images/st_create_project_ann.png" src="_images/st_create_project_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="import-the-image">
 <h3>2. Import the image<a class="headerlink" href="#import-the-image" title="Permalink to this heading">#</a></h3>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/st_import_images.png"><img alt="_images/st_import_images.png" src="_images/st_import_images.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="_images/st_import_images_ann.png"><img alt="_images/st_import_images_ann.png" src="_images/st_import_images_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="define-channel-names">
@@ -245,49 +246,53 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <li><p>CD3e-AF700</p></li>
 <li><p>AF</p></li>
 </ul>
-<a class="reference internal image-reference" href="_images/st_add_channels.png"><img alt="_images/st_add_channels.png" src="_images/st_add_channels.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_add_channels_ann.png"><img alt="_images/st_add_channels_ann.png" src="_images/st_add_channels_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="correct-autofluorescence">
 <h3>4. Correct autofluorescence<a class="headerlink" href="#correct-autofluorescence" title="Permalink to this heading">#</a></h3>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/st_pre_cleanup.png"><img alt="_images/st_pre_cleanup.png" src="_images/st_pre_cleanup.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="_images/st_pre_cleanup_ann.png"><img alt="_images/st_pre_cleanup_ann.png" src="_images/st_pre_cleanup_ann.png" style="width: 100%;" /></a>
 <p>Two-photon imaging often requires correction for autofluorescence and drift due to tissue movement. In <cite>Cecelia</cite> we implemented these methods individually but also in combination.</p>
-<a class="reference internal image-reference" href="_images/st_post_cleanup.png"><img alt="_images/st_post_cleanup.png" src="_images/st_post_cleanup.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_post_cleanup_ann.png"><img alt="_images/st_post_cleanup_ann.png" src="_images/st_post_cleanup_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="segment-cells">
 <h3>5. Segment cells<a class="headerlink" href="#segment-cells" title="Permalink to this heading">#</a></h3>
 <blockquote>
-<div><p>In <cite>Cecelia</cite> we can combine the segmentations of these different levels into one result to extract populations. To this end, the user has to ensure that all cells and structures are segmented as expected. We therefore recommend to first segment inidividual channels before combining these. <a class="reference external" href="http://www.cellpose.org/">Cellpose</a> is the main segmentation method utilised in <cite>Cecelia</cite>. Each segmentation must be given a Name. The name <cite>default</cite> must be given for the final segmentation while intermediate segmentation tests can have anu name.</p>
+<div><p>In <cite>Cecelia</cite> we can combine the segmentations of these different levels into one result to extract populations. To this end, the user has to ensure that all cells and structures are segmented as expected. We therefore recommend to first segment inidividual channels before combining these. <a class="reference external" href="http://www.cellpose.org/">Cellpose</a> is the main segmentation method utilised in <cite>Cecelia</cite>. Each segmentation must be given a Name. The name <cite>default</cite> must be given for the final segmentation while intermediate segmentation tests can have another name.</p>
 <p>T and B cells have a similar size, roundish shape and are closely packed. These can be segmented using the <cite>cyto2</cite> model and a relatively small diameter of 5 μm.</p>
-<a class="reference internal image-reference" href="_images/st_seg_t-bcells.png"><img alt="_images/st_seg_t-bcells.png" src="_images/st_seg_t-bcells.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_seg_t-bcells_ann.png"><img alt="_images/st_seg_t-bcells_ann.png" src="_images/st_seg_t-bcells_ann.png" style="width: 100%;" /></a>
 <p>XCR1<sup>+</sup> dendritic cells have very different shapes and contain a cytoplasmic reporter rather than a membrane binding antibody. We have trained a <cite>Cellpose</cite> model, <cite>ccia Fluorescent</cite>, which was trained on overlapping T cells with a fluorescent reporter from 2-photon imaging. This model can also segment irregularly shaped dendritic cells.</p>
-<a class="reference internal image-reference" href="_images/st_seg_XCR1.png"><img alt="_images/st_seg_XCR1.png" src="_images/st_seg_XCR1.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_seg_XCR1_ann.png"><img alt="_images/st_seg_XCR1_ann.png" src="_images/st_seg_XCR1_ann.png" style="width: 100%;" /></a>
 <p>The virus particles are also difficult to segment as they appear as separated yet closely cohesive patches of fluorescent signal. As these particles are so fragmented, we check <cite>Merge labels</cite> to merge touching segmentation labels.</p>
-<a class="reference internal image-reference" href="_images/st_seg_LCMV.png"><img alt="_images/st_seg_LCMV.png" src="_images/st_seg_LCMV.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_seg_LCMV_ann.png"><img alt="_images/st_seg_LCMV_ann.png" src="_images/st_seg_LCMV_ann.png" style="width: 100%;" /></a>
 <p>LCMV specific T cells were labelled with a cytoplasmic dye. Although these are technically T cells, it is better to segment them separately to capture all cells. As this signal is very bright, we can use the standard <cite>cyto2</cite> model.</p>
-<a class="reference internal image-reference" href="_images/st_seg_P14.png"><img alt="_images/st_seg_P14.png" src="_images/st_seg_P14.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_seg_P14_ann.png"><img alt="_images/st_seg_P14_ann.png" src="_images/st_seg_P14_ann.png" style="width: 100%;" /></a>
+<p>Now you can tick all the boxes with the individual segmentation parameters and give the name <cite>default</cite>. This will go through the segmentation from top to bottom, that is, the last segmentation will be on top of everything else.</p>
+<a class="reference internal image-reference" href="_images/st_seg_all_ann.png"><img alt="_images/st_seg_all_ann.png" src="_images/st_seg_all_ann.png" style="width: 100%;" /></a>
+<p>To change the order, you can drag and drop the individual boxes.</p>
+<a class="reference internal image-reference" href="_images/st_seg_sort_ann.png"><img alt="_images/st_seg_sort_ann.png" src="_images/st_seg_sort_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="define-populations">
 <h3>6. Define populations<a class="headerlink" href="#define-populations" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Cell populations can be defined in various ways. One way is use <cite>sequential gating</cite>. Create a <cite>GatingSet</cite>.</p>
-<a class="reference internal image-reference" href="_images/st_create_gating_set.png"><img alt="_images/st_create_gating_set.png" src="_images/st_create_gating_set.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_create_gating_set_ann.png"><img alt="_images/st_create_gating_set_ann.png" src="_images/st_create_gating_set_ann.png" style="width: 100%;" /></a>
 <p>Segmentation is not perfect, we can gate out objects that are small or have odd shapes by plotting <cite>volume</cite> vs <cite>surface-to-volume</cite>. After that, it depends on the specific context. There will be spillover between cells due to their proximity. It is therefore important to gate any populations that are sparse and closely associated with other cells first. The last population can be cells that are more abundant.</p>
-<a class="reference internal image-reference" href="_images/st_gating_pops.png"><img alt="_images/st_gating_pops.png" src="_images/st_gating_pops.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_gating_pops_ann.png"><img alt="_images/st_gating_pops_ann.png" src="_images/st_gating_pops_ann.png" style="width: 100%;" /></a>
 <p>The complete gating hierarchy can be visualised in the <cite>Flow Gating</cite> section of <cite>Plot canvas</cite>.</p>
-<a class="reference internal image-reference" href="_images/st_gating_plot.png"><img alt="_images/st_gating_plot.png" src="_images/st_gating_plot.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_gating_plot_ann.png"><img alt="_images/st_gating_plot_ann.png" src="_images/st_gating_plot_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="extract-spatial-interactions">
 <h3>7. Extract spatial interactions<a class="headerlink" href="#extract-spatial-interactions" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>In this example, we were interested in T cell clustering. In the <cite>Spatial analysis</cite> section are different methods to extract spatial interactions. We can utilise <cite>Cell clusters</cite> to extract LCMV specific cell clusters.</p>
-<a class="reference internal image-reference" href="_images/st_cluster_detection.png"><img alt="_images/st_cluster_detection.png" src="_images/st_cluster_detection.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_cluster_detection_ann.png"><img alt="_images/st_cluster_detection_ann.png" src="_images/st_cluster_detection_ann.png" style="width: 100%;" /></a>
 <p>The abundance of these clusters can then be visualised in the <cite>Population plots</cite> section.</p>
-<a class="reference internal image-reference" href="_images/st_cluster_plot.png"><img alt="_images/st_cluster_plot.png" src="_images/st_cluster_plot.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/st_cluster_plot_ann.png"><img alt="_images/st_cluster_plot_ann.png" src="_images/st_cluster_plot_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 </section>
@@ -297,13 +302,13 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <section id="id2">
 <h3>1. Create a project<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/li_create_project.png"><img alt="_images/li_create_project.png" src="_images/li_create_project.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="_images/li_create_project_ann.png"><img alt="_images/li_create_project_ann.png" src="_images/li_create_project_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="id3">
 <h3>2. Import the image<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/li_import_images.png"><img alt="_images/li_import_images.png" src="_images/li_import_images.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="_images/li_import_images_ann.png"><img alt="_images/li_import_images_ann.png" src="_images/li_import_images_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="id4">
@@ -316,14 +321,14 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <li><p>gBT-uGFP</p></li>
 <li><p>OTI-CTV</p></li>
 </ul>
-<a class="reference internal image-reference" href="_images/li_add_channels.png"><img alt="_images/li_add_channels.png" src="_images/li_add_channels.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/li_add_channels_ann.png"><img alt="_images/li_add_channels_ann.png" src="_images/li_add_channels_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="id5">
 <h3>4. Correct autofluorescence<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Autofluorescence correction in two-photon images requires subtraction of individual channels from each other. Drift correction is also commonly required to account for tissue movement during the imaging period. We implemented autofluorescence correction by diving channels from each other. Drift correction is at the moment a simple planar correction using scitkit-image’s <a class="reference external" href="https://scikit-image.org/docs/0.13.x/auto_examples/transform/plot_register_translation.html">cross-correlation</a>.</p>
-<a class="reference internal image-reference" href="_images/li_cleanup.png"><img alt="_images/li_cleanup.png" src="_images/li_cleanup.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/li_cleanup_ann.png"><img alt="_images/li_cleanup_ann.png" src="_images/li_cleanup_ann.png" style="width: 100%;" /></a>
 <p>Comparison between original and corrected images.</p>
 <div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
 <iframe allowfullscreen="true" src="https://player.vimeo.com/video/926074249?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
@@ -333,7 +338,7 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <h3>5. Segment cells<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Segmentation works in a similar manner to static imaging. Again, we mostly rely on <a class="reference external" href="http://www.cellpose.org/">Cellpose</a>. For each cell population you must create a separate segmentation, ie/ P14, OTI and gBT cells will each have a separate segmentation. T cells can assume irregular shapes and various sizes and appear in tightly packed environments. While the <cite>cyto2</cite> model is very good for general segmentation, we found that or own <cite>Cellpose</cite> model, <cite>ccia Fluorescent</cite> sometimes works better to extract T cell shapes from these movies. However, this model can also pick a lot more background than <cite>cyto2</cite> depending on the image. We therefore recommend to try both and stick to the one that gives the best results for the current image.</p>
-<a class="reference internal image-reference" href="_images/li_seg_gBT.png"><img alt="_images/li_seg_gBT.png" src="_images/li_seg_gBT.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/li_seg_gBT_ann.png"><img alt="_images/li_seg_gBT_ann.png" src="_images/li_seg_gBT_ann.png" style="width: 100%;" /></a>
 <div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
 <iframe allowfullscreen="true" src="https://player.vimeo.com/video/926098606?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div></div></blockquote>
@@ -342,18 +347,18 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <h3>6. Define populations<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>We utilise <a class="reference external" href="https://github.com/quantumjot/btrack">btrack</a> to track the segmented cells. The most important parameter is the search radius to find connecting cells between frames. If the segmentation is not 100% clean (ie/ there is some autofluorescence segmented), then we can define a filter to exclude those autofluorescent objects.</p>
-<a class="reference internal image-reference" href="_images/li_track_gBT.png"><img alt="_images/li_track_gBT.png" src="_images/li_track_gBT.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/li_track_gBT_ann.png"><img alt="_images/li_track_gBT_ann.png" src="_images/li_track_gBT_ann.png" style="width: 100%;" /></a>
 <div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
 <iframe allowfullscreen="true" src="https://player.vimeo.com/video/927004389?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div><p>The properties of the tracked cells can be plotted for different experimental conditions to, for example, compare cell <cite>speed</cite> or <cite>angle</cite>.</p>
-<a class="reference internal image-reference" href="_images/li_track_stats.png"><img alt="_images/li_track_stats.png" src="_images/li_track_stats.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/li_track_stats_ann.png"><img alt="_images/li_track_stats_ann.png" src="_images/li_track_stats_ann.png" style="width: 100%;" /></a>
 </div></blockquote>
 </section>
 <section id="id9">
 <h3>7. Extract spatial interactions<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>In this example, we were interested in the movement patterns of the different T cell types. One way we can analyse these behaviour modes is by utilising a Hidden Markov Model (<a class="reference external" href="https://www.rdocumentation.org/packages/depmixS4/versions/1.5-0">HMM</a>). These models can assign a pre-defined number of <cite>hidden</cite> states that are dependent on observed variables.</p>
-<a class="reference internal image-reference" href="_images/li_track_hmm.png"><img alt="_images/li_track_hmm.png" src="_images/li_track_hmm.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/li_track_hmm_ann.png"><img alt="_images/li_track_hmm_ann.png" src="_images/li_track_hmm_ann.png" style="width: 100%;" /></a>
 <div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
 <iframe allowfullscreen="true" src="https://player.vimeo.com/video/927342248?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div></div></blockquote>
