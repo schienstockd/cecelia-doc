@@ -133,7 +133,7 @@ Then install the required programs using Homebrew via `Terminal`:
       FLIBS = -L/opt/homebrew/Cellar/gcc/11.3.0_2/lib/gcc/11
     
   .. attention::
-    If there are further errors that packages cannot be compiled because header files are not found, such as `fatal error: 'cstlib' file not found`, it might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_. If that happens, do the installation in `Terminal` NOT `RStudio`. Open `Terminal` and type in `R` and follow the same instructions.
+    If there are further errors that packages cannot be compiled because header files are not found, such as ``fatal error: 'cstlib' file not found`` or ``fatal error: 'iostream' file not found``, it might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_. If that happens, do the installation in `Terminal` NOT `RStudio`. Open `Terminal` and type in `R` and follow the same instructions.
     
   .. attention::
     If you still run into compiler issues, please remove and re-install `Xcode <https://developer.apple.com/xcode/>`_.
