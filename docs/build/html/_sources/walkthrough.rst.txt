@@ -3,7 +3,7 @@
 Walkthrough
 ============
 
-These video tutorials will walk through the basic usability of `Cecelia`. These examples are only intended to showcase the general use-case but not complete workflows. For complete workflows, refer to :ref:`tutorial` and :ref:`missions`.
+These video tutorials will walk through the basic usability of `Cecelia`. These examples are only intended to showcase the general use-case but not complete workflows. For complete workflows, refer to :ref:`tutorial`.
 
 Create project and import image
 ------------
