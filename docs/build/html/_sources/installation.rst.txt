@@ -11,4 +11,4 @@ Choose one of the options below for your operating system:
 
 :ref:`manual_installation`
 
-Once you have installed the `app` you can proceed to a brief :ref:`walkthrough` of the main functions before diving into :ref:`tutorial`.
+Once you have installed the `app` you can proceed to a brief :ref:`overview` and :ref:`walkthrough` of the main functions before diving into :ref:`tutorial`.
