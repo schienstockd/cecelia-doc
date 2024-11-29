@@ -358,6 +358,13 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>If you still run into compiler issues, please remove and re-install <a class="reference external" href="https://developer.apple.com/xcode/">Xcode</a>.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Reinstall Xcode</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-fr<span class="w"> </span>/Library/Developer/CommandLineTools
+xcode-select<span class="w"> </span>--install
+</pre></div>
+</div>
+</div>
 </div>
 <a class="reference internal image-reference" href="_images/macos_install_renv.png"><img alt="_images/macos_install_renv.png" src="_images/macos_install_renv.png" style="width: 100%;" /></a>
 </div></blockquote>
@@ -365,8 +372,8 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <li><p>Load the environment you have just created and install <cite>Cecelia</cite> package.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-text">Install Cecelia package</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Install Cecelia package</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">renv</span><span class="o">::</span><span class="nf">load</span><span class="p">()</span>
 <span class="n">renv</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="s">&quot;schienstockd/cecelia&quot;</span><span class="p">)</span>
 </pre></div>
@@ -378,16 +385,16 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <li><p>You must define a <cite>base directory</cite> where configuration files, models and the <cite>shiny app</cite> will be stored.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-text">Define base directory</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Define base directory</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
 <span class="nf">cciaSetup</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>In case you get stuck at any point and have to restart R, you need to redefine the path you are working on</p>
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-text">Restart Cecelia</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">Restart Cecelia</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
 <span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
@@ -400,10 +407,20 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <li><p><cite>Cecelia</cite> depends on a <cite>conda environment</cite> which must be created.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-text">Install miniconda</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">Install miniconda</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">reticulate</span><span class="o">::</span><span class="nf">install_miniconda</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you get a <cite>timeout</cite> error you might have to adjust the limit in R.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Adjust time limit</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="m">600</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 <a class="reference internal image-reference" href="_images/macos_miniconda_install.png"><img alt="_images/macos_miniconda_install.png" src="_images/macos_miniconda_install.png" style="width: 100%;" /></a>
@@ -413,8 +430,8 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 </ol>
 <blockquote>
 <div><p>You must source <cite>conda</cite> first with the following commands. <cite>reticulate::miniconda_path()</cite> will give you the conda path that you must put into the following command.</p>
-<div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-text">Pre-create conda environment in <cite>Terminal</cite></span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">Pre-create conda environment in <cite>Terminal</cite></span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>/REPLACE_ME/etc/profile.d/conda.sh
 <span class="nv">CONDA_SUBDIR</span><span class="o">=</span>osx-arm64<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>r-cecelia-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
 </pre></div>
@@ -426,11 +443,15 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <li><p>Then, back in Rstudio, Create conda environment¶</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">Create conda environment</span><a class="headerlink" href="#id22" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCondaCreate</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you get a compiler error such as <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'map'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code> you might have to reinstall Xcode as stated above during <code class="docutils literal notranslate"><span class="pre">renv::init</span></code>.</p>
 </div>
 <a class="reference internal image-reference" href="_images/macos_conda_create.png"><img alt="_images/macos_conda_create.png" src="_images/macos_conda_create.png" style="width: 100%;" /></a>
 </div></blockquote>
@@ -438,8 +459,8 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <li><p>Download models for deep-learning segmentation, tracking and others.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id21">
-<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id23" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaModels</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -450,8 +471,8 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <li><p>Create <cite>shiny app</cite> in <cite>base directory</cite>.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id22">
-<div class="code-block-caption"><span class="caption-text">Create <cite>shiny app</cite></span><a class="headerlink" href="#id22" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">Create <cite>shiny app</cite></span><a class="headerlink" href="#id24" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCreateApp</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -466,8 +487,8 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 <ul class="simple">
 <li><p>Download <a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip">bioformats2raw</a> and place it into the <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> folder</p></li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id23">
-<div class="code-block-caption"><span class="caption-text">Adjust config in text editor of RStudio</span><a class="headerlink" href="#id23" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">Adjust config in text editor of RStudio</span><a class="headerlink" href="#id25" title="Permalink to this code">#</a></div>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/Applications/bioformats2raw-0.9.0/&quot;</span>
@@ -490,8 +511,8 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 </ol>
 <blockquote>
 <div><p>To start the application, double click <cite>cecelia-macOSX.command</cite> located in <code class="docutils literal notranslate"><span class="pre">/Applications/cecelia/app/</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id24">
-<div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id24" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/Applications/cecelia/app/cecelia-macOSX.command
 </pre></div>
 </div>

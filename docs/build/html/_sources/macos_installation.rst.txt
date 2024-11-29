@@ -138,6 +138,12 @@ Then install the required programs using Homebrew via `Terminal`:
   .. attention::
     If you still run into compiler issues, please remove and re-install `Xcode <https://developer.apple.com/xcode/>`_.
     
+    .. code-block:: bash
+      :caption: Reinstall Xcode
+      
+      rm -fr /Library/Developer/CommandLineTools
+      xcode-select --install
+    
   .. image:: _images/macos_install_renv.png
    :width: 100%
   
@@ -178,6 +184,14 @@ Then install the required programs using Homebrew via `Terminal`:
     :caption: Install miniconda
     
     reticulate::install_miniconda()
+    
+  .. attention::
+    If you get a `timeout` error you might have to adjust the limit in R.
+    
+    .. code-block:: R
+      :caption: Adjust time limit
+      
+      options(timeout=600)
 
   .. image:: _images/macos_miniconda_install.png
     :width: 100%
@@ -201,6 +215,9 @@ Then install the required programs using Homebrew via `Terminal`:
     :caption: Create conda environment
   
     cciaCondaCreate()
+    
+  .. attention::
+    If you get a compiler error such as ``fatal error: 'map' file not found`` you might have to reinstall Xcode as stated above during ``renv::init``.
     
   .. image:: _images/macos_conda_create.png
     :width: 100%
