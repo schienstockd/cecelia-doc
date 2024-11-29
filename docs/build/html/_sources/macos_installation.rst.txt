@@ -141,7 +141,7 @@ Then install the required programs using Homebrew via `Terminal`:
     .. code-block:: bash
       :caption: Reinstall Xcode
       
-      rm -fr /Library/Developer/CommandLineTools
+      sudo rm -fr /Library/Developer/CommandLineTools
       xcode-select --install
     
   .. image:: _images/macos_install_renv.png
