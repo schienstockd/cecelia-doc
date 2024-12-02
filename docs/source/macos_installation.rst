@@ -172,6 +172,7 @@ Then install the required programs using Homebrew via `Terminal`:
     :caption: Restart Cecelia
     
     Sys.setenv(KMP_DUPLICATE_LIB_OK = "TRUE")
+    renv::load("/Applications/cecelia")
     library(cecelia)
     cciaUse("/Applications/cecelia")
     

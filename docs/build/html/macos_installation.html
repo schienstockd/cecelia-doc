@@ -396,6 +396,7 @@ xcode-select<span class="w"> </span>--install
 <div class="literal-block-wrapper docutils container" id="id18">
 <div class="code-block-caption"><span class="caption-text">Restart Cecelia</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">KMP_DUPLICATE_LIB_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TRUE&quot;</span><span class="p">)</span>
+<span class="n">renv</span><span class="o">::</span><span class="nf">load</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">cecelia</span><span class="p">)</span>
 <span class="nf">cciaUse</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
 </pre></div>
