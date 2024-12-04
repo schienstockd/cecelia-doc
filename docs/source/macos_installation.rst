@@ -71,7 +71,7 @@ Then install the required programs using Homebrew via `Terminal`:
   .. attention::
     While we recomment `RStudio` for analysis, we recommend using `Terminal` for the installation process. Open `Terminal`, type in `R` and follow the same instructions. We encountered several issues that header files could not be found when using `RStudio` and `renv`, such as, ``fatal error: 'cstlib' file not found`` or ``fatal error: 'iostream' file not found``. It might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_.
 
-4. Start `RStudio` and install `renv` in the `R` console.
+4. Use `Terminal` (or `RStudio`) and install `renv` in the `R` console.
 
   .. code-block:: R
     :caption: Install renv
