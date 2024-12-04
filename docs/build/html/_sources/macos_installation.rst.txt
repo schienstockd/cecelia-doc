@@ -68,6 +68,9 @@ Then install the required programs using Homebrew via `Terminal`:
 
 3. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use an older version of `R` the package dependencies might not be resolved during ``renv::init``.
 
+  .. attention::
+    While we recomment `RStudio` for analysis, we recommend using `Terminal` for the installation process. Open `Terminal`, type in `R` and follow the same instructions. We encountered several issues that header files could not be found when using `RStudio` and `renv`, such as, ``fatal error: 'cstlib' file not found`` or ``fatal error: 'iostream' file not found``. It might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_.
+
 4. Start `RStudio` and install `renv` in the `R` console.
 
   .. code-block:: R
@@ -131,9 +134,6 @@ Then install the required programs using Homebrew via `Terminal`:
       FC = /opt/homebrew/Cellar/gcc/11.3.0_2/bin/gfortran
       F77 = /opt/homebrew/Cellar/gcc/11.3.0_2/bin/gfortran
       FLIBS = -L/opt/homebrew/Cellar/gcc/11.3.0_2/lib/gcc/11
-    
-  .. attention::
-    If there are further errors that packages cannot be compiled because header files are not found, such as ``fatal error: 'cstlib' file not found`` or ``fatal error: 'iostream' file not found``, it might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_. If that happens, do the installation in `Terminal` NOT `RStudio`. Open `Terminal` and type in `R` and follow the same instructions.
     
   .. attention::
     If you still run into compiler issues, please remove and re-install `Xcode <https://developer.apple.com/xcode/>`_.

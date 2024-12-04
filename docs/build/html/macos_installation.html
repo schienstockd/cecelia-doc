@@ -273,6 +273,14 @@ Rosetta<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>
 <ol class="arabic simple" start="2">
 <li><p>You will also most likely need <a class="reference external" href="https://developer.apple.com/xcode/">Xcode</a> to compile packages in <cite>R</cite> and <cite>Python</cite>. Follow the installation instructions on <a class="reference external" href="https://apps.apple.com/us/app/xcode/id497799835">Mac App Store</a>.</p></li>
 <li><p>Install <a class="reference external" href="https://cran.r-project.org/bin/macosx/">R base for MacOS</a> and <a class="reference external" href="https://posit.co/download/rstudio-desktop/#download">RStudio</a>. We tested this on R version <cite>4.4.1</cite>. If you use an older version of <cite>R</cite> the package dependencies might not be resolved during <code class="docutils literal notranslate"><span class="pre">renv::init</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>While we recomment <cite>RStudio</cite> for analysis, we recommend using <cite>Terminal</cite> for the installation process. Open <cite>Terminal</cite>, type in <cite>R</cite> and follow the same instructions. We encountered several issues that header files could not be found when using <cite>RStudio</cite> and <cite>renv</cite>, such as, <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'cstlib'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code> or <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'iostream'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code>. It might be that <cite>RStudio</cite> is modifying the <cite>PATH</cite> variable when using <cite>renv</cite>, see <a class="reference external" href="https://github.com/rstudio/renv/issues/1845">Github issue</a>.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li><p>Start <cite>RStudio</cite> and install <cite>renv</cite> in the <cite>R</cite> console.</p></li>
 </ol>
 <blockquote>
@@ -350,10 +358,6 @@ ls<span class="w"> </span>/usr/local/Cellar/gcc/<span class="w"> </span><span cl
 </pre></div>
 </div>
 </div>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>If there are further errors that packages cannot be compiled because header files are not found, such as <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'cstlib'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code> or <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'iostream'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code>, it might be that <cite>RStudio</cite> is modifying the <cite>PATH</cite> variable when using <cite>renv</cite>, see <a class="reference external" href="https://github.com/rstudio/renv/issues/1845">Github issue</a>. If that happens, do the installation in <cite>Terminal</cite> NOT <cite>RStudio</cite>. Open <cite>Terminal</cite> and type in <cite>R</cite> and follow the same instructions.</p>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
