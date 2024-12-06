@@ -105,10 +105,10 @@ Then install the required programs using Homebrew via `Terminal`:
     
     # An example would be
     setwd("/Applications/cecelia")
-    renv::init(bioconductor = TRUE)
+    renv::init()
     
   .. attention::
-    Make sure that this command installs the required packages, that is, there should be a long list of packages including some from Github and Bioconductor. If that is not the case, check that the `lock-file` has packages listed and repeat the previous step with `renv::init()`.
+    Make sure that this command installs ALL required packages, that is, there should be a long list of packages including some from Github and Bioconductor. `You should not have to manually install any packages for the app to run.` If that is not the case, check that the `lock-file` has packages listed, download the file again if needed, and repeat the previous step with ``renv::init()`` or ``renv::init(bioconductor = TRUE)``. We had cases where the `lock-file` was reset and not all packages installed.
     
   .. attention::
     If you run into issues that `R` cannot compile a package with `gfortran`, such as `make: /opt/gfortran/bin/gfortran: No such file or directory`, it might be that the path cannot be found because `gfortran` is now packaged into `gcc` and `R` might be looking in the wrong spot. To change this location follow the instructions as outlined in this `Stackoverflow post <https://stackoverflow.com/a/72997915>`_. In `Terminal` install `gcc`:
