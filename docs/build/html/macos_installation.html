@@ -457,6 +457,13 @@ xcode-select<span class="w"> </span>--install
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>If you get a compiler error such as <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'map'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code> you might have to reinstall Xcode as stated above during <code class="docutils literal notranslate"><span class="pre">renv::init</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">Reinstall Xcode</span><a class="headerlink" href="#id23" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rm<span class="w"> </span>-fr<span class="w"> </span>/Library/Developer/CommandLineTools
+xcode-select<span class="w"> </span>--install
+</pre></div>
+</div>
+</div>
 </div>
 <a class="reference internal image-reference" href="_images/macos_conda_create.png"><img alt="_images/macos_conda_create.png" src="_images/macos_conda_create.png" style="width: 100%;" /></a>
 </div></blockquote>
@@ -464,8 +471,8 @@ xcode-select<span class="w"> </span>--install
 <li><p>Download models for deep-learning segmentation, tracking and others.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id23">
-<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id23" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">Download models</span><a class="headerlink" href="#id24" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaModels</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -476,8 +483,8 @@ xcode-select<span class="w"> </span>--install
 <li><p>Create <cite>shiny app</cite> in <cite>base directory</cite>.</p></li>
 </ol>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id24">
-<div class="code-block-caption"><span class="caption-text">Create <cite>shiny app</cite></span><a class="headerlink" href="#id24" title="Permalink to this code">#</a></div>
+<div><div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">Create <cite>shiny app</cite></span><a class="headerlink" href="#id25" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">cciaCreateApp</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -492,8 +499,8 @@ xcode-select<span class="w"> </span>--install
 <ul class="simple">
 <li><p>Download <a class="reference external" href="https://github.com/glencoesoftware/bioformats2raw/releases/download/v0.9.0/bioformats2raw-0.9.0.zip">bioformats2raw</a> and place it into the <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> folder</p></li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id25">
-<div class="code-block-caption"><span class="caption-text">Adjust config in text editor of RStudio</span><a class="headerlink" href="#id25" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Adjust config in text editor of RStudio</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dirs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">bioformats2raw</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/Applications/bioformats2raw-0.9.0/&quot;</span>
@@ -516,8 +523,8 @@ xcode-select<span class="w"> </span>--install
 </ol>
 <blockquote>
 <div><p>To start the application, double click <cite>cecelia-macOSX.command</cite> located in <code class="docutils literal notranslate"><span class="pre">/Applications/cecelia/app/</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id26">
-<div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">Run <cite>Cecelia</cite> app</span><a class="headerlink" href="#id27" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/Applications/cecelia/app/cecelia-macOSX.command
 </pre></div>
 </div>

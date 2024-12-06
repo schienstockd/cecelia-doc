@@ -220,6 +220,12 @@ Then install the required programs using Homebrew via `Terminal`:
   .. attention::
     If you get a compiler error such as ``fatal error: 'map' file not found`` you might have to reinstall Xcode as stated above during ``renv::init``.
     
+    .. code-block:: bash
+      :caption: Reinstall Xcode
+      
+      sudo rm -fr /Library/Developer/CommandLineTools
+      xcode-select --install
+    
   .. image:: _images/macos_conda_create.png
     :width: 100%
   
