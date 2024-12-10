@@ -83,7 +83,7 @@ Then install the required programs using Homebrew via `Terminal`:
   * Within the `cecelia` folder create a directory `projects` where all projects data will be stored.
   * Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ into ``/Applications/cecelia``. `Important`: save this as renv.lock NOT renv.lock.txt. Remove `.txt` if this is appended during the download.
   * Then in `R`, create the R-environment using the example below. To do this, you must set the current working directory to the directory where the renv.lock file is located. 
-  * When prompted during the process, Select “1” to restore the project from the lockfile.
+  * When prompted during the process, Select `1` to restore the project from the lockfile.
   * `YOU NEED AT LEAST R version 4.4.1 OTHERWISE THIS WILL FAIL.`
   * `THIS STEP WILL INSTALL ALL REQUIRED R PACKAGES. THERE IS NO NEED TO MANUALLY INSTALL PACKAGES. IF YOU ARE MISSING PACKAGES WHEN STARTING THE APP, THEN YOU NEED TO COME BACK TO THIS STEP.`
   
