@@ -66,7 +66,7 @@ Then install the required programs using Homebrew via `Terminal`:
     
 2. You will also most likely need `Xcode <https://developer.apple.com/xcode/>`_ to compile packages in `R` and `Python`. Follow the installation instructions on `Mac App Store <https://apps.apple.com/us/app/xcode/id497799835>`_.
 
-3. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use an older version of `R` the package dependencies might not be resolved during ``renv::init``.
+3. Install `R base for MacOS <https://cran.r-project.org/bin/macosx/>`_ and `RStudio <https://posit.co/download/rstudio-desktop/#download>`_. We tested this on R version `4.4.1`. If you use an older version of `R` the package dependencies might not be resolved during ``renv::restore``.
 
   .. attention::
     While we recomment `RStudio` for analysis, we recommend using `Terminal` for the installation process. Open `Terminal`, type in `R` and follow the same instructions. We encountered several issues that header files could not be found when using `RStudio` and `renv`, such as, ``fatal error: 'cstlib' file not found`` or ``fatal error: 'iostream' file not found``. It might be that `RStudio` is modifying the `PATH` variable when using `renv`, see `Github issue <https://github.com/rstudio/renv/issues/1845>`_.
@@ -83,7 +83,6 @@ Then install the required programs using Homebrew via `Terminal`:
   * Within the `cecelia` folder create a directory `projects` where all projects data will be stored.
   * Download the `renv.lock file <https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock>`_ into ``/Applications/cecelia``. `Important`: save this as renv.lock NOT renv.lock.txt. Remove `.txt` if this is appended during the download.
   * Then in `R`, create the R-environment using the example below. To do this, you must set the current working directory to the directory where the renv.lock file is located. 
-  * When prompted during the process, Select “1” to restore the project from the lockfile.
   * `YOU NEED AT LEAST R version 4.4.1 OTHERWISE THIS WILL FAIL.`
   * `THIS STEP WILL INSTALL ALL REQUIRED R PACKAGES. THERE IS NO NEED TO MANUALLY INSTALL PACKAGES. IF YOU ARE MISSING PACKAGES WHEN STARTING THE APP, THEN YOU NEED TO COME BACK TO THIS STEP.`
   
@@ -107,10 +106,10 @@ Then install the required programs using Homebrew via `Terminal`:
     
     # An example would be
     setwd("/Applications/cecelia")
-    renv::init()
+    renv::restore()
     
   .. attention::
-    Make sure that this command installs ALL required packages, that is, there should be a long list of packages including some from Github and Bioconductor. `You should not have to manually install any packages for the app to run.` If that is not the case, check that the `lock-file` has packages listed, download the file again if needed, and repeat the previous step with ``renv::init()``. We had cases where the `lock-file` was reset and not all packages installed.
+    Make sure that this command installs ALL required packages, that is, there should be a long list of packages including some from Github and Bioconductor. If that is not the case, check that the `lock-file` has packages listed, download the file again if needed, and repeat the previous step with ``renv::restore()``. We had cases where the `lock-file` was reset and not all packages installed.
     
   .. attention::
     If you run into issues that `R` cannot compile a package with `gfortran`, such as `make: /opt/gfortran/bin/gfortran: No such file or directory`, it might be that the path cannot be found because `gfortran` is now packaged into `gcc` and `R` might be looking in the wrong spot. To change this location follow the instructions as outlined in this `Stackoverflow post <https://stackoverflow.com/a/72997915>`_. In `Terminal` install `gcc`:
@@ -220,7 +219,7 @@ Then install the required programs using Homebrew via `Terminal`:
     cciaCondaCreate()
     
   .. attention::
-    If you get a compiler error such as ``fatal error: 'map' file not found`` you might have to reinstall Xcode as stated above during ``renv::init``.
+    If you get a compiler error such as ``fatal error: 'map' file not found`` you might have to reinstall Xcode as stated above during ``renv::restore``.
     
     .. code-block:: bash
       :caption: Reinstall Xcode
