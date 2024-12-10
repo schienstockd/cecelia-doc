@@ -272,7 +272,7 @@ Rosetta<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>You will also most likely need <a class="reference external" href="https://developer.apple.com/xcode/">Xcode</a> to compile packages in <cite>R</cite> and <cite>Python</cite>. Follow the installation instructions on <a class="reference external" href="https://apps.apple.com/us/app/xcode/id497799835">Mac App Store</a>.</p></li>
-<li><p>Install <a class="reference external" href="https://cran.r-project.org/bin/macosx/">R base for MacOS</a> and <a class="reference external" href="https://posit.co/download/rstudio-desktop/#download">RStudio</a>. We tested this on R version <cite>4.4.1</cite>. If you use an older version of <cite>R</cite> the package dependencies might not be resolved during <code class="docutils literal notranslate"><span class="pre">renv::restore</span></code>.</p></li>
+<li><p>Install <a class="reference external" href="https://cran.r-project.org/bin/macosx/">R base for MacOS</a> and <a class="reference external" href="https://posit.co/download/rstudio-desktop/#download">RStudio</a>. We tested this on R version <cite>4.4.1</cite>. If you use an older version of <cite>R</cite> the package dependencies might not be resolved during <code class="docutils literal notranslate"><span class="pre">renv::init</span></code>.</p></li>
 </ol>
 <blockquote>
 <div><div class="admonition attention">
@@ -300,6 +300,7 @@ Rosetta<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>
 <li><p>Within the <cite>cecelia</cite> folder create a directory <cite>projects</cite> where all projects data will be stored.</p></li>
 <li><p>Download the <a class="reference external" href="https://github.com/schienstockd/cecelia/raw/refs/heads/master/renv.lock">renv.lock file</a> into <code class="docutils literal notranslate"><span class="pre">/Applications/cecelia</span></code>. <cite>Important</cite>: save this as renv.lock NOT renv.lock.txt. Remove <cite>.txt</cite> if this is appended during the download.</p></li>
 <li><p>Then in <cite>R</cite>, create the R-environment using the example below. To do this, you must set the current working directory to the directory where the renv.lock file is located.</p></li>
+<li><p>When prompted during the process, Select “1” to restore the project from the lockfile.</p></li>
 <li><p><cite>YOU NEED AT LEAST R version 4.4.1 OTHERWISE THIS WILL FAIL.</cite></p></li>
 <li><p><cite>THIS STEP WILL INSTALL ALL REQUIRED R PACKAGES. THERE IS NO NEED TO MANUALLY INSTALL PACKAGES. IF YOU ARE MISSING PACKAGES WHEN STARTING THE APP, THEN YOU NEED TO COME BACK TO THIS STEP.</cite></p></li>
 </ul>
@@ -325,13 +326,13 @@ Rosetta<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>
 <div class="code-block-caption"><span class="caption-text">Init R-environment</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># An example would be</span>
 <span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/Applications/cecelia&quot;</span><span class="p">)</span>
-<span class="n">renv</span><span class="o">::</span><span class="nf">restore</span><span class="p">()</span>
+<span class="n">renv</span><span class="o">::</span><span class="nf">init</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>Make sure that this command installs ALL required packages, that is, there should be a long list of packages including some from Github and Bioconductor. If that is not the case, check that the <cite>lock-file</cite> has packages listed, download the file again if needed, and repeat the previous step with <code class="docutils literal notranslate"><span class="pre">renv::restore()</span></code>. We had cases where the <cite>lock-file</cite> was reset and not all packages installed.</p>
+<p>Make sure that this command installs ALL required packages, that is, there should be a long list of packages including some from Github and Bioconductor. If that is not the case, check that the <cite>lock-file</cite> has packages listed, download the file again if needed, and repeat the previous step with <code class="docutils literal notranslate"><span class="pre">renv::init()</span></code>. We had cases where the <cite>lock-file</cite> was reset and not all packages installed.</p>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -457,7 +458,7 @@ xcode-select<span class="w"> </span>--install
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>If you get a compiler error such as <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'map'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code> you might have to reinstall Xcode as stated above during <code class="docutils literal notranslate"><span class="pre">renv::restore</span></code>.</p>
+<p>If you get a compiler error such as <code class="docutils literal notranslate"><span class="pre">fatal</span> <span class="pre">error:</span> <span class="pre">'map'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code> you might have to reinstall Xcode as stated above during <code class="docutils literal notranslate"><span class="pre">renv::init</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id23">
 <div class="code-block-caption"><span class="caption-text">Reinstall Xcode</span><a class="headerlink" href="#id23" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rm<span class="w"> </span>-fr<span class="w"> </span>/Library/Developer/CommandLineTools
