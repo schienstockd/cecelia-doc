@@ -94,6 +94,9 @@ We will analyse `M3c-Arm1_5-XCR1_Venus-B220_PB-LCMV_AF594-P14_CTDR-CD3e_AF700-1_
      
   Now you can tick all the boxes with the individual segmentation parameters and give the name `default`. This will go through the segmentation from top to bottom, that is, the last segmentation will be on top of everything else.
   
+  .. tip::
+    For 3D images. If you require object measurements such as `volume`, then you must tick `Extended Measurements` in the `Segmentation options`.
+  
   .. image:: _images/st_seg_all_ann.png
    :width: 100%
    
@@ -183,6 +186,9 @@ We will analyse `M1-1-B6-naive-gBT-uGFP-OTI-CTV-P14-ubTomato-z300_0004-1.tif` wh
 
   Segmentation works in a similar manner to static imaging. Again, we mostly rely on `Cellpose <http://www.cellpose.org/>`_. For each cell population you must create a separate segmentation, ie/ P14, OTI and gBT cells will each have a separate segmentation. T cells can assume irregular shapes and various sizes and appear in tightly packed environments. While the `cyto2` model is very good for general segmentation, we found that or own `Cellpose` model, `ccia Fluorescent` sometimes works better to extract T cell shapes from these movies. However, this model can also pick a lot more background than `cyto2` depending on the image. We therefore recommend to try both and stick to the one that gives the best results for the current image.
   
+  .. tip::
+    For 3D images. If you require object measurements such as `volume`, then you must tick `Extended Measurements` in the `Segmentation options`.
+    
   .. image:: _images/li_seg_gBT_ann.png
      :width: 100%
      

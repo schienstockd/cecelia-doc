@@ -270,6 +270,10 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <p>LCMV specific T cells were labelled with a cytoplasmic dye. Although these are technically T cells, it is better to segment them separately to capture all cells. As this signal is very bright, we can use the standard <cite>cyto2</cite> model.</p>
 <a class="reference internal image-reference" href="_images/st_seg_P14_ann.png"><img alt="_images/st_seg_P14_ann.png" src="_images/st_seg_P14_ann.png" style="width: 100%;" /></a>
 <p>Now you can tick all the boxes with the individual segmentation parameters and give the name <cite>default</cite>. This will go through the segmentation from top to bottom, that is, the last segmentation will be on top of everything else.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For 3D images. If you require object measurements such as <cite>volume</cite>, then you must tick <cite>Extended Measurements</cite> in the <cite>Segmentation options</cite>.</p>
+</div>
 <a class="reference internal image-reference" href="_images/st_seg_all_ann.png"><img alt="_images/st_seg_all_ann.png" src="_images/st_seg_all_ann.png" style="width: 100%;" /></a>
 <p>To change the order, you can drag and drop the individual boxes.</p>
 <a class="reference internal image-reference" href="_images/st_seg_sort_ann.png"><img alt="_images/st_seg_sort_ann.png" src="_images/st_seg_sort_ann.png" style="width: 100%;" /></a>
@@ -338,6 +342,10 @@ Both approaches follow a similar workflow to process and analyse images:</p>
 <h3>5. Segment cells<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Segmentation works in a similar manner to static imaging. Again, we mostly rely on <a class="reference external" href="http://www.cellpose.org/">Cellpose</a>. For each cell population you must create a separate segmentation, ie/ P14, OTI and gBT cells will each have a separate segmentation. T cells can assume irregular shapes and various sizes and appear in tightly packed environments. While the <cite>cyto2</cite> model is very good for general segmentation, we found that or own <cite>Cellpose</cite> model, <cite>ccia Fluorescent</cite> sometimes works better to extract T cell shapes from these movies. However, this model can also pick a lot more background than <cite>cyto2</cite> depending on the image. We therefore recommend to try both and stick to the one that gives the best results for the current image.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For 3D images. If you require object measurements such as <cite>volume</cite>, then you must tick <cite>Extended Measurements</cite> in the <cite>Segmentation options</cite>.</p>
+</div>
 <a class="reference internal image-reference" href="_images/li_seg_gBT_ann.png"><img alt="_images/li_seg_gBT_ann.png" src="_images/li_seg_gBT_ann.png" style="width: 100%;" /></a>
 <div class="video_wrapper" style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
 <iframe allowfullscreen="true" src="https://player.vimeo.com/video/926098606?loop=1&amp;autopause=0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
