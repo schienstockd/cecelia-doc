@@ -108,6 +108,17 @@ On Windows, you might want to use `Anaconda Prompt` to initialise the conda tool
           projects:
             from: "/cecelia/projects"
             to: "D:\\Public\\Cecelia\\PROJECTS"
+            
+  .. attention::
+    Make sure you use `double backslash` for the Windows path. Otherwise you might get errors like the following and napari will not open.
+    
+    .. code-block:: python
+      :caption: Unicode error
+      
+      app-1  |   Cell In[1], line 1
+      app-1  |     napari_utils.task_dir = 'C:\Users\user123\cecelia\PROJECTS/o9F8Nh/ANALYSIS/1/X3ZQiB'
+      app-1  |                                                                                       ^
+      app-1  | SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
   .. image:: _images/docker_edit_config_files.png
    :width: 100%
