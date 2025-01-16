@@ -53,7 +53,7 @@ Step by step guide
   .. attention::
     For Windows, you need either at least Windows 11 or at least the `19044.1200 (21H2) Windows 10 Insider Preview Build <https://blogs.windows.com/windows-insider/2021/08/18/announcing-windows-10-insider-preview-build-19044-1198-21h2/>`_ for GPU support. You can sign up `here <https://insider.windows.com/en-us/register>`_ for the Windows insider program.
 
-2. Install the latest `Miniconda <https://docs.anaconda.com/miniconda/miniconda-install/>`_ version.
+2. Install the latest `Miniconda <https://docs.anaconda.com/miniconda/miniconda-install/>`_ version. `Be sure to install Miniconda NOT Anaconda.`
 
 3. Retrieve the `CeceliaDocker` project. Either `Download <https://github.com/schienstockd/ceceliaDocker/archive/refs/heads/master.zip>`_ and unpack or clone the `CeceliaDocker repository <https://github.com/schienstockd/ceceliaDocker>`_ into a directory of your choice. In this tutorial we are using ``D:\Public\Cecelia\GIT\``.
 
@@ -113,7 +113,7 @@ On Windows, you might want to use `Anaconda Prompt` to initialise the conda tool
    :width: 100%
 
 6. Start `Docker Desktop` and retrieve `Cecelia` container.
-  Run (or build) the Docker container with `cecelia-MacOSX-docker.command` (Mac) or `cecelia-Windows-docker.bat` (Windows) located in ``D:\Public\Cecelia\GIT\ceceliaDocker\``. This will start the local napari environment, retrieve the Docker container during the first run and start the app.
+  Open the `Docker Desktop` application and run (or build) the Docker container with `cecelia-MacOSX-docker.command` (Mac) or `cecelia-Windows-docker.bat` (Windows) located in ``D:\Public\Cecelia\GIT\ceceliaDocker\``. This will start the local napari environment, retrieve the Docker container during the first run and start the app.
   
   .. attention::
     If you installed `Miniconda` in a custom location, ie/ not your user account, you must specify that directory in the `.command` or `.bat` file by editing the file in a `Text editor`.
