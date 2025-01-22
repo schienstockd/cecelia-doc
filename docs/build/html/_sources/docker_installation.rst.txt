@@ -53,7 +53,7 @@ Step by step guide
   .. attention::
     For Windows, you need either at least Windows 11 or at least the `19044.1200 (21H2) Windows 10 Insider Preview Build <https://blogs.windows.com/windows-insider/2021/08/18/announcing-windows-10-insider-preview-build-19044-1198-21h2/>`_ for GPU support. You can sign up `here <https://insider.windows.com/en-us/register>`_ for the Windows insider program.
 
-2. Install the latest `Miniconda <https://docs.anaconda.com/miniconda/miniconda-install/>`_ version. `Be sure to install Miniconda NOT Anaconda.`
+2. Install the latest `Miniconda <https://docs.anaconda.com/miniconda/miniconda-install/>`_ version. `Be sure to install Miniconda NOT Anaconda as the installation path will be different for the subsequent steps.`
 
 3. Retrieve the `CeceliaDocker` project. Either `Download <https://github.com/schienstockd/ceceliaDocker/archive/refs/heads/master.zip>`_ and unpack or clone the `CeceliaDocker repository <https://github.com/schienstockd/ceceliaDocker>`_ into a directory of your choice. In this tutorial we are using ``D:\Public\Cecelia\GIT\``.
 
