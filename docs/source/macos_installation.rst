@@ -207,7 +207,7 @@ Then install the required programs using Homebrew via `Terminal`:
     :caption: Pre-create conda environment in `Terminal`
     
     . /REPLACE_ME/etc/profile.d/conda.sh
-    CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.9
+    CONDA_SUBDIR=osx-arm64 conda create -n r-cecelia-env python=3.12
   
   .. image:: _images/macos_arm_conda_create.png
     :width: 100%
